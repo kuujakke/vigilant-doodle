@@ -2,15 +2,33 @@
 Toteutetaan tehtävienhallintajärjestelmä, jonka avulla pystytään hallinnoimaan projekteihin liittyviä tehtäviä sekä määräämään tehtäville aikarajoja.
 
 ##Käyttäjät
-Johtaja ja Jäsen
+Pääkäyttäjä ja Käyttäjä
 
 ###Kaikkien käyttäjien yhteisen toiminnot:
 * Pystyy kirjautumaan järjestelmään
   * Vain jos tunnus ja salasana ovat oikein.
 
-###Johtajan toiminnot:
-* Lisää projekteja
-* Lisää tehtäviä projekteihin
+###Pääkäyttäjän toiminnot:
+* Luo Projekteja
+* Listaa Käyttäjät
+* Lisää projektien johtajiksi käyttäjiä
 
-###Jäsenen toiminnot:
-* Lisää tehtäviä projekteihin
+###Käyttäjän toiminnot:
+* Lukee Projektin tietoja
+* Lukee Tehtävien tietoja
+
+Jos käyttäjä kuuluu projektin johtajien listaan saa käyttäjä projektijohtajan statuksen. Tässä projektissa Käyttäjä saa käyttöönsä seuraavia toimintoja.
+
+####Projektijohtajan toiminnot:
+* Lisää tehtäviä projektiin.
+* Asettaa Käyttäjiä vastuuseen tehtävistä.
+* Asettaa Projektille deadlinen.
+* Asettaa Projektin statuksen.
+* Listaa Käyttäjät
+* Lisää käyttäjiä projektiin.
+
+Kun Käyttäjä on saanut vastuulleen tehtävän saa käyttäjä Tehtävänjohtajan statuksen ja saa ko. Tehtävän suhteen tiettyjä toimintoja:
+
+####Tehtävänjohtajan toiminnot:
+* Lisää vaiheita tehtävään.
+* Asettaa tehtävän statuksen.
