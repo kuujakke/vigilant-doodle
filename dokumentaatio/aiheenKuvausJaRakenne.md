@@ -41,3 +41,7 @@ Kun Käyttäjä on saanut vastuulleen tehtävän saa käyttäjä Tehtävänjohta
 ####Tehtävänjohtajan toiminnot:
 * Lisää vaiheita tehtävään.
 * Asettaa tehtävän statuksen.
+
+# Luokkakaavio
+
+![Luokkakaavio](dokumentaatio/luokkakaavio.png)
