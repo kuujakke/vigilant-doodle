@@ -7,3 +7,4 @@ Päivä | Tunnit | Kuvaus
 24.12.2016 | 1h | Lepopäivä. Luotu luokkakaavio.png.
 25.12.2016 | 6h | Luokkakaavion laatiminen jatkuu, päivitetty luokkakaavio.png
 26.12.2016 | 3h | Luokkakaavion mallintamista ja luokkien generointia.
+27.12.2016 | 5h | Pajasta saatu apua PIT -ongelmaan. Kirjoitettu README.md ja läjä testejä. Päivitetty luokkakaaviota.
