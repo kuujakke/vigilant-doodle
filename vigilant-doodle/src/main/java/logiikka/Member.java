@@ -16,9 +16,10 @@ public class Member implements Role {
      * Default constructor
      * @param name
      */
-    public Member(String name) {
+    public Member(String name, Project project) {
         this.name = name;
         this.tasks = new ArrayList<>();
+        this.project = project;
     }
 
 

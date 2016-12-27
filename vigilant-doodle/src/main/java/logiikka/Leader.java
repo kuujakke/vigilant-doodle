@@ -8,8 +8,8 @@ public class Leader extends Member {
     /**
      * Default constructor
      */
-    public Leader(String name) {
-        super(name);
+    public Leader(String name, Project project) {
+        super(name, project);
     }
 
 
