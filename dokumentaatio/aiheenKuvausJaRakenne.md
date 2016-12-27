@@ -44,4 +44,4 @@ Kun Käyttäjä on saanut vastuulleen tehtävän saa käyttäjä Tehtävänjohta
 
 # Luokkakaavio
 
-![Luokkakaavio](dokumentaatio/luokkakaavio.png)
+![Luokkakaavio](luokkakaavio.png)
