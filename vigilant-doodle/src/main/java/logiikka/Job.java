@@ -9,10 +9,13 @@ import java.util.*;
  */
 public class Job {
 
+    private String jobName;
+
     /**
      * Default constructor
      */
-    public Job() {
+    public Job(String name) {
+        this.jobName = name;
     }
 
     /**
@@ -25,14 +28,6 @@ public class Job {
      */
     public Worker jobWorker;
 
-
-
-    /**
-     * @param name
-     */
-    public void Job(String name) {
-        // TODO implement here
-    }
 
     /**
      * @return

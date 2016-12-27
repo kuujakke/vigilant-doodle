@@ -1,5 +1,4 @@
 package logiikka;
-import java.util.*;
 
 /**
  * 
@@ -9,7 +8,8 @@ public class Leader extends Member {
     /**
      * Default constructor
      */
-    public Leader() {
+    public Leader(String name) {
+        super(name);
     }
 
 

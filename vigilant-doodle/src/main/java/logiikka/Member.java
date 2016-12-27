@@ -7,24 +7,28 @@ import java.util.*;
  */
 public class Member implements Role {
 
-    /**
-     * Default constructor
-     */
-    public Member() {
-    }
+    String name;
 
     /**
-     * 
+     *
      */
-    public Project project;
+    Project project;
+    ArrayList<Task> tasks;
+
+    /**
+     * Default constructor
+     * @param name
+     */
+    public Member(String name) {
+        this.name = name;
+    }
 
 
     /**
      * @return
      */
     public ArrayList<Task> getTasks() {
-        // TODO implement here
-        return null;
+        return this.tasks;
     }
 
     @Override

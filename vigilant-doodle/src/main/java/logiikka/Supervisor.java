@@ -19,13 +19,6 @@ public class Supervisor extends Worker {
 
 
     /**
-     * @param task
-     */
-    public void Master(Task task) {
-        // TODO implement here
-    }
-
-    /**
      * @param worker
      */
     public void addWorker(Worker worker) {

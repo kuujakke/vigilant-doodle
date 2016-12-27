@@ -49,35 +49,35 @@ public class Project {
      * @param task
      */
     public void deleteTask(Task task) {
-        // TODO implement here
+        this.tasks.remove(task);
+    }
+
+    /**
+     * @param member
+     */
+    public void addMember(Member member) {
+        this.members.add(member);
     }
 
     /**
      * @param user
      */
-    public void addMember(User user) {
-        // TODO implement here
+    public void removeMember(Member member) {
+        this.members.remove(member);
     }
 
     /**
      * @param user
      */
-    public void removeMember(User user) {
-        // TODO implement here
+    public void addLeader(Leader leader) {
+        this.leaders.add(leader);
     }
 
     /**
      * @param user
      */
-    public void addLeader(User user) {
-        // TODO implement here
-    }
-
-    /**
-     * @param user
-     */
-    public void removeLeader(User user) {
-        // TODO implement here
+    public void removeLeader(Leader leader) {
+        this.leaders.remove(leader);
     }
 
     public void setProjectName(String name) {

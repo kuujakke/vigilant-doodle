@@ -22,14 +22,6 @@ public class Worker implements Role {
      */
     public ArrayList<Job> jobs;
 
-
-    /**
-     * @param task
-     */
-    public void Slave(Task task) {
-        // TODO implement here
-    }
-
     /**
      * @return
      */

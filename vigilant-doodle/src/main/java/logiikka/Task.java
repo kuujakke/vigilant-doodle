@@ -32,17 +32,6 @@ public class Task {
     public ArrayList<Job> jobs;
 
 
-
-
-
-    /**
-     * @param name 
-     * @param status
-     */
-    public void Task(String name, Status status) {
-        // TODO implement here
-    }
-
     /**
      * @return
      */

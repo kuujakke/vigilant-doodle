@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -20,7 +22,6 @@ public class ProjectTest {
 
     @After
     public void tearDown() throws Exception {
-
     }
 
     @Test
@@ -36,33 +37,52 @@ public class ProjectTest {
     }
 
     @Test
-    public void getTasks() throws Exception {
-
+    public void getTasksWorkingAsIntended() throws Exception {
+        this.project.addTask(new Task());
+        this.project.addTask(new Task());
+        ArrayList<Task> tasks = this.project.getTasks();
+        assertEquals(2, tasks.size());
     }
 
     @Test
-    public void deleteTask() throws Exception {
-
+    public void deleteTaskWorkingAsIntended() throws Exception {
+        Task task = new Task();
+        this.project.addTask(task);
+        this.project.deleteTask(task);
+        assertEquals(0, this.project.tasks.size());
     }
 
     @Test
-    public void addMember() throws Exception {
-
+    public void addMemberWorkingAsIntended() throws Exception {
+        Member member = new Member("Teuvo");
+        this.project.addMember(member);
+        assertEquals(1, this.project.members.size());
+        assertTrue(this.project.members.contains(member));
     }
 
     @Test
-    public void removeMember() throws Exception {
-
+    public void removeMemberWorkingAsIntended() throws Exception {
+        Member member = new Member("Topias");
+        this.project.addMember(member);
+        this.project.removeMember(member);
+        assertEquals(0, this.project.members.size());
+        assertFalse(this.project.members.contains(member));
     }
 
     @Test
-    public void addLeader() throws Exception {
-
+    public void addLeaderWorkingAsIntended() throws Exception {
+        Leader leader = new Leader("Hjallis");
+        this.project.leaders.add(leader);
+        assertTrue(this.project.leaders.contains(leader));
+        assertEquals(1, this.project.leaders.size());
     }
 
     @Test
-    public void removeLeader() throws Exception {
-
+    public void removeLeaderWorkingAsIntended() throws Exception {
+        Leader leader = new Leader("Harri");
+        this.project.leaders.remove(leader);
+        assertFalse(this.project.leaders.contains(leader));
+        assertEquals(0, this.project.leaders.size());
     }
 
 }
