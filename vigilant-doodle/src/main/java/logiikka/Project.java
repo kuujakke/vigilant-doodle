@@ -19,6 +19,9 @@ public class Project {
     public Project(String name) {
         this.projectName = name;
         this.projectStatus = new ProjectStatus();
+        this.tasks = new ArrayList<>();
+        this.leaders = new ArrayList<>();
+        this.members = new ArrayList<>();
     }
 
     /**
@@ -32,15 +35,14 @@ public class Project {
      * @param task
      */
     public void addTask(Task task) {
-        // TODO implement here
+        this.tasks.add(task);
     }
 
     /**
      * @return
      */
     public ArrayList<Task> getTasks() {
-        // TODO implement here
-        return null;
+        return this.tasks;
     }
 
     /**

@@ -24,14 +24,15 @@ public class ProjectTest {
     }
 
     @Test
-    public void projectToStringWorksCorrectly() throws Exception {
+    public void toStringWorkingAsIntended() throws Exception {
         String projectToString = this.project.toString();
         assertEquals("Toiminnanohjausjärjestelmä", projectToString);
     }
 
     @Test
-    public void addTask() throws Exception {
-
+    public void addTaskWorkingAsIntended() throws Exception {
+        this.project.addTask(new Task());
+        assertEquals(1, this.project.getTasks().size());
     }
 
     @Test
