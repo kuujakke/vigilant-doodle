@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Worker extends Role {
+public class Worker implements Role {
 
     /**
      * Default constructor
@@ -45,4 +45,33 @@ public class Worker extends Role {
         // TODO implement here
     }
 
+    @Override
+    public User getUser() {
+        return null;
+    }
+
+    @Override
+    public Role getRole() {
+        return null;
+    }
+
+    @Override
+    public String getRoleName() {
+        return null;
+    }
+
+    @Override
+    public String getRoleDescription() {
+        return null;
+    }
+
+    @Override
+    public void setRoleName(String name) {
+
+    }
+
+    @Override
+    public void setRoleDescription(String description) {
+
+    }
 }

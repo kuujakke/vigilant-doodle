@@ -7,42 +7,25 @@ import java.util.*;
  */
 public class Project {
 
+    private String projectName;
+    private ProjectStatus projectStatus;
+    public ArrayList<Task> tasks;
+    public ArrayList<Leader> leaders;
+    public ArrayList<Member> members;
+
     /**
      * Default constructor
      */
-    public Project() {
+    public Project(String name) {
+        this.projectName = name;
+        this.projectStatus = new ProjectStatus();
     }
-
-    /**
-     * 
-     */
-    public ProjectStatus projectStatus;
-
-    /**
-     * 
-     */
-    public ArrayList<Task> tasks;
-
-    /**
-     * 
-     */
-    public ArrayList<Leader> leaders;
-
-    /**
-     * 
-     */
-    public ArrayList<Member> members;
-
-
-
-
 
     /**
      * @return
      */
     public String toString() {
-        // TODO implement here
-        return "";
+        return this.projectName;
     }
 
     /**
@@ -95,4 +78,7 @@ public class Project {
         // TODO implement here
     }
 
+    public void setProjectName(String name) {
+        this.projectName = name;
+    }
 }

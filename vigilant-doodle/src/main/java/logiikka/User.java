@@ -1,26 +1,21 @@
 package logiikka;
+
 import java.util.*;
 
 /**
  * 
  */
-public class User {
+public class User implements Role {
+
+    private String userName;
+    private String password;
 
     /**
      * Default constructor
      */
-    public User() {
+    public User(String name) {
+        this.userName = name;
     }
-
-    /**
-     * 
-     */
-    public String name;
-
-    /**
-     * 
-     */
-    public String password;
 
     /**
      * 
@@ -66,4 +61,33 @@ public class User {
         // TODO implement here
     }
 
+    @Override
+    public User getUser() {
+        return null;
+    }
+
+    @Override
+    public Role getRole() {
+        return null;
+    }
+
+    @Override
+    public String getRoleName() {
+        return null;
+    }
+
+    @Override
+    public String getRoleDescription() {
+        return null;
+    }
+
+    @Override
+    public void setRoleName(String name) {
+
+    }
+
+    @Override
+    public void setRoleDescription(String description) {
+
+    }
 }

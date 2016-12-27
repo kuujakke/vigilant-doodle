@@ -1,11 +1,10 @@
 package logiikka;
+import java.time.LocalDateTime;
 import java.util.*;
-
 /**
  * 
  */
 public class Task {
-
     /**
      * Default constructor
      */
@@ -62,7 +61,7 @@ public class Task {
     /**
      * @param datetime
      */
-    public void setDeadline(LocalDateTIme datetime) {
+    public void setDeadline(LocalDateTime datetime) {
         // TODO implement here
     }
 

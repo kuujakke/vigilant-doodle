@@ -1,4 +1,6 @@
 
+package logiikka;
+
 import java.util.*;
 
 /**
@@ -9,7 +11,8 @@ public class Admin extends User {
     /**
      * Default constructor
      */
-    public Admin() {
+    public Admin(String name) {
+        super(name);
     }
 
     /**
