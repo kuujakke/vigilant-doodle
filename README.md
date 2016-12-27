@@ -7,6 +7,6 @@ Projekti, tehtävä ja työvaihe ylläpitävät aikaleimoja alku ja loppu. Lisä
 # Dokumentaatio
 
 * [Aiheen kuvaus ja rakenne](dokumentaatio/aiheenKuvausJaRakenne.md)
-* [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md5)
+* [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Checkstyle-raportti](dokumentaatio/checkstyle-raportti/checkstyle.html)
 * [PIT-raportti](dokumentaatio/pit-raportti)
