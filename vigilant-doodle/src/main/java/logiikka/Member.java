@@ -8,12 +8,9 @@ import java.util.*;
 public class Member implements Role {
 
     String name;
-
-    /**
-     *
-     */
     Project project;
     ArrayList<Task> tasks;
+    User user;
 
     /**
      * Default constructor
@@ -21,6 +18,7 @@ public class Member implements Role {
      */
     public Member(String name) {
         this.name = name;
+        this.tasks = new ArrayList<>();
     }
 
 
@@ -33,7 +31,7 @@ public class Member implements Role {
 
     @Override
     public User getUser() {
-        return null;
+        return this.user;
     }
 
     @Override

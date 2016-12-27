@@ -3,6 +3,9 @@ package logiikka;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 /**
@@ -19,37 +22,15 @@ public class MemberTest {
 
     @Test
     public void getTasks() throws Exception {
-
+        Task task = generateTask();
+        this.member.tasks.add(task);
+        ArrayList<Task> tasks = this.member.getTasks();
+        assertEquals(1, tasks.size());
+        assertTrue(tasks.contains(task));
     }
 
-    @Test
-    public void getUser() throws Exception {
-
-    }
-
-    @Test
-    public void getRole() throws Exception {
-
-    }
-
-    @Test
-    public void getRoleName() throws Exception {
-
-    }
-
-    @Test
-    public void getRoleDescription() throws Exception {
-
-    }
-
-    @Test
-    public void setRoleName() throws Exception {
-
-    }
-
-    @Test
-    public void setRoleDescription() throws Exception {
-
+    public Task generateTask() {
+        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)));
     }
 
 }

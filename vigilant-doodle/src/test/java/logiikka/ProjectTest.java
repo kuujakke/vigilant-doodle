@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -17,7 +18,7 @@ public class ProjectTest {
 
     @Before
     public void setUp() throws Exception {
-        this.project = new Project("Toiminnanohjausjärjestelmä");
+        this.project = new Project("Tehtävienhallintajärjestelmä");
     }
 
     @After
@@ -27,29 +28,30 @@ public class ProjectTest {
     @Test
     public void toStringWorkingAsIntended() throws Exception {
         String projectToString = this.project.toString();
-        assertEquals("Toiminnanohjausjärjestelmä", projectToString);
+        assertEquals("Tehtävienhallintajärjestelmä", projectToString);
     }
 
     @Test
     public void addTaskWorkingAsIntended() throws Exception {
-        this.project.addTask(new Task());
+        this.project.addTask(generateTask());
         assertEquals(1, this.project.getTasks().size());
     }
 
     @Test
     public void getTasksWorkingAsIntended() throws Exception {
-        this.project.addTask(new Task());
-        this.project.addTask(new Task());
+        this.project.addTask(generateTask());
+        this.project.addTask(generateTask());
         ArrayList<Task> tasks = this.project.getTasks();
         assertEquals(2, tasks.size());
     }
 
     @Test
     public void deleteTaskWorkingAsIntended() throws Exception {
-        Task task = new Task();
+        Task task = generateTask();
         this.project.addTask(task);
         this.project.deleteTask(task);
         assertEquals(0, this.project.tasks.size());
+        assertFalse(this.project.tasks.contains(task));
     }
 
     @Test
@@ -83,6 +85,10 @@ public class ProjectTest {
         this.project.leaders.remove(leader);
         assertFalse(this.project.leaders.contains(leader));
         assertEquals(0, this.project.leaders.size());
+    }
+
+    public Task generateTask() {
+        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)));
     }
 
 }

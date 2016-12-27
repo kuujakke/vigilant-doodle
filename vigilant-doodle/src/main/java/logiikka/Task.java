@@ -5,10 +5,13 @@ import java.util.*;
  * 
  */
 public class Task {
+    private String name;
+
     /**
      * Default constructor
      */
-    public Task() {
+    public Task(String name) {
+        this.name = name;
     }
 
     /**

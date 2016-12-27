@@ -17,14 +17,14 @@ public class Leader extends Member {
      * @param member
      */
     public void addMember(Member member) {
-        // TODO implement here
+        this.project.addMember(member);
     }
 
     /**
      * @param member
      */
     public void removeMember(Member member) {
-        // TODO implement here
+        this.project.removeMember(member);
     }
 
     /**
