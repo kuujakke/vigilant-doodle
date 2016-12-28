@@ -17,7 +17,7 @@ public class MemberTest {
 
     @Before
     public void setUp() throws Exception {
-        this.member = new Member("Teuvo", new Project("Test-project"));
+        this.member = new Member("Teuvo", new Project("Test-project"), new User("Teppo"));
     }
 
     @Test

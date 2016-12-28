@@ -56,7 +56,7 @@ public class ProjectTest {
 
     @Test
     public void addMemberWorkingAsIntended() throws Exception {
-        Member member = new Member("Teuvo", this.project);
+        Member member = new Member("Teuvo", this.project, new User("Test-user"));
         this.project.addMember(member);
         assertEquals(1, this.project.members.size());
         assertTrue(this.project.members.contains(member));
@@ -64,7 +64,7 @@ public class ProjectTest {
 
     @Test
     public void removeMemberWorkingAsIntended() throws Exception {
-        Member member = new Member("Topias", this.project);
+        Member member = new Member("Topias", this.project, new User("Test-user"));
         this.project.members.add(member);
         this.project.removeMember(member);
         assertEquals(0, this.project.members.size());
@@ -73,7 +73,7 @@ public class ProjectTest {
 
     @Test
     public void addLeaderWorkingAsIntended() throws Exception {
-        Leader leader = new Leader("Hjallis", this.project);
+        Leader leader = new Leader("Hjallis", this.project, new User("Test-user"));
         this.project.leaders.add(leader);
         assertTrue(this.project.leaders.contains(leader));
         assertEquals(1, this.project.leaders.size());
@@ -81,7 +81,7 @@ public class ProjectTest {
 
     @Test
     public void removeLeaderWorkingAsIntended() throws Exception {
-        Leader leader = new Leader("Harri", this.project);
+        Leader leader = new Leader("Harri", this.project, new User("Test-user"));
         this.project.leaders.remove(leader);
         assertFalse(this.project.leaders.contains(leader));
         assertEquals(0, this.project.leaders.size());
