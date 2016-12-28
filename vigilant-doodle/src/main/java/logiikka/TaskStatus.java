@@ -44,6 +44,16 @@ public class TaskStatus implements Status {
     }
 
     @Override
+    public LocalDateTime getStartTime() {
+        return this.startTime;
+    }
+
+    @Override
+    public LocalDateTime getEndTime() {
+        return this.endTime;
+    }
+
+    @Override
     public LocalDateTime getDeadline() {
         return this.deadline;
     }
@@ -64,8 +74,8 @@ public class TaskStatus implements Status {
     @Override
     public Boolean setDone() {
         int tasksDone = 0;
-        for(Task task : this.project.getTasks()) {
-            if(task.isDone()) {
+        for (Task task : this.project.getTasks()) {
+            if (task.isDone()) {
                 tasksDone++;
             }
         }

@@ -11,6 +11,11 @@ public interface Status {
     void setDescription(String description);
     String getDescription();
     String toString();
+
+    LocalDateTime getStartTime();
+
+    LocalDateTime getEndTime();
+
     LocalDateTime getDeadline();
     void setDeadline(LocalDateTime datetime);
     Boolean isDone();

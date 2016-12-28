@@ -33,10 +33,14 @@ public class JobStatus implements Status {
     }
 
     @Override
-    public String getName() { return this.name; }
+    public String getName() {
+        return this.name;
+    }
 
     @Override
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getDescription() {
@@ -44,7 +48,18 @@ public class JobStatus implements Status {
     }
 
     @Override
-    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public LocalDateTime getStartTime() {
+        return this.startTime;
+    }
+    @Override
+    public LocalDateTime getEndTime() {
+        return this.endTime;
+    }
 
     @Override
     public LocalDateTime getDeadline() {
@@ -63,7 +78,7 @@ public class JobStatus implements Status {
 
     @Override
     public Boolean setDone() {
-        if(isDone()) {
+        if (isDone()) {
             this.endTime = LocalDateTime.now();
             return true;
         }

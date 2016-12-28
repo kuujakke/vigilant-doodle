@@ -36,7 +36,9 @@ public class JobStatusTest {
 
     @Test
     public void toStringWorkingAsIntended() throws Exception {
-        assertEquals("Test-job", this.jobStatus.toString());
+        String string = this.jobStatus.toString();
+        assertTrue(string.contains("name='" + this.jobStatus.getName()));
+        assertTrue(string.contains("startTime=" + this.jobStatus.getStartTime()));
     }
 
 }

@@ -11,6 +11,8 @@ public class ProjectStatus implements Status {
     private Role owner;
     private LocalDateTime deadline;
     private LocalDateTime expectedDone;
+    private LocalDateTime endTime;
+    private LocalDateTime startTime;
 
     /**
      * Default constructor
@@ -42,6 +44,16 @@ public class ProjectStatus implements Status {
     @Override
     public String getDescription() {
         return this.projectDescription;
+    }
+
+    @Override
+    public LocalDateTime getStartTime() {
+        return this.startTime;
+    }
+
+    @Override
+    public LocalDateTime getEndTime() {
+        return this.endTime;
     }
 
     @Override

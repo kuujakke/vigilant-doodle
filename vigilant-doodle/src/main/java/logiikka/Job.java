@@ -19,21 +19,39 @@ public class Job {
     public Job(String name) {
         this.name = name;
     }
-    public boolean isDone() { return this.status.isDone(); }
+    public boolean isDone() {
+        return this.status.isDone();
+    }
 
-    public String getName() { return this.name; }
+    public String getName() {
+        return this.name;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getDescription() { return this.description; }
+    public String getDescription() {
+        return this.description;
+    }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public JobStatus getStatus() { return this.status; }
+    public JobStatus getStatus() {
+        return this.status;
+    }
 
-    public void setStatus(JobStatus status) { this.status = status; }
+    public void setStatus(JobStatus status) {
+        this.status = status;
+    }
 
-    public Worker getWorker() { return this.worker; }
+    public Worker getWorker() {
+        return this.worker;
+    }
 
-    public void setWorker(Worker worker) { this.worker = worker; }
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
 }
