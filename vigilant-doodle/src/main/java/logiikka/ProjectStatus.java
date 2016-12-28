@@ -2,10 +2,15 @@ package logiikka;
 import java.time.LocalDateTime;
 import java.util.*;
 
+
 /**
  * 
  */
 public class ProjectStatus implements Status {
+
+    private Role owner;
+    private LocalDateTime deadline;
+    private LocalDateTime expectedDone;
 
     /**
      * Default constructor
@@ -14,63 +19,63 @@ public class ProjectStatus implements Status {
     }
 
     /**
-     * 
+     *
      */
     public String projectName;
 
     /**
-     * 
+     *
      */
     public String projectDescription;
 
 
     @Override
     public String getName() {
-        return null;
+        return this.projectName;
     }
 
     @Override
     public void setName(String name) {
-
+        this.projectName = name;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return this.projectDescription;
     }
 
     @Override
-    public void setDescription() {
-
-    }
-
-    @Override
-    public Role getOwner() {
-        return null;
-    }
-
-    @Override
-    public void setOwner(Role role) {
-
+    public void setDescription(String description) {
+        this.projectDescription = description;
     }
 
     @Override
     public LocalDateTime getDeadline() {
-        return null;
+        return this.deadline;
     }
 
     @Override
     public void setDeadline(LocalDateTime datetime) {
-
+        this.deadline = datetime;
     }
 
     @Override
-    public Boolean isCOmpleted() {
-        return null;
+    public Boolean isCompleted() {
+        return false;
     }
 
     @Override
     public Boolean setCompleted() {
-        return null;
+        return false;
+    }
+
+    @Override
+    public void setExpectedDone(LocalDateTime datetime) {
+        this.expectedDone = datetime;
+    }
+
+    @Override
+    public LocalDateTime getExpectedDone() {
+        return this.expectedDone;
     }
 }

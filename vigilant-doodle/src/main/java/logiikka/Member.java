@@ -7,7 +7,9 @@ import java.util.*;
  */
 public class Member implements Role {
 
-    String name;
+    private String name;
+    private String description;
+    private Role role;
     Project project;
     ArrayList<Task> tasks;
     User user;
@@ -16,10 +18,11 @@ public class Member implements Role {
      * Default constructor
      * @param name
      */
-    public Member(String name, Project project) {
+    public Member(String name, Project project, User user) {
         this.name = name;
         this.tasks = new ArrayList<>();
         this.project = project;
+        this.user = user;
     }
 
 
@@ -37,26 +40,26 @@ public class Member implements Role {
 
     @Override
     public Role getRole() {
-        return null;
+        return this.role;
     }
 
     @Override
     public String getRoleName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public String getRoleDescription() {
-        return null;
+        return this.description;
     }
 
     @Override
     public void setRoleName(String name) {
-
+        this.name = name;
     }
 
     @Override
     public void setRoleDescription(String description) {
-
+        this.description = description;
     }
 }

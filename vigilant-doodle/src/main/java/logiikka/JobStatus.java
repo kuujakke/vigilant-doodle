@@ -8,70 +8,66 @@ import java.util.*;
  */
 public class JobStatus implements Status {
 
-    /**
-     * Default constructor
-     */
-    public JobStatus() {
-    }
+    private String jobName;
+    private String jobDescription;
 
-    /**
-     * 
-     */
-    public String jobName;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private LocalDateTime deadline;
+    private LocalDateTime expectedDone;
 
-    /**
-     * 
-     */
-    public String jobDescription;
-
-
-    @Override
-    public String getName() {
-        return null;
-    }
-
-    @Override
-    public void setName(String name) {
-
+    public JobStatus(String name) {
+        this.jobName = name;
+        this.startTime = LocalDateTime.now();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return this.jobDescription;
     }
 
     @Override
-    public void setDescription() {
-
+    public void setName(String name) {
+        this.jobName = name;
     }
 
     @Override
-    public Role getOwner() {
-        return null;
+    public String getName() {
+        return this.jobName;
     }
 
     @Override
-    public void setOwner(Role role) {
+    public void setDescription(String description) {
 
     }
 
     @Override
     public LocalDateTime getDeadline() {
-        return null;
+        return this.deadline;
     }
 
     @Override
     public void setDeadline(LocalDateTime datetime) {
-
+        this.deadline = datetime;
     }
 
     @Override
-    public Boolean isCOmpleted() {
-        return null;
+    public Boolean isCompleted() {
+        return this.endTime != null;
     }
 
     @Override
     public Boolean setCompleted() {
-        return null;
+        this.endTime = LocalDateTime.now();
+        return true;
+    }
+
+    @Override
+    public void setExpectedDone(LocalDateTime datetime) {
+        this.expectedDone = datetime;
+    }
+    @Override
+    public LocalDateTime getExpectedDone() {
+        return this.expectedDone;
     }
 }

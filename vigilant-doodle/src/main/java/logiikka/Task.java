@@ -108,4 +108,17 @@ public class Task {
         return null;
     }
 
+    public boolean isDone() {
+        int jobsDone = 0;
+        for (Job job : this.jobs) {
+            if (job.isDone) {
+                jobsDone++;
+            }
+        }
+        if (jobsDone == this.jobs.size()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
