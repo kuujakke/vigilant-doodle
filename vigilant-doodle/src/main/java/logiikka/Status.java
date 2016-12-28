@@ -13,8 +13,8 @@ public interface Status {
     String toString();
     LocalDateTime getDeadline();
     void setDeadline(LocalDateTime datetime);
-    Boolean isCompleted();
-    Boolean setCompleted();
+    Boolean isDone();
+    Boolean setDone();
     void setExpectedDone(LocalDateTime datetime);
     LocalDateTime getExpectedDone();
 }

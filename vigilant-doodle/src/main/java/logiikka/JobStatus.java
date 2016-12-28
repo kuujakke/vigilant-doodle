@@ -1,15 +1,14 @@
 package logiikka;
 
 import java.time.LocalDateTime;
-import java.util.*;
 
 /**
  * 
  */
 public class JobStatus implements Status {
 
-    private String jobName;
-    private String jobDescription;
+    private String name;
+    private String description;
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -17,29 +16,35 @@ public class JobStatus implements Status {
     private LocalDateTime expectedDone;
 
     public JobStatus(String name) {
-        this.jobName = name;
+        this.name = name;
         this.startTime = LocalDateTime.now();
     }
 
     @Override
+    public String toString() {
+
+        return  "{ name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", deadline=" + deadline +
+                ", expectedDone=" + expectedDone +
+                '}';
+    }
+
+    @Override
+    public String getName() { return this.name; }
+
+    @Override
+    public void setName(String name) { this.name = name; }
+
+    @Override
     public String getDescription() {
-        return this.jobDescription;
+        return this.description;
     }
 
     @Override
-    public void setName(String name) {
-        this.jobName = name;
-    }
-
-    @Override
-    public String getName() {
-        return this.jobName;
-    }
-
-    @Override
-    public void setDescription(String description) {
-
-    }
+    public void setDescription(String description) { this.description = description; }
 
     @Override
     public LocalDateTime getDeadline() {
@@ -52,22 +57,27 @@ public class JobStatus implements Status {
     }
 
     @Override
-    public Boolean isCompleted() {
+    public Boolean isDone() {
         return this.endTime != null;
     }
 
     @Override
-    public Boolean setCompleted() {
-        this.endTime = LocalDateTime.now();
-        return true;
+    public Boolean setDone() {
+        if(isDone()) {
+            this.endTime = LocalDateTime.now();
+            return true;
+        }
+        return false;
     }
 
     @Override
     public void setExpectedDone(LocalDateTime datetime) {
         this.expectedDone = datetime;
     }
+
     @Override
     public LocalDateTime getExpectedDone() {
         return this.expectedDone;
     }
+
 }

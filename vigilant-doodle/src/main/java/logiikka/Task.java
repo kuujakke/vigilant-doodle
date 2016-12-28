@@ -111,7 +111,7 @@ public class Task {
     public boolean isDone() {
         int jobsDone = 0;
         for (Job job : this.jobs) {
-            if (job.isDone) {
+            if (job.isDone()) {
                 jobsDone++;
             }
         }

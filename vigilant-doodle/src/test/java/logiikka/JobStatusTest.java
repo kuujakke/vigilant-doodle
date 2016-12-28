@@ -3,12 +3,19 @@ package logiikka;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.Assert.*;
 
 /**
  * Created by kuujakke on 28.12.2016.
  */
 public class JobStatusTest {
+    @Test
+    public void isDone() throws Exception {
+
+    }
+
     private JobStatus jobStatus;
 
     @Before
@@ -18,12 +25,18 @@ public class JobStatusTest {
 
     @Test
     public void isNotCompletedWhenNew() throws Exception {
-        assertFalse(this.jobStatus.isCompleted());
+        assertFalse(this.jobStatus.isDone());
     }
 
     @Test
-    public void setCompleted() throws Exception {
+    public void returnsDoneIfJobIsDone() throws Exception {
+        this.jobStatus.setDone();
+        assertTrue(this.jobStatus.isDone());
+    }
 
+    @Test
+    public void toStringWorkingAsIntended() throws Exception {
+        assertEquals("Test-job", this.jobStatus.toString());
     }
 
 }

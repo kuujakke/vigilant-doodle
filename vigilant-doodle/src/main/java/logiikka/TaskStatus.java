@@ -54,12 +54,15 @@ public class TaskStatus implements Status {
     }
 
     @Override
-    public Boolean isCompleted() {
-
+    public Boolean isDone() {
+        if (this.endTime != null) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public Boolean setCompleted() {
+    public Boolean setDone() {
         int tasksDone = 0;
         for(Task task : this.project.getTasks()) {
             if(task.isDone()) {

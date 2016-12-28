@@ -1,7 +1,5 @@
 package logiikka;
 
-import javafx.print.PrinterJob;
-
 import java.util.*;
 
 /**
@@ -9,54 +7,33 @@ import java.util.*;
  */
 public class Job {
 
-    private String jobName;
+    private String name;
+    private String description;
+    private JobStatus status;
+    private Worker worker;
 
     /**
-     * Default constructor
+     * Default constructor requires at least a name for the Job.
      */
+
     public Job(String name) {
-        this.jobName = name;
+        this.name = name;
     }
+    public boolean isDone() { return this.status.isDone(); }
 
-    /**
-     * 
-     */
-    public PrinterJob.JobStatus jobStatus;
+    public String getName() { return this.name; }
 
-    /**
-     * 
-     */
-    public Worker jobWorker;
+    public void setName(String name) { this.name = name; }
 
+    public String getDescription() { return this.description; }
 
-    /**
-     * @return
-     */
-    public String getName() {
-        // TODO implement here
-        return "";
-    }
+    public void setDescription(String description) { this.description = description; }
 
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        // TODO implement here
-    }
+    public JobStatus getStatus() { return this.status; }
 
-    /**
-     * @return
-     */
-    public String getDescription() {
-        // TODO implement here
-        return "";
-    }
+    public void setStatus(JobStatus status) { this.status = status; }
 
-    /**
-     * @param description
-     */
-    public void setDescription(String description) {
-        // TODO implement here
-    }
+    public Worker getWorker() { return this.worker; }
 
+    public void setWorker(Worker worker) { this.worker = worker; }
 }

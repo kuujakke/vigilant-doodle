@@ -60,12 +60,12 @@ public class ProjectStatus implements Status {
     }
 
     @Override
-    public Boolean isCompleted() {
+    public Boolean isDone() {
         return false;
     }
 
     @Override
-    public Boolean setCompleted() {
+    public Boolean setDone() {
         return false;
     }
 
