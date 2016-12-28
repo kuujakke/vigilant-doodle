@@ -11,16 +11,16 @@ import static org.junit.Assert.*;
  * Created by kuujakke on 28.12.2016.
  */
 public class JobStatusTest {
-    @Test
-    public void isDone() throws Exception {
-
-    }
-
     private JobStatus jobStatus;
 
     @Before
     public void setUp() throws Exception {
         this.jobStatus = new JobStatus("Test-job");
+    }
+
+    @Test
+    public void getStartTime() throws Exception {
+        assertNotEquals(null, this.jobStatus.getStartTime());
     }
 
     @Test
@@ -31,6 +31,7 @@ public class JobStatusTest {
     @Test
     public void returnsDoneIfJobIsDone() throws Exception {
         this.jobStatus.setDone();
+        Thread.sleep(10);
         assertTrue(this.jobStatus.isDone());
     }
 
