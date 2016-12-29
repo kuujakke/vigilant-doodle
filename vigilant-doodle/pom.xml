@@ -64,9 +64,47 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.6</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
         </plugins>
     </build>
     <reporting>
-        <outputDirectory>../${project.basedir}/dokumentaatio/checkstyle-raportti</outputDirectory>
+        <outputDirectory>${project.basedir}/../dokumentaatio/checkstyle-raportti</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.1.11</version>
+                <configuration>
+                    <skip>false</skip>
+                    <targetClasses>logiikka.*</targetClasses>
+                    <targetTests>logiikka.*</targetTests>
+                    <reportsDirectory>${project.sitebasedir}/../dokumentaatio/pit-raportti</reportsDirectory>
+                    <sourceDataFormats>
+                        <sourceDataFormat>HTML</sourceDataFormat>
+                    </sourceDataFormats>
+                    <siteReportName>my-pit-report-name</siteReportName>
+                    <siteReportDescription>my pit report custom description</siteReportDescription>
+                    <siteReportDirectory>pit-custom-site-directory</siteReportDirectory>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
     </reporting>
+    <developers>
+        <developer>
+            <id>kuujakke</id>
+            <name>Jakke Kuukkanen</name>
+            <email>jakke.kuukkanen@helsinki.fi</email>
+        </developer>
+    </developers>
 </project>
