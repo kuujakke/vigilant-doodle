@@ -18,9 +18,13 @@ public class TaskStatus implements Status {
     /**
      * Default constructor
      */
-    public TaskStatus(String name) {
+    public TaskStatus(String name, Project project) {
         this.name = name;
+        this.project = project;
         this.startTime = LocalDateTime.now();
+        this.endTime = LocalDateTime.MAX;
+        this.expectedDone = LocalDateTime.MAX;
+        this.deadline = LocalDateTime.MAX;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class TaskStatus implements Status {
 
     @Override
     public Boolean isDone() {
-        if (this.endTime != null) {
+        if (this.endTime != LocalDateTime.MAX) {
             return true;
         }
         return false;

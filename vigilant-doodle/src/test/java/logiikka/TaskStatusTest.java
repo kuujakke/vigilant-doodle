@@ -22,7 +22,7 @@ public class TaskStatusTest {
         this.testName = "Testauksessa";
         this.testDescription = "Tehtävä on testausvaiheessa";
         this.testStart = LocalDateTime.now();
-        this.status = new TaskStatus(this.testName);
+        this.status = new TaskStatus(this.testName, new Project("Testiprokkis"));
     }
 
     @Test
@@ -43,10 +43,8 @@ public class TaskStatusTest {
     }
 
     @Test
-    public void getAndSetEndTimeWorkingAsIntended() throws Exception {
-        LocalDateTime testDone = LocalDateTime.now();
-        this.status.setDone();
-        assertEquals(testDone, this.status.getEndTime());
+    public void getEndTimeWorkingAsIntended() throws Exception {
+        assertEquals(LocalDateTime.MAX, this.status.getEndTime());
     }
 
     @Test
@@ -65,8 +63,7 @@ public class TaskStatusTest {
 
     @Test
     public void getAndSetExpectedDoneWorkinAsIntended() throws Exception {
-        LocalDateTime testExpected = LocalDateTime.now();
-        testExpected.plusHours(1);
+        LocalDateTime testExpected = LocalDateTime.now().plusHours(1);
         this.status.setExpectedDone(testExpected);
         assertTrue(this.status.getExpectedDone().isAfter(LocalDateTime.now()));
     }

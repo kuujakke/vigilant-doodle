@@ -32,7 +32,8 @@ public class Leader extends Member {
      * @param project
      */
     public void promoteToLeader(Member member, Project project) {
-        // TODO implement here
+        removeMember(member);
+        Leader leader = new Leader(member.getRoleName(), project, member.getUser());
     }
 
     /**
