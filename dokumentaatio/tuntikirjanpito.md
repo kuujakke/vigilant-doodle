@@ -9,3 +9,4 @@ Päivä | Tunnit | Kuvaus
 26.12.2016 | 3h | Luokkakaavion mallintamista ja luokkien generointia.
 27.12.2016 | 5h | Pajasta saatu apua PIT -ongelmaan. Kirjoitettu README.md ja läjä testejä. Päivitetty luokkakaaviota.
 28.12.2016 | 5h | Toteutettu lisää metodeja luokkiin ja testejä metodeille. Lisäksi conffattu PIT- ja Checkstyle-reportteja sekä automatisointia.
+29.12.2016 | 2h | Mietitty testejä ja toteutettu luokkia.
