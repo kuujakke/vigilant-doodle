@@ -44,31 +44,26 @@ public class Worker implements Role {
 
     @Override
     public User getUser() {
+        return this.user;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getDescription() {
         return null;
     }
 
     @Override
-    public Role getRole() {
-        return null;
-    }
-
-    @Override
-    public String getRoleName() {
-        return null;
-    }
-
-    @Override
-    public String getRoleDescription() {
-        return null;
-    }
-
-    @Override
-    public void setRoleName(String name) {
-
-    }
-
-    @Override
-    public void setRoleDescription(String description) {
+    public void setDescription(String description) {
 
     }
 }

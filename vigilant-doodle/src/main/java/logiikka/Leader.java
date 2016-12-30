@@ -33,7 +33,7 @@ public class Leader extends Member {
      */
     public void promoteToLeader(Member member, Project project) {
         removeMember(member);
-        Leader leader = new Leader(member.getRoleName(), project, member.getUser());
+        Leader leader = new Leader(member.getName(), project, member.getUser());
     }
 
     /**

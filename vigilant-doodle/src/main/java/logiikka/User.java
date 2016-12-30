@@ -67,27 +67,22 @@ public class User implements Role {
     }
 
     @Override
-    public Role getRole() {
+    public String getName() {
         return null;
     }
 
     @Override
-    public String getRoleName() {
+    public String getDescription() {
         return null;
     }
 
     @Override
-    public String getRoleDescription() {
-        return null;
-    }
-
-    @Override
-    public void setRoleName(String name) {
+    public void setName(String name) {
 
     }
 
     @Override
-    public void setRoleDescription(String description) {
+    public void setDescription(String description) {
 
     }
 }

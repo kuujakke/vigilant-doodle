@@ -21,8 +21,8 @@ public class TaskStatusTest {
     public void setUp() throws Exception {
         this.testName = "Testauksessa";
         this.testDescription = "Tehtävä on testausvaiheessa";
-        this.testStart = LocalDateTime.now();
         this.status = new TaskStatus(this.testName, new Task("TestTask", "TestStatus", new Supervisor("TestSupervisor", new User("TestUser"))));
+        this.testStart = LocalDateTime.now();
     }
 
     @Test

@@ -39,27 +39,22 @@ public class Member implements Role {
     }
 
     @Override
-    public Role getRole() {
-        return this.role;
-    }
-
-    @Override
-    public String getRoleName() {
+    public String getName() {
         return this.name;
     }
 
     @Override
-    public String getRoleDescription() {
+    public String getDescription() {
         return this.description;
     }
 
     @Override
-    public void setRoleName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     @Override
-    public void setRoleDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
