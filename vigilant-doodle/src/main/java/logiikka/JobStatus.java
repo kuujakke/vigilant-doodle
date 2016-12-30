@@ -76,7 +76,7 @@ public class JobStatus implements Status {
 
     @Override
     public Boolean isDone() {
-        if (this.endTime != null) {
+        if (this.endTime != LocalDateTime.MAX) {
             if (this.endTime.isBefore(LocalDateTime.now())) {
                 return true;
             }
@@ -85,12 +85,8 @@ public class JobStatus implements Status {
     }
 
     @Override
-    public Boolean setDone() {
-        if (!isDone()) {
-            this.endTime = LocalDateTime.now();
-            return true;
-        }
-        return false;
+    public void setDone() {
+        this.endTime = LocalDateTime.now();
     }
 
     @Override

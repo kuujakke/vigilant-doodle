@@ -6,10 +6,15 @@ import java.util.*;
  */
 public class Worker implements Role {
 
+    public String name;
+    public User user;
+
     /**
      * Default constructor
      */
-    public Worker() {
+    public Worker(String name, User user) {
+        this.name = name;
+        this.user = user;
     }
 
     /**

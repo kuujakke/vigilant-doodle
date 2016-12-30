@@ -6,33 +6,22 @@ import java.util.*;
  */
 public class Task {
     private String name;
+    private String description;
+    private TaskStatus status;
+    private Supervisor supervisor;
+    private ArrayList<Worker> workers;
+    private ArrayList<Job> jobs;
 
     /**
      * Default constructor
      */
-    public Task(String name) {
+    public Task(String name, String statusName, Supervisor supervisor) {
         this.name = name;
+        this.status = new TaskStatus("Testing", this);
+        this.supervisor = supervisor;
+        this.workers = new ArrayList<>();
+        this.jobs = new ArrayList<>();
     }
-
-    /**
-     * 
-     */
-    public TaskStatus taskStatus;
-
-    /**
-     * 
-     */
-    public Supervisor taskSupervisor;
-
-    /**
-     * 
-     */
-    public ArrayList<Worker> workers;
-
-    /**
-     * 
-     */
-    public ArrayList<Job> jobs;
 
 
     /**
@@ -43,69 +32,48 @@ public class Task {
         return "";
     }
 
-    /**
-     * @param description
-     */
+    public String getDescription() {
+        return this.description;
+    }
+
     public void setDescription(String description) {
-        // TODO implement here
+        this.description = description;
     }
 
-    /**
-     * @param datetime
-     */
     public void setDeadline(LocalDateTime datetime) {
-        // TODO implement here
+        this.status.setDeadline(datetime);
     }
 
-    /**
-     * @param supervisor
-     */
+    public Supervisor getSupervisor() {
+        return this.supervisor;
+    }
+
     public void setSupervisor(Supervisor supervisor) {
-        // TODO implement here
+        this.supervisor = supervisor;
     }
 
-    /**
-     * @return
-     */
     public ArrayList<Worker> getWorkers() {
-        // TODO implement here
-        return null;
+        return this.workers;
     }
 
-    /**
-     * @param worker
-     */
     public void addWorker(Worker worker) {
-        // TODO implement here
+        this.workers.add(worker);
     }
 
-    /**
-     * @param worker
-     */
     public void removeWorker(Worker worker) {
-        // TODO implement here
+        this.workers.remove(worker);
     }
 
-    /**
-     * @param job
-     */
-    public void addJob(Job job) {
-        // TODO implement here
-    }
-
-    /**
-     * @param job
-     */
-    public void removeJob(Job job) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
     public ArrayList<Job> getJobs() {
-        // TODO implement here
-        return null;
+        return this.jobs;
+    }
+
+    public void addJob(Job job) {
+        this.jobs.add(job);
+    }
+
+    public void removeJob(Job job) {
+        this.jobs.remove(job);
     }
 
     public boolean isDone() {
@@ -117,8 +85,7 @@ public class Task {
         }
         if (jobsDone == this.jobs.size()) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

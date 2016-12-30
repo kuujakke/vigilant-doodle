@@ -16,11 +16,17 @@ public class Job {
      * Default constructor requires at least a name for the Job.
      */
 
-    public Job(String name) {
+    public Job(String name, String statusName) {
         this.name = name;
+        this.status = new JobStatus(statusName);
     }
+
     public boolean isDone() {
         return this.status.isDone();
+    }
+
+    public void setDone() {
+        this.status.setDone();
     }
 
     public String getName() {

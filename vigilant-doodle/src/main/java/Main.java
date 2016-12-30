@@ -6,7 +6,7 @@ package logiikka;
 public class Main {
     public static void main(String[]args) {
         System.out.println("Hurraa!");
-        Task test = new Task("Testi");
+        Task test = new Task("TestTask", "Testing", new Supervisor("TestSupervisor", new User("TestUser")));
         System.out.println(test);
     }
     public static void testi(int i) {

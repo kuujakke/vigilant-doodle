@@ -88,7 +88,7 @@ public class ProjectTest {
     }
 
     public Task generateTask() {
-        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)));
+        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)), "TestStatus", new Supervisor("TestSupervisor", new User("TestUser")));
     }
 
 }

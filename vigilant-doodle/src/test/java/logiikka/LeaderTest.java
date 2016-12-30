@@ -18,7 +18,7 @@ public class LeaderTest {
     @Before
     public void setUp() throws Exception {
         this.project = new Project("Test-project");
-        this.project.addTask(new Task("Test-task"));
+        this.project.addTask(new Task("Test-task", "TestStatus", new Supervisor("TestSupervisor", new User("TestUser"))));
         this.leader = new Leader("Test-leader", this.project, new User("Test-user"));
         this.project.leaders.add(this.leader);
     }

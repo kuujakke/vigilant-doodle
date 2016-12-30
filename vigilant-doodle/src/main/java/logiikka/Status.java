@@ -19,7 +19,7 @@ public interface Status {
     LocalDateTime getDeadline();
     void setDeadline(LocalDateTime datetime);
     Boolean isDone();
-    Boolean setDone();
+    void setDone();
     void setExpectedDone(LocalDateTime datetime);
     LocalDateTime getExpectedDone();
 }

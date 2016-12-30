@@ -1,6 +1,5 @@
 package logiikka;
 import java.time.LocalDateTime;
-import java.util.*;
 
 
 /**
@@ -77,8 +76,8 @@ public class ProjectStatus implements Status {
     }
 
     @Override
-    public Boolean setDone() {
-        return false;
+    public void setDone() {
+        this.endTime = LocalDateTime.now();
     }
 
     @Override

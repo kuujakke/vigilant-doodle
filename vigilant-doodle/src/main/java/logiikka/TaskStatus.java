@@ -1,6 +1,5 @@
 package logiikka;
 import java.time.LocalDateTime;
-import java.util.*;
 
 /**
  * 
@@ -13,14 +12,14 @@ public class TaskStatus implements Status {
     private LocalDateTime endTime;
     private LocalDateTime expectedDone;
     private LocalDateTime deadline;
-    private Project project;
+    private Task task;
 
     /**
      * Default constructor
      */
-    public TaskStatus(String name, Project project) {
+    public TaskStatus(String name, Task task) {
         this.name = name;
-        this.project = project;
+        this.task = task;
         this.startTime = LocalDateTime.now();
         this.endTime = LocalDateTime.MAX;
         this.expectedDone = LocalDateTime.MAX;
@@ -76,18 +75,15 @@ public class TaskStatus implements Status {
     }
 
     @Override
-    public Boolean setDone() {
-        int tasksDone = 0;
-        for (Task task : this.project.getTasks()) {
-            if (task.isDone()) {
-                tasksDone++;
+    public void setDone() {
+        int jobsDone = 0;
+        for (Job job : this.task.getJobs()) {
+            if (job.isDone()) {
+                jobsDone++;
             }
         }
-        if (tasksDone == this.project.getTasks().size()) {
+        if (jobsDone == this.task.getJobs().size()) {
             this.endTime = LocalDateTime.now();
-            return true;
-        } else {
-            return false;
         }
     }
 

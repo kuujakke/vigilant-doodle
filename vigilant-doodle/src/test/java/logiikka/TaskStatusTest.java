@@ -22,7 +22,7 @@ public class TaskStatusTest {
         this.testName = "Testauksessa";
         this.testDescription = "Tehtävä on testausvaiheessa";
         this.testStart = LocalDateTime.now();
-        this.status = new TaskStatus(this.testName, new Project("Testiprokkis"));
+        this.status = new TaskStatus(this.testName, new Task("TestTask", "TestStatus", new Supervisor("TestSupervisor", new User("TestUser"))));
     }
 
     @Test
@@ -56,9 +56,10 @@ public class TaskStatusTest {
 
     @Test
     public void setDoneAndIsDoneWorkingAsIntended() throws Exception {
-        assertTrue(this.status.setDone());
-        LocalDateTime testDone = LocalDateTime.now();
-        assertEquals(testDone, this.status.getEndTime());
+        assertFalse(this.status.isDone());
+        this.status.setDone();
+        Thread.sleep(1);
+        assertTrue(this.status.isDone());
     }
 
     @Test
