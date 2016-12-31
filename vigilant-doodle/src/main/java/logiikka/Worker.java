@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Worker implements Role {
+public class Worker extends Role {
 
     public String name;
     public User user;

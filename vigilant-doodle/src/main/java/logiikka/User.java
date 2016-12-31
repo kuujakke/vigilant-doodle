@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class User implements Role {
+public class User extends Role {
 
     private String userName;
     private String password;

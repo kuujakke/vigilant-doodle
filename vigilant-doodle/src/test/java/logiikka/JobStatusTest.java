@@ -20,7 +20,7 @@ public class JobStatusTest {
 
     @Test
     public void getStartTime() throws Exception {
-        assertNotEquals(null, this.jobStatus.getStartTime());
+        assertNotNull(this.jobStatus.getStartTime());
     }
 
     @Test

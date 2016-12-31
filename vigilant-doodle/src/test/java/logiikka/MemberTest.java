@@ -14,10 +14,16 @@ import static org.junit.Assert.*;
 public class MemberTest {
 
     Member member;
+    Project project;
+    User user;
+    Leader leader;
 
     @Before
     public void setUp() throws Exception {
-        this.member = new Member("Teuvo", new Project("Test-project"), new User("Teppo"));
+        this.user = new User("TestUser");
+        this.project = new Project("TestProject", this.leader);
+        this.leader = new Leader(this.user.getName(), this.user);
+        this.member = new Member(this.user.getName(), this.user);
     }
 
     @Test

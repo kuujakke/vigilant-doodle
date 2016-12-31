@@ -5,11 +5,10 @@ import java.util.*;
 /**
  * 
  */
-public class Member implements Role {
+public class Member extends Role {
 
     private String name;
     private String description;
-    private Role role;
     Project project;
     ArrayList<Task> tasks;
     User user;
@@ -18,11 +17,12 @@ public class Member implements Role {
      * Default constructor
      * @param name
      */
-    public Member(String name, Project project, User user) {
+    public Member(String name, User user) {
         this.name = name;
         this.tasks = new ArrayList<>();
         this.project = project;
         this.user = user;
+        this.user.roles.add(this);
     }
 
 
