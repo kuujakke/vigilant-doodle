@@ -5,17 +5,6 @@ package logiikka;
  */
 public interface RoleFactory {
 
-    public Role createRole(String roleType, User user) throws Exception {
-        switch (roleType.toUpperCase()) {
-            case "MEMBER":
+    Role createRole(String roleType, User user);
 
-            case "LEADER":
-            case "WORKER":
-                return new Worker(user.getName(), user);
-            case "SUPERVISOR":
-                return new Supervisor(user.getName(), user);
-            default:
-                throw new Exception(roleType + "is not a valid roleType!");
-        }
-    }
 }
