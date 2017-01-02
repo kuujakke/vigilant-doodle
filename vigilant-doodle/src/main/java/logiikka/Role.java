@@ -7,6 +7,11 @@ public abstract class Role {
     private User user;
     private String description;
 
+    public Role(User user) {
+        this.user = user;
+        user.addRole(this);
+    }
+
     public String toString() {
         return "Name: " + this.getName() + "\n" +
                 "Description: " + this.getDescription();
@@ -21,11 +26,11 @@ public abstract class Role {
     }
 
     public String getName() {
-        return this.user.getName();
+        return this.user.getRealName();
     }
 
-    public void setName(String name) {
-        this.user.setName(name);
+    public void setRealName(String realName) {
+        this.user.setRealName(realName);
     }
 
     public String getDescription() {

@@ -11,10 +11,14 @@ import static org.junit.Assert.*;
 public class JobTest {
 
     private Job job;
+    private RoleFactory roleFactory;
+    private User user;
 
     @Before
     public void setUp() throws Exception {
-        this.job = new Job("TestJob", "Starting");
+        this.job = new Job("TestJob");
+        this.roleFactory = new RoleFactory();
+        this.user = new User("Test", "password");
     }
 
     @Test
@@ -40,18 +44,13 @@ public class JobTest {
     }
 
     @Test
-    public void getAndSetStatusWorkingAsIntended() throws Exception {
-        assertNotNull(this.job.getStatus());
-        this.job.setStatus(new JobStatus("TestStatus"));
-        assertEquals("TestStatus", this.job.getStatus().getName());
-    }
-
-    @Test
     public void getAndSetWorkerWorkingAsIntended() throws Exception {
         assertNull(this.job.getWorker());
-        this.job.setWorker(new Worker("TestWorker", new User("TestUser")));
+        Worker worker = roleFactory.createWorker(this.user);
+        worker.setRealName("Test");
+        this.job.setWorker(worker);
         assertNotNull(this.job.getWorker());
-        assertEquals("TestWorker", this.job.getWorker().getName());
+        assertEquals("Test", this.job.getWorker().getName());
     }
 
 }

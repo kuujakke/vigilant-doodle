@@ -8,30 +8,18 @@ import java.util.*;
  */
 public class Admin extends User {
 
-    /**
-     * Default constructor
-     */
-    public Admin(String name) {
-        super(name);
+    public Admin(String name, String password) {
+        super(name, password);
     }
 
-    /**
-     * @param project
-     */
     public void deleteProject(Project project) {
         // TODO implement here
     }
 
-    /**
-     * @param name
-     */
     public void createUser(String name) {
         // TODO implement here
     }
 
-    /**
-     * @param user
-     */
     public void deleteUser(User user) {
         // TODO implement here
     }

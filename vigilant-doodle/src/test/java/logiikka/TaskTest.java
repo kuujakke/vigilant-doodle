@@ -14,7 +14,7 @@ public class TaskTest {
 
     @Before
     public void setUp() throws Exception {
-        this.task = new Task("TestTask", "TestStatus",new Supervisor("TestSupervisor", new User("TestUser")));
+        this.task = new Task("TestTask", new Supervisor(new User("TestUser", "password")));
     }
 
     @Test
@@ -27,9 +27,9 @@ public class TaskTest {
     @Test
     public void getSetSupervisorWorkingAsIntended() throws Exception {
         assertNotNull(this.task.getSupervisor());
-        assertEquals("TestSupervisor", this.task.getSupervisor().getName());
+        assertEquals("TestUser", this.task.getSupervisor().getUser().getName());
         Supervisor original = this.task.getSupervisor();
-        this.task.setSupervisor(new Supervisor("Test", new User("Test")));
+        this.task.setSupervisor(new Supervisor(new User("Test", "password")));
         assertNotEquals(this.task.getSupervisor().getName(), original);
     }
 
@@ -37,7 +37,7 @@ public class TaskTest {
     public void getAddRemoveWorkersWorkingAsIntended() throws Exception {
         assertNotNull(this.task.getWorkers());
         assertEquals(0, this.task.getWorkers().size());
-        Worker worker = new Worker("Test", new User("Tester"));
+        Worker worker = new Worker(new User("Tester", "password"));
         this.task.addWorker(worker);
         assertEquals(1, this.task.getWorkers().size());
         assertTrue(this.task.getWorkers().contains(worker));
@@ -50,7 +50,7 @@ public class TaskTest {
     public void getAddRemoveJobsWorkingAsIntended() throws Exception {
         assertNotNull(this.task.getJobs());
         assertEquals(0, this.task.getJobs().size());
-        Job job = new Job("TestJob", "testStatus");
+        Job job = new Job("TestJob");
         this.task.addJob(job);
         assertTrue(this.task.getJobs().contains(job));
         assertEquals(1, this.task.getJobs().size());
@@ -62,7 +62,7 @@ public class TaskTest {
     @Test
     public void isDoneWorkingAsIntended() throws Exception {
         assertTrue(this.task.isDone());
-        this.task.addJob(new Job("TestJob", "TestStatus"));
+        this.task.addJob(new Job("TestJob"));
         assertFalse(this.task.isDone());
     }
 

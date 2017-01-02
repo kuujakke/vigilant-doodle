@@ -5,84 +5,59 @@ import java.util.*;
 /**
  * 
  */
-public class User extends Role {
+public class User {
 
+    private String realName;
     private String userName;
     private String password;
+    private ArrayList<Role> roles;
 
-    /**
-     * Default constructor
-     */
-    public User(String name) {
+    public User(String name, String password) {
         this.userName = name;
+        this.password = password;
+        this.roles = new ArrayList<>();
     }
 
-    /**
-     * 
-     */
-    public ArrayList<Role> roles;
-
-
-    /**
-     * @return
-     */
     public ArrayList<Project> allProjects() {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
     public ArrayList<Task> allTasks() {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
     public ArrayList<Role> allRoles() {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param name
-     */
     public void createProject(String name) {
         // TODO implement here
     }
 
-    /**
-     * @param project
-     */
     public void joinProject(Project project) {
         // TODO implement here
     }
 
-    @Override
-    public User getUser() {
-        return null;
+    public String getRealName() {
+        return this.realName;
     }
 
-    @Override
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public String getName() {
-        return null;
+        return this.userName;
     }
 
-    @Override
-    public String getDescription() {
-        return null;
-    }
-
-    @Override
-    public void setName(String name) {
-
-    }
-
-    @Override
-    public void setDescription(String description) {
-
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 }

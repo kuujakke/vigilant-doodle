@@ -4,44 +4,22 @@ import java.util.*;
 /**
  * 
  */
-public class Task {
-    private String name;
-    private String description;
-    private TaskStatus status;
+public class Task extends Scheme {
+
     private Supervisor supervisor;
     private ArrayList<Worker> workers;
     private ArrayList<Job> jobs;
 
-    /**
-     * Default constructor
-     */
-    public Task(String name, String statusName, Supervisor supervisor) {
-        this.name = name;
-        this.status = new TaskStatus("Testing", this);
+    public Task(String name, Supervisor supervisor) {
+        super(name);
         this.supervisor = supervisor;
         this.workers = new ArrayList<>();
         this.jobs = new ArrayList<>();
     }
 
-
-    /**
-     * @return
-     */
     public String toString() {
         // TODO implement here
         return "";
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDeadline(LocalDateTime datetime) {
-        this.status.setDeadline(datetime);
     }
 
     public Supervisor getSupervisor() {
@@ -60,7 +38,7 @@ public class Task {
         this.workers.add(worker);
     }
 
-    public void removeWorker(Worker worker) {
+    public void removeWorker(Role worker) {
         this.workers.remove(worker);
     }
 
@@ -87,5 +65,17 @@ public class Task {
             return true;
         }
         return false;
+    }
+
+    public void setDone() {
+        int jobsDone = 0;
+        for (Job job : this.getJobs()) {
+            if (job.isDone()) {
+                jobsDone++;
+            }
+        }
+        if (jobsDone == this.getJobs().size()) {
+            super.getStatus().setDone();
+        }
     }
 }

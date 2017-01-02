@@ -8,14 +8,14 @@ import java.util.*;
 public class Project {
 
     private String projectName;
-    private ProjectStatus projectStatus;
+    private Status status;
     public ArrayList<Task> tasks;
     public ArrayList<Leader> leaders;
     public ArrayList<Member> members;
 
     public Project(String name, Leader leader) {
         this.projectName = name;
-        this.projectStatus = new ProjectStatus();
+        this.status = new Status();
         this.tasks = new ArrayList<>();
         this.leaders = new ArrayList<>();
         this.members = new ArrayList<>();
@@ -49,7 +49,15 @@ public class Project {
     }
 
     public void removeMember(Member member) {
-        this.members.remove(member);
+        if (this.members.contains(member)) {
+            this.members.remove(member);
+        }
+    }
+
+    public void promoteToLeader(Member member) {
+        removeMember(member);
+        Leader leader = new Leader(member.getUser());
+        addLeader(leader);
     }
 
     public void addLeader(Leader leader) {

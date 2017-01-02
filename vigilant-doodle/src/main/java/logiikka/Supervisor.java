@@ -9,8 +9,8 @@ public class Supervisor extends Worker {
     /**
      * Default constructor
      */
-    public Supervisor(String name, User user) {
-        super(name, user);
+    public Supervisor(User user) {
+        super(user);
     }
 
     /**

@@ -16,12 +16,12 @@ public class RoleFactoryTest {
     @Before
     public void setUp() throws Exception {
         this.roleFactory = new RoleFactory();
-        this.user = new User("TestUser");
+        this.user = new User("TestUser", "password");
     }
 
     @Test
     public void manufactureMember() throws Exception {
-        Member member = this.roleFactory.getRole("MEMBER", this.user);
+        Member member = this.roleFactory.createMember(this.user);
     }
 
 }
