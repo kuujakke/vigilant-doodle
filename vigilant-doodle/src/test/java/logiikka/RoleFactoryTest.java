@@ -22,6 +22,7 @@ public class RoleFactoryTest {
     @Test
     public void manufactureMember() throws Exception {
         Member member = this.roleFactory.createMember(this.user);
+        assertEquals(this.user, member.getUser());
     }
 
 }

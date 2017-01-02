@@ -13,7 +13,7 @@ public class RoleFactory {
         return new Member(user);
     }
 
-    public Worker createWorker(User user ) {
+    public Worker createWorker(User user) {
         return new Worker(user);
     }
 
