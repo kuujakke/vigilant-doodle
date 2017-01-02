@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>vigilant-doodle - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016</copyright>
+    <copyright>&#169;2017</copyright>
     <item>
       <title>File: 15,
-             Errors: 0,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -60,6 +60,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#logiikka.RoleFactory.java">logiikka/RoleFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#logiikka.Worker.java">logiikka/Worker.java</a>
                 </td>
                 <td>
@@ -74,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.TaskStatus.java">logiikka/TaskStatus.java</a>
+                  <a href="${project.url}/checkstyle.html#logiikka.Job.java">logiikka/Job.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Job.java">logiikka/Job.java</a>
+                  <a href="${project.url}/checkstyle.html#logiikka.RoleType.java">logiikka/RoleType.java</a>
                 </td>
                 <td>
                   0
@@ -131,34 +145,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#logiikka.User.java">logiikka/User.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.JobStatus.java">logiikka/JobStatus.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.ProjectStatus.java">logiikka/ProjectStatus.java</a>
                 </td>
                 <td>
                   0
@@ -215,6 +201,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#logiikka.Project.java">logiikka/Project.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logiikka.Scheme.java">logiikka/Scheme.java</a>
                 </td>
                 <td>
                   0
