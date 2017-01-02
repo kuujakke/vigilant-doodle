@@ -10,3 +10,7 @@ Päivä | Tunnit | Kuvaus
 27.12.2016 | 5h | Pajasta saatu apua PIT -ongelmaan. Kirjoitettu README.md ja läjä testejä. Päivitetty luokkakaaviota.
 28.12.2016 | 5h | Toteutettu lisää metodeja luokkiin ja testejä metodeille. Lisäksi conffattu PIT- ja Checkstyle-reportteja sekä automatisointia.
 29.12.2016 | 2h | Mietitty testejä ja toteutettu luokkia.
+30.12.2016 | 4h | Kirjoitettu testejä ja toteutettu automaattiota ennen deadlinea tehtävälle pushaukselle, jotta jatkossa helpompaa.
+31.12.2016 | 4h | Päivitetty luokkakaaviota ja tutkittu tapoja refaktoroida.
+1.1.2017 | 0h | ~~Kankkunen~~ Lepopäivä.
+2.1.2017 | 8h | Refaktoroitu ja koostettu uudet raportit. Meditoitu raporttien yllä ja sotkettu koodia.
