@@ -11,10 +11,14 @@ import static org.junit.Assert.*;
 public class TaskTest {
 
     private Task task;
+    private TaskFactory taskFactory;
+    private User user;
 
     @Before
     public void setUp() throws Exception {
-        this.task = new Task("TestTask", new Supervisor(new User("TestUser", "password")));
+        this.taskFactory = new TaskFactory();
+        this.user = new User("TestUser", "pw");
+        this.task = this.taskFactory.createTask("TestTask");
     }
 
     @Test
@@ -26,18 +30,18 @@ public class TaskTest {
 
     @Test
     public void getSetSupervisorWorkingAsIntended() throws Exception {
-        assertNotNull(this.task.getSupervisor());
+        assertNull(this.task.getSupervisor());
+        Supervisor supervisor = this.taskFactory.createSupervisor(this.user, this.task);
+        this.task.setSupervisor(supervisor);
+        assertEquals(supervisor.getName(), this.task.getSupervisor().getName());
         assertEquals("TestUser", this.task.getSupervisor().getUser().getName());
-        Supervisor original = this.task.getSupervisor();
-        this.task.setSupervisor(new Supervisor(new User("Test", "password")));
-        assertNotEquals(this.task.getSupervisor().getName(), original);
     }
 
     @Test
     public void getAddRemoveWorkersWorkingAsIntended() throws Exception {
         assertNotNull(this.task.getWorkers());
         assertEquals(0, this.task.getWorkers().size());
-        Worker worker = new Worker(new User("Tester", "password"));
+        Worker worker = this.taskFactory.createWorker(this.user, this.task);
         this.task.addWorker(worker);
         assertEquals(1, this.task.getWorkers().size());
         assertTrue(this.task.getWorkers().contains(worker));

@@ -9,8 +9,8 @@ public class Supervisor extends Worker {
     /**
      * Default constructor
      */
-    public Supervisor(User user) {
-        super(user);
+    public Supervisor(User user, Task task) {
+        super(user, task);
     }
 
     /**

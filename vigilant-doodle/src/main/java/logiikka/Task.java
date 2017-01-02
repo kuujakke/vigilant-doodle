@@ -10,9 +10,8 @@ public class Task extends Scheme {
     private ArrayList<Worker> workers;
     private ArrayList<Job> jobs;
 
-    public Task(String name, Supervisor supervisor) {
+    public Task(String name) {
         super(name);
-        this.supervisor = supervisor;
         this.workers = new ArrayList<>();
         this.jobs = new ArrayList<>();
     }

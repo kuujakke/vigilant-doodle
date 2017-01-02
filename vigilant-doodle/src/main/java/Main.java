@@ -6,8 +6,10 @@ package logiikka;
 public class Main {
     public static void main(String[]args) {
         System.out.println("Hurraa!");
-        Task test = new Task("TestTask", new Supervisor(new User("TestUser", "password")));
-        System.out.println(test);
+        User user = new User("TestUser", "password");
+        Task task = new Task("TestTask");
+        Supervisor supervisor = new Supervisor(user, task);
+        System.out.println(supervisor);
     }
     public static void testi(int i) {
         System.out.println(i);

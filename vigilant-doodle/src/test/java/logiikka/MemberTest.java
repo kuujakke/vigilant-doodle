@@ -17,13 +17,15 @@ public class MemberTest {
     Project project;
     User user;
     Leader leader;
+    private ProjectFactory projectFactory;
 
     @Before
     public void setUp() throws Exception {
         this.user = new User("TestUser", "password");
-        this.project = new Project("TestProject", this.leader);
-        this.leader = new Leader(this.user);
-        this.member = new Member(this.user);
+        this.projectFactory = new ProjectFactory();
+        this.project = this.projectFactory.createProject("TestProject");
+        this.leader = this.projectFactory.createLeader(this.user, this.project);
+        this.member = this.projectFactory.createMember(this.user, this.project);
     }
 
     @Test
@@ -35,8 +37,13 @@ public class MemberTest {
         assertTrue(tasks.contains(task));
     }
 
+    @Test
+    public void getProjectWorkingAsIntended() throws Exception {
+        assertEquals(this.project, this.member.getProject());
+    }
+
     public Task generateTask() {
-        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)), new Supervisor(new User("TestUser", "password")));
+        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)));
     }
 
 }

@@ -5,4 +5,6 @@ package logiikka;
  */
 public enum RoleType {
     USER, MEMBER, LEADER, WORKER, SUPERVISOR;
+
+
 }

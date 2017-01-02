@@ -1,14 +1,14 @@
 package logiikka;
 
-import java.util.*;
-
 public abstract class Role {
 
     private User user;
+    private Scheme scheme;
     private String description;
 
     public Role(User user) {
         this.user = user;
+        this.scheme = scheme;
         user.addRole(this);
     }
 

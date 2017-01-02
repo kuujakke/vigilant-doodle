@@ -6,17 +6,20 @@ public class Worker extends Role {
     public Task task;
     public ArrayList<Job> jobs;
 
-    public Worker(User user) {
+    public Worker(User user, Task task) {
         super(user);
+        this.task = task;
     }
 
     public Job getNextJob() {
-        // TODO implement here
+        if (!this.jobs.isEmpty()) {
+            return this.jobs.get(0);
+        }
         return null;
     }
 
     public void setJobCompleted(Job job) {
-        // TODO implement here
+        job.setDone();
     }
 
 }

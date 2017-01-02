@@ -13,15 +13,17 @@ import static org.junit.Assert.*;
  */
 public class ProjectTest {
 
-    Project project;
-    RoleFactory roleFactory;
-    User user;
+    private Project project;
+    private ProjectFactory projectFactory;
+    private User user;
+    private Leader leader;
 
     @Before
     public void setUp() throws Exception {
-        this.roleFactory = new RoleFactory();
+        this.projectFactory = new ProjectFactory();
         this.user = new User("TestUser", "password");
-        this.project = new Project("Tehtävienhallintajärjestelmä", this.roleFactory.createLeader(this.user));
+        this.leader = this.projectFactory.createLeader(this.user, this.project);
+        this.project = new Project("Tehtävienhallintajärjestelmä");
     }
 
     @After
@@ -55,11 +57,11 @@ public class ProjectTest {
     public void getAddRemoveMemberWorkingAsIntended() throws Exception {
         assertEquals(0, this.project.members.size());
         assertNotNull(this.project.members);
-        Member member1 = new Member(new User("Test-user", "password"));
+        Member member1 = new Member(new User("Test-user", "password"), this.project);
         this.project.addMember(member1);
         assertEquals(1, this.project.members.size());
         assertTrue(this.project.members.contains(member1));
-        Member member2 = new Member(new User("Test-user", "password"));
+        Member member2 = new Member(new User("Test-user", "password"), this.project);
         this.project.members.add(member2);
         assertTrue(this.project.members.contains(member2));
         assertTrue(this.project.members.contains(member1));
@@ -72,21 +74,21 @@ public class ProjectTest {
     @Test
     public void getAddRemoveLeaderWorkingAsIntended() throws Exception {
         assertNotNull(this.project.leaders);
-        assertEquals(1, this.project.leaders.size());
-        Leader leader1 = new Leader(new User("Test-user", "password"));
+        assertEquals(0, this.project.leaders.size());
+        Leader leader1 = new Leader(new User("Test-user", "password"), this.project);
         assertTrue(this.project.leaders.add(leader1));
         assertTrue(this.project.leaders.contains(leader1));
-        assertEquals(2, this.project.leaders.size());
-        Leader leader2 = new Leader(new User("Test-user", "password"));
+        assertEquals(1, this.project.leaders.size());
+        Leader leader2 = new Leader(new User("Test-user", "password"), this.project);
         assertTrue(this.project.leaders.add(leader2));
         assertTrue(this.project.leaders.remove(leader1));
         assertFalse(this.project.leaders.contains(leader1));
-        assertEquals(2, this.project.leaders.size());
+        assertEquals(1, this.project.leaders.size());
         assertTrue(this.project.leaders.contains(leader2));
     }
 
     public Task generateTask() {
-        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)),  new Supervisor(new User("TestUser", "password")));
+        return new Task(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)));
     }
 
 }

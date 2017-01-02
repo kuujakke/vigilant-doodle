@@ -13,13 +13,12 @@ public class Project {
     public ArrayList<Leader> leaders;
     public ArrayList<Member> members;
 
-    public Project(String name, Leader leader) {
+    public Project(String name) {
         this.projectName = name;
         this.status = new Status();
         this.tasks = new ArrayList<>();
         this.leaders = new ArrayList<>();
         this.members = new ArrayList<>();
-        this.leaders.add(leader);
     }
 
     public void setProjectName(String name) {
@@ -56,7 +55,7 @@ public class Project {
 
     public void promoteToLeader(Member member) {
         removeMember(member);
-        Leader leader = new Leader(member.getUser());
+        Leader leader = new Leader(member.getUser(), this);
         addLeader(leader);
     }
 
