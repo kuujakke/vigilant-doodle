@@ -14,3 +14,4 @@ Päivä | Tunnit | Kuvaus
 31.12.2016 | 4h | Päivitetty luokkakaaviota ja tutkittu tapoja refaktoroida.
 1.1.2017 | 0h | ~~Kankkunen~~ Lepopäivä.
 2.1.2017 | 8h | Refaktoroitu ja koostettu uudet raportit. Meditoitu raporttien yllä ja sotkettu koodia.
+3.1.2017 | 5h | Opiskeltu ja implementoitu MongoDB:tä ja asetuksien talletusta.
