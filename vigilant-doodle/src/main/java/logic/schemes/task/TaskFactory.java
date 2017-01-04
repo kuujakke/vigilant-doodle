@@ -1,7 +1,8 @@
 package logic.schemes.task;
 
 /**
- * Created by kuujakke on 2.1.2017.
+ * A factory for creating tasks.
+ * Has a Configuration object from where it retrieves the default settings from.
  */
 public class TaskFactory {
 

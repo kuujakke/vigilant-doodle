@@ -4,16 +4,10 @@ import logic.roles.taskroles.Supervisor;
 import logic.login.User;
 
 /**
- * Created by kuujakke on 22.12.2016.
+ * Loads some default settings
  */
 public class Main {
     public static void main(String[]args) {
-        System.out.println("Hurraa!");
-        User user = new User("TestUser", "password");
-        Task task = new Task("TestTask");
-        Supervisor supervisor = new Supervisor(user, task);
-        System.out.println(supervisor);
-
         Configuration conf = new Configuration();
         conf.setProjectName("New Project");
         conf.setProjectDescription("No description yet.");
@@ -28,11 +22,6 @@ public class Main {
         conf.setDBName("vigilant-doodle");
         conf.writeProperties();
         System.out.println(conf);
-
     }
-    public static void testi(int i) {
-        System.out.println(i);
-    }
-
 }
 

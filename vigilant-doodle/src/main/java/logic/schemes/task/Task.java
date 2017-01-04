@@ -1,5 +1,5 @@
 package logic.schemes.task;
-import logic.schemes.Job;
+import logic.schemes.job.Job;
 import logic.schemes.Scheme;
 import logic.roles.taskroles.Supervisor;
 import logic.roles.Role;
@@ -7,7 +7,7 @@ import logic.roles.taskroles.Worker;
 
 import java.util.*;
 /**
- * 
+ * A Class to manage tasks jobs and roles.
  */
 public class Task extends Scheme {
 

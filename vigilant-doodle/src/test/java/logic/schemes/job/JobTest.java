@@ -1,6 +1,5 @@
 package logic.schemes.job;
 
-import logic.schemes.Job;
 import logic.schemes.task.Task;
 import logic.schemes.task.TaskFactory;
 import org.junit.Before;

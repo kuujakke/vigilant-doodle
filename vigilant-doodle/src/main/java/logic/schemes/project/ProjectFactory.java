@@ -3,7 +3,8 @@ package logic.schemes.project;
 import config.Configuration;
 
 /**
- * Created by kuujakke on 30.12.2016.
+ * A factory for creating projects.
+ * Has a Configuration object from where it retrieves the default settings from.
  */
 public class ProjectFactory {
 

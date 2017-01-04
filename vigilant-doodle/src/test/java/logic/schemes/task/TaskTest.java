@@ -1,8 +1,6 @@
 package logic.schemes.task;
 
-import logic.schemes.Job;
-import logic.schemes.task.Task;
-import logic.schemes.task.TaskFactory;
+import logic.schemes.job.Job;
 import org.junit.Before;
 import org.junit.Test;
 import logic.roles.RoleFactory;

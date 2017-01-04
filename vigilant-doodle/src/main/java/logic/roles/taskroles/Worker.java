@@ -1,7 +1,7 @@
 package logic.roles.taskroles;
 import logic.roles.Role;
 import logic.login.User;
-import logic.schemes.Job;
+import logic.schemes.job.Job;
 import logic.schemes.task.Task;
 
 import java.util.*;

@@ -3,7 +3,9 @@ package logic.schemes;
 import java.time.LocalDateTime;
 
 /**
- * Created by kuujakke on 26.12.2016.
+ * Keeps the status of a Project, Task or Job.
+ * Has the ending and starting times. Keeps the deadline and the prediction for completion.
+ * Marks a scheme completed.
  */
 public class Status {
 

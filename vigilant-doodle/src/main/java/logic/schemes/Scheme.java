@@ -3,7 +3,7 @@ package logic.schemes;
 import java.time.LocalDateTime;
 
 /**
- * Created by kuujakke on 2.1.2017.
+ * Base functionality for Project, Task and Job.
  */
 
 public abstract class Scheme {

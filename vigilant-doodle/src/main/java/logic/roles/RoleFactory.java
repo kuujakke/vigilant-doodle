@@ -9,7 +9,7 @@ import logic.schemes.project.Project;
 import logic.schemes.task.Task;
 
 /**
- * Created by kuujakke on 3.1.2017.
+ * A class for creating roles.
  */
 public class RoleFactory {
 

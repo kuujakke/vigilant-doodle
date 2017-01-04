@@ -10,7 +10,7 @@ import logic.login.User;
 import java.util.*;
 
 /**
- * 
+ * Base object for managing tasks.
  */
 public class Project {
 

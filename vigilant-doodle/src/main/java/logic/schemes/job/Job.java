@@ -1,11 +1,12 @@
-package logic.schemes;
+package logic.schemes.job;
 
 import logic.schemes.Scheme;
 import logic.roles.Role;
 
 /**
- * 
+ * Base object to keep track of a job being done in a task.
  */
+
 public class Job extends Scheme {
 
     private Role worker;

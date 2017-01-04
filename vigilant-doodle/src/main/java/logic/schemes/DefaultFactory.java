@@ -11,7 +11,8 @@ import logic.roles.RoleFactory;
 import logic.login.User;
 
 /**
- * Created by kuujakke on 2.1.2017.
+ * A factory for creating default objects.
+ * Has a Configuration object from where it retrieves the default settings from.
  */
 public class DefaultFactory {
 
