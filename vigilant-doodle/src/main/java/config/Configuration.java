@@ -4,8 +4,10 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * Created by kuujakke on 3.1.2017.
+ * Class for loading and writing config.properties -file in the project folder.
+ * You can set and get properties after a new instance is created.
  */
+
 public class Configuration {
     private final Properties properties;
 

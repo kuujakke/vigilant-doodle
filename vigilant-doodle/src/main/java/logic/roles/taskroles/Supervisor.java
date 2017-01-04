@@ -6,7 +6,7 @@ import logic.schemes.task.Task;
 import java.util.*;
 
 /**
- * 
+ * Privileged user role for task.
  */
 public class Supervisor extends Worker {
 

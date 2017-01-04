@@ -6,6 +6,10 @@ import logic.schemes.task.Task;
 
 import java.util.*;
 
+/**
+ * Base role for task.
+ */
+
 public class Worker extends Role {
 
     public Task task;

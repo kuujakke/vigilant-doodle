@@ -8,8 +8,9 @@ import logic.schemes.task.Task;
 import java.util.*;
 
 /**
- * 
+ * Basic role for projects.
  */
+
 public class Member extends Role {
 
     private Project project;

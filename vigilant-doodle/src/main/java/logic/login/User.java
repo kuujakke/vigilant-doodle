@@ -7,7 +7,8 @@ import logic.schemes.task.Task;
 import java.util.*;
 
 /**
- * 
+ * Basic user for the application.
+ * User has roles.
  */
 public class User {
 

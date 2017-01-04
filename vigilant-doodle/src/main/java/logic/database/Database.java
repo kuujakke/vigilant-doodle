@@ -10,8 +10,10 @@ import config.Configuration;
 import java.util.Arrays;
 
 /**
- * Created by kuujakke on 4.1.2017.
+ * Class to connect the application logic to a MongoDB server.
+ * Using Configuration to get credentials for database connection.
  */
+
 public class Database {
 
     private Configuration configuration;

@@ -4,7 +4,7 @@ package logic.login;
 import logic.schemes.project.Project;
 
 /**
- * 
+ * Admin class to administrate the application.
  */
 public class Admin extends User {
 

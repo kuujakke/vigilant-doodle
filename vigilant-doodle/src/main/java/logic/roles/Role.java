@@ -3,6 +3,10 @@ package logic.roles;
 import logic.login.User;
 import logic.schemes.Scheme;
 
+/**
+ * All roles have this in common.
+ */
+
 public abstract class Role {
 
     private User user;
