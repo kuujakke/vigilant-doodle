@@ -5,23 +5,45 @@
 <link type="text/css" rel="stylesheet" href="../stylesheet.css" />
 </head>
 <body>
-<div id="overview"><a href="../apidocs/logiikka/Main.html">View Javadoc</a></div><pre>
-<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> logiikka;
-<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
-<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_javadoccomment"> * Created by kuujakke on 22.12.2016.</em>
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../logiikka/Main.html">Main</a> {
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>       <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[]args) {
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>           System.out.println(<span class="jxr_string">"Hurraa!"</span>);
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>           <a href="../logiikka/Task.html">Task</a> test = <strong class="jxr_keyword">new</strong> <a href="../logiikka/Task.html">Task</a>(<span class="jxr_string">"TestTask"</span>, <strong class="jxr_keyword">new</strong> <a href="../logiikka/Supervisor.html">Supervisor</a>(<strong class="jxr_keyword">new</strong> <a href="../logiikka/User.html">User</a>(<span class="jxr_string">"TestUser"</span>, <span class="jxr_string">"password"</span>)));
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>          System.out.println(test);
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>      }
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> testi(<strong class="jxr_keyword">int</strong> i) {
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>          System.out.println(i);
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>      }
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  }
+<div id="overview"><a href="../apidocs//Main.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">import</strong> config.Configuration;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <strong class="jxr_keyword">import</strong> logic.schemes.task.Task;
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> logic.roles.taskroles.Supervisor;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> logic.login.User;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> * Created by kuujakke on 22.12.2016.</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="..//Main.html">Main</a> {
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[]args) {
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>          System.out.println(<span class="jxr_string">"Hurraa!"</span>);
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>          <a href="../logic/login/User.html">User</a> user = <strong class="jxr_keyword">new</strong> <a href="../logic/login/User.html">User</a>(<span class="jxr_string">"TestUser"</span>, <span class="jxr_string">"password"</span>);
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>          <a href="../logic/schemes/task/Task.html">Task</a> task = <strong class="jxr_keyword">new</strong> <a href="../logic/schemes/task/Task.html">Task</a>(<span class="jxr_string">"TestTask"</span>);
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>          <a href="../logic/roles/taskroles/Supervisor.html">Supervisor</a> supervisor = <strong class="jxr_keyword">new</strong> <a href="../logic/roles/taskroles/Supervisor.html">Supervisor</a>(user, task);
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>          System.out.println(supervisor);
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          <a href="../config/Configuration.html">Configuration</a> conf = <strong class="jxr_keyword">new</strong> <a href="../config/Configuration.html">Configuration</a>();
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          conf.setProjectName(<span class="jxr_string">"New Project"</span>);
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          conf.setProjectDescription(<span class="jxr_string">"No description yet."</span>);
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          conf.setTaskName(<span class="jxr_string">"New Task"</span>);
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          conf.setTaskDescription(<span class="jxr_string">"No description yet."</span>);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          conf.setJobName(<span class="jxr_string">"New Job"</span>);
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          conf.setJobDescription(<span class="jxr_string">"No description yet."</span>);
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          conf.setUserName(<span class="jxr_string">"DefaultUser"</span>);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          conf.setUserPassword(<span class="jxr_string">"password1"</span>);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          conf.setDBUser(<span class="jxr_string">"TestUser"</span>);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          conf.setDBPassword(<span class="jxr_string">"TestPassword"</span>);
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          conf.setDBName(<span class="jxr_string">"vigilant-doodle"</span>);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          conf.writeProperties();
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          System.out.println(conf);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      }
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> testi(<strong class="jxr_keyword">int</strong> i) {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          System.out.println(i);
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      }
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  }
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

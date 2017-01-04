@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 15,
+      <title>File: 21,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Supervisor.java">logiikka/Supervisor.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.roles.RoleType.java">logic/roles/RoleType.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.RoleFactory.java">logiikka/RoleFactory.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.SchemeType.java">logic/schemes/SchemeType.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Worker.java">logiikka/Worker.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.roles.projectroles.Leader.java">logic/roles/projectroles/Leader.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Job.java">logiikka/Job.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.task.Task.java">logic/schemes/task/Task.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.RoleType.java">logiikka/RoleType.java</a>
+                  <a href="${project.url}/checkstyle.html#config.Configuration.java">config/Configuration.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Role.java">logiikka/Role.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.task.TaskFactory.java">logic/schemes/task/TaskFactory.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Leader.java">logiikka/Leader.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.Job.java">logic/schemes/Job.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.User.java">logiikka/User.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.database.Database.java">logic/database/Database.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Member.java">logiikka/Member.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.roles.taskroles.Supervisor.java">logic/roles/taskroles/Supervisor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logic.roles.Role.java">logic/roles/Role.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.project.Project.java">logic/schemes/project/Project.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.project.ProjectFactory.java">logic/schemes/project/ProjectFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logic.roles.taskroles.Worker.java">logic/roles/taskroles/Worker.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Status.java">logiikka/Status.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.Scheme.java">logic/schemes/Scheme.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Project.java">logiikka/Project.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.login.Admin.java">logic/login/Admin.java</a>
                 </td>
                 <td>
                   0
@@ -214,7 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Scheme.java">logiikka/Scheme.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.login.User.java">logic/login/User.java</a>
                 </td>
                 <td>
                   0
@@ -228,7 +284,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Admin.java">logiikka/Admin.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.Status.java">logic/schemes/Status.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +298,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Task.java">logiikka/Task.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.roles.RoleFactory.java">logic/roles/RoleFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logic.roles.projectroles.Member.java">logic/roles/projectroles/Member.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#logic.schemes.DefaultFactory.java">logic/schemes/DefaultFactory.java</a>
                 </td>
                 <td>
                   0
