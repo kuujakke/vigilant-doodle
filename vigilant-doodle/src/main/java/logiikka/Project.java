@@ -10,15 +10,13 @@ public class Project {
     private String projectName;
     private Status status;
     public ArrayList<Task> tasks;
-    public ArrayList<Leader> leaders;
-    public ArrayList<Member> members;
+    public HashMap<User, Role> roles;
 
     public Project(String name) {
         this.projectName = name;
         this.status = new Status();
         this.tasks = new ArrayList<>();
-        this.leaders = new ArrayList<>();
-        this.members = new ArrayList<>();
+        this.roles = new HashMap<>();
     }
 
     public void setProjectName(String name) {
@@ -43,13 +41,33 @@ public class Project {
         this.tasks.remove(task);
     }
 
+    public ArrayList<Role> getMembers() {
+        ArrayList<Role> members = new ArrayList<>();
+        for (Role role : this.roles.values()) {
+            if (role.getClass().getCanonicalName().equalsIgnoreCase("Member")) {
+                members.add(role);
+            }
+        }
+        return members;
+    }
+
+    public ArrayList<Role> getLeaders() {
+        ArrayList<Role> leaders = new ArrayList<>();
+        for (Role role : this.roles.values()) {
+            if (role.getClass().getCanonicalName().equalsIgnoreCase("Leader")) {
+                leaders.add(role);
+            }
+        }
+        return leaders;
+    }
+
     public void addMember(Member member) {
-        this.members.add(member);
+        this.roles.put(member.getUser(), member);
     }
 
     public void removeMember(Member member) {
-        if (this.members.contains(member)) {
-            this.members.remove(member);
+        if (this.roles.containsValue(member)) {
+            this.roles.remove(member);
         }
     }
 
@@ -60,10 +78,10 @@ public class Project {
     }
 
     public void addLeader(Leader leader) {
-        this.leaders.add(leader);
+        this.roles.put(leader.getUser(), leader);
     }
 
     public void removeLeader(Leader leader) {
-        this.leaders.remove(leader);
+        this.roles.remove(leader);
     }
 }
