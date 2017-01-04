@@ -45,35 +45,35 @@ public class Configuration {
     }
 
     public String getProjectName() {
-        return this.properties.getProperty("project-name");
+        return this.properties.getProperty("projectroles-name");
     }
 
     public void setProjectName(String projectName) {
-        this.properties.setProperty("project-name", projectName);
+        this.properties.setProperty("projectroles-name", projectName);
     }
 
     public String getProjectDescription() {
-        return this.properties.getProperty("project-description");
+        return this.properties.getProperty("projectroles-description");
     }
 
     public void setProjectDescription(String projectDescription) {
-        this.properties.setProperty("project-description", projectDescription);
+        this.properties.setProperty("projectroles-description", projectDescription);
     }
 
     public String getTaskName() {
-        return this.properties.getProperty("task-name");
+        return this.properties.getProperty("taskroles-name");
     }
 
     public void setTaskName(String taskName) {
-        this.properties.setProperty("task-name", taskName);
+        this.properties.setProperty("taskroles-name", taskName);
     }
 
     public String getTaskDescription() {
-        return this.properties.getProperty("task-description");
+        return this.properties.getProperty("taskroles-description");
     }
 
     public void setTaskDescription(String taskDescription) {
-        this.properties.setProperty("task-description", taskDescription);
+        this.properties.setProperty("taskroles-description", taskDescription);
     }
 
     public String getJobName() {

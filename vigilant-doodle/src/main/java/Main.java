@@ -1,6 +1,7 @@
-package logiikka;
-
 import config.Configuration;
+import logic.schemes.task.Task;
+import logic.roles.taskroles.Supervisor;
+import logic.login.User;
 
 /**
  * Created by kuujakke on 22.12.2016.
