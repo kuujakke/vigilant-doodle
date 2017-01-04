@@ -5,7 +5,7 @@ Päivä | Tunnit | Kuvaus
 22.12.2016 | 2h | Pajassa luotu ja conffattu IntelliJ -projektia.
 23.12.2016 | 4h | Luokkakaavion piirtämistä ja aiheen tutkimista.
 24.12.2016 | 1h | Lepopäivä. Luotu luokkakaavio.png.
-25.12.2016 | 6h | Luokkakaavion laatiminen jatkuu, päivitetty luokkakaavio.png
+25.12.2016 | 6h | Luokkakaavion laatiminen jatkuu, päivitetty luokkakaavio.png.
 26.12.2016 | 3h | Luokkakaavion mallintamista ja luokkien generointia.
 27.12.2016 | 5h | Pajasta saatu apua PIT -ongelmaan. Kirjoitettu README.md ja läjä testejä. Päivitetty luokkakaaviota.
 28.12.2016 | 5h | Toteutettu lisää metodeja luokkiin ja testejä metodeille. Lisäksi conffattu PIT- ja Checkstyle-reportteja sekä automatisointia.
@@ -15,3 +15,4 @@ Päivä | Tunnit | Kuvaus
 1.1.2017 | 0h | ~~Kankkunen~~ Lepopäivä.
 2.1.2017 | 8h | Refaktoroitu ja koostettu uudet raportit. Meditoitu raporttien yllä ja sotkettu koodia.
 3.1.2017 | 5h | Opiskeltu ja implementoitu MongoDB:tä ja asetuksien talletusta.
+4.1.2017 | 8h | Refaktorointia. DefaultFactory saa asetukset configista. Paljon testien korjaamista.
