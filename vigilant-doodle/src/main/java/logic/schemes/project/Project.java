@@ -74,8 +74,8 @@ public class Project {
     }
 
     public void removeMember(Member member) {
-        if (this.roles.containsValue(member)) {
-            this.roles.remove(member);
+        if (this.hasMember(member)) {
+            this.roles.remove(member.getUser(), member);
         }
     }
 
@@ -93,8 +93,12 @@ public class Project {
         return this.roles.containsValue(leader);
     }
 
+    public boolean hasMember(Member member) {
+        return this.roles.containsValue(member);
+    }
+
     public void removeLeader(Leader leader) {
-        this.roles.remove(leader);
+        this.roles.remove(leader.getUser(), leader);
     }
 
     public void setDescription(String description) {

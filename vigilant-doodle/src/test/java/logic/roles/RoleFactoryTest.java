@@ -29,7 +29,6 @@ public class RoleFactoryTest {
     public void createLeader() throws Exception {
         Leader leader = defaultFactory.createLeader(this.user, this.project);
         assertTrue(this.user == leader.getUser());
-        assertTrue(this.project.hasLeader(leader));
     }
 
     @Test

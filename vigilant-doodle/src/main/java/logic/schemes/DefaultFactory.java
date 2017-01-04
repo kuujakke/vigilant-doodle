@@ -1,6 +1,7 @@
 package logic.schemes;
 
 import config.Configuration;
+import logic.roles.projectroles.Member;
 import logic.schemes.project.Project;
 import logic.schemes.project.ProjectFactory;
 import logic.schemes.task.Task;
@@ -44,5 +45,9 @@ public class DefaultFactory {
 
     public Configuration getConfig() {
         return this.configuration;
+    }
+
+    public Member createMember(User user, Project project) {
+        return this.roleFactory.createMember(user, project);
     }
 }

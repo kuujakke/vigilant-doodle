@@ -59,14 +59,20 @@ public class ProjectTest {
     public void getAddRemoveMemberWorkingAsIntended() throws Exception {
         assertEquals(0, this.project.getMembers().size());
         assertNotNull(this.project.getMembers());
-        Member member1 = new Member(new User("Test-user", "password"), this.project);
+        User user1 = this.defaultFactory.createUser();
+        User user2 = this.defaultFactory.createUser();
+        Member member1 = this.defaultFactory.createMember(user1, this.project);
+        Member member2 = this.defaultFactory.createMember(user2, this.project);
+
         this.project.addMember(member1);
         assertEquals(1, this.project.getMembers().size());
         assertTrue(this.project.getMembers().contains(member1));
-        Member member2 = new Member(new User("Test-user", "password"), this.project);
-        this.project.getMembers().add(member2);
-        assertTrue(this.project.getMembers().contains(member2));
-        assertTrue(this.project.getMembers().contains(member1));
+
+        this.project.addMember(member2);
+        assertTrue(this.project.hasMember(member2));
+        assertTrue(this.project.hasMember(member1));
+        assertEquals(2, this.project.getMembers().size());
+
         this.project.removeMember(member1);
         assertEquals(1, this.project.getMembers().size());
         assertTrue(this.project.getMembers().contains(member2));
@@ -91,9 +97,9 @@ public class ProjectTest {
         assertEquals(2, this.project.getLeaders().size());
 
         this.project.removeLeader(leader1);
-        assertFalse(this.project.getLeaders().contains(leader1));
+        assertFalse(this.project.hasLeader(leader1));
         assertEquals(1, this.project.getLeaders().size());
-        assertTrue(this.project.getLeaders().contains(leader2));
+        assertTrue(this.project.hasLeader(leader2));
     }
 
 }
