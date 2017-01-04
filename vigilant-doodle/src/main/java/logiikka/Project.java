@@ -81,6 +81,10 @@ public class Project {
         this.roles.put(leader.getUser(), leader);
     }
 
+    public boolean hasLeader(Leader leader) {
+        return this.roles.containsValue(leader);
+    }
+
     public void removeLeader(Leader leader) {
         this.roles.remove(leader);
     }

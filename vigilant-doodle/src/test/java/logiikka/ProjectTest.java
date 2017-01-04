@@ -21,6 +21,7 @@ public class ProjectTest {
 
     @Before
     public void setUp() throws Exception {
+        this.roleFactory = new RoleFactory();
         this.projectFactory = new ProjectFactory();
         this.user = new User("TestUser", "password");
         this.leader = this.roleFactory.createLeader(this.user, this.project);
@@ -77,7 +78,7 @@ public class ProjectTest {
         assertNotNull(this.project.getLeaders());
         assertEquals(0, this.project.getLeaders().size());
         Leader leader1 = new Leader(new User("Test-user", "password"), this.project);
-        assertTrue(this.project.getLeaders().add(leader1));
+        this.project.addLeader(leader1);
         assertTrue(this.project.getLeaders().contains(leader1));
         assertEquals(1, this.project.getLeaders().size());
         Leader leader2 = new Leader(new User("Test-user", "password"), this.project);

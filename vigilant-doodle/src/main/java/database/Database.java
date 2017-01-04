@@ -4,6 +4,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoDatabase;
 import config.Configuration;
 
 import java.util.Arrays;
@@ -24,4 +25,9 @@ public class Database {
         MongoClientOptions options = MongoClientOptions.builder().sslEnabled(true).build();
         return new MongoClient(new ServerAddress(configuration.getDBHostname(), configuration.getDBPort()), Arrays.asList(credentials), options);
     }
+
+    public MongoDatabase getDatabase() {
+        return connection().getDatabase(this.configuration.getDBName());
+    }
+
 }
