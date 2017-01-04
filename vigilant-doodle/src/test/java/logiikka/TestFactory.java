@@ -5,13 +5,10 @@ package logiikka;
  */
 public class TestFactory {
 
-    private final ProjectFactory projectFactory;
-    private final TaskFactory taskFactory;
+    private final ProjectFactory projectFactory = new ProjectFactory();
+    private final TaskFactory taskFactory = new TaskFactory();
 
     public TestFactory() {
-        this.projectFactory = new ProjectFactory();
-        this.taskFactory = new TaskFactory();
-        this.
     }
 
     public Project createTestProject() {

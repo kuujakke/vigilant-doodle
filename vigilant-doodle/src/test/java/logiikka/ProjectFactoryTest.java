@@ -10,26 +10,28 @@ import static org.junit.Assert.*;
  */
 public class ProjectFactoryTest {
 
+    private RoleFactory roleFactory;
     private ProjectFactory projectFactory;
     private Project project;
     private User user;
 
     @Before
     public void setUp() throws Exception {
+        this.roleFactory = new RoleFactory();
         this.projectFactory = new ProjectFactory();
-        this.project = new Project("TestProject");
+        this.project = projectFactory.createProject();
         this.user = new User("TestUser", "password");
     }
 
     @Test
     public void manufactureMember() throws Exception {
-        Member member = this.projectFactory.createMember(this.user, this.project);
+        Member member = this.roleFactory.createMember(this.user, this.project);
         assertEquals(this.user, member.getUser());
     }
 
     @Test
     public void manufactureLeader() throws Exception {
-        Leader leader = this.projectFactory.createLeader(this.user, this.project);
+        Leader leader = this.roleFactory.createLeader(this.user, this.project);
         assertEquals(this.user, leader.getUser());
     }
 

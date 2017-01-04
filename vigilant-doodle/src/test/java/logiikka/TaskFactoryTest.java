@@ -10,9 +10,11 @@ import static org.junit.Assert.*;
  */
 public class TaskFactoryTest {
 
+    Project project;
+
     @Before
     public void TaskFactoryTest() throws Exception {
-        this.project =
+        this.project = new ProjectFactory().createProject();
     }
 
 }

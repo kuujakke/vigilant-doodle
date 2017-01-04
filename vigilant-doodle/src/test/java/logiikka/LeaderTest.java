@@ -10,16 +10,16 @@ public class LeaderTest {
     private Project project;
     private Leader leader;
     private User user;
-    private ProjectFactory projectFactory;
+    private RoleFactory roleFactory;
 
     @Before
     public void setUp() throws Exception {
-        this.projectFactory = new ProjectFactory();
+        this.roleFactory = new RoleFactory();
         this.user = new User("Test-user", "password");
-        this.leader = this.projectFactory.createLeader(this.user, this.project);
+        this.leader = this.roleFactory.createLeader(this.user, this.project);
         this.leader.setProject(this.project);
         this.project = new Project("Test-project");
-        this.project.leaders.add(this.leader);
+        this.project.addLeader(this.leader);
     }
 
 }

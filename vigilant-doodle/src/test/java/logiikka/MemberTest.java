@@ -18,14 +18,16 @@ public class MemberTest {
     User user;
     Leader leader;
     private ProjectFactory projectFactory;
+    private RoleFactory roleFactory;
 
     @Before
     public void setUp() throws Exception {
         this.user = new User("TestUser", "password");
         this.projectFactory = new ProjectFactory();
+        this.roleFactory = new RoleFactory();
         this.project = this.projectFactory.createProject("TestProject");
-        this.leader = this.projectFactory.createLeader(this.user, this.project);
-        this.member = this.projectFactory.createMember(this.user, this.project);
+        this.leader = this.roleFactory.createLeader(this.user, this.project);
+        this.member = this.roleFactory.createMember(this.user, this.project);
     }
 
     @Test

@@ -13,10 +13,12 @@ public class TaskTest {
     private Task task;
     private TaskFactory taskFactory;
     private User user;
+    private RoleFactory roleFactory;
 
     @Before
     public void setUp() throws Exception {
         this.taskFactory = new TaskFactory();
+        this.roleFactory = new RoleFactory();
         this.user = new User("TestUser", "pw");
         this.task = this.taskFactory.createTask("TestTask");
     }
@@ -31,7 +33,7 @@ public class TaskTest {
     @Test
     public void getSetSupervisorWorkingAsIntended() throws Exception {
         assertNull(this.task.getSupervisor());
-        Supervisor supervisor = this.taskFactory.createSupervisor(this.user, this.task);
+        Supervisor supervisor = this.roleFactory.createSupervisor(this.user, this.task);
         this.task.setSupervisor(supervisor);
         assertEquals(supervisor.getName(), this.task.getSupervisor().getName());
         assertEquals("TestUser", this.task.getSupervisor().getUser().getName());
@@ -41,7 +43,7 @@ public class TaskTest {
     public void getAddRemoveWorkersWorkingAsIntended() throws Exception {
         assertNotNull(this.task.getWorkers());
         assertEquals(0, this.task.getWorkers().size());
-        Worker worker = this.taskFactory.createWorker(this.user, this.task);
+        Worker worker = this.roleFactory.createWorker(this.user, this.task);
         this.task.addWorker(worker);
         assertEquals(1, this.task.getWorkers().size());
         assertTrue(this.task.getWorkers().contains(worker));
