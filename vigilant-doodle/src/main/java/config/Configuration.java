@@ -157,4 +157,28 @@ public class Configuration {
     public void setDBPort(int dbPort) {
         this.properties.setProperty("db-port", String.valueOf(dbPort));
     }
+
+    public void setUITitle(String title) {
+        this.properties.setProperty("ui-title", title);
+    }
+
+    public String getUITitle() {
+        return this.properties.getProperty("ui-title");
+    }
+
+    public int getUIWidth() {
+        return Integer.parseInt(this.properties.getProperty("ui-width"));
+    }
+
+    public void setUIWidth(int width) {
+        this.properties.setProperty("ui-width", String.valueOf(width));
+    }
+
+    public int getUIHeight() {
+        return Integer.parseInt(this.properties.getProperty("ui-height"));
+    }
+
+    public void setUIHeight(int height) {
+        this.properties.setProperty("ui-height", String.valueOf(height));
+    }
 }
