@@ -12,11 +12,17 @@ import java.util.Properties;
  * If a property is not present in the configuration file,
  * this should return a value from the DefaultSettings.
  */
-
 public class Configuration {
 
     private Properties properties;
 
+    /**
+     * Constructor calls the load function to initialize the properties variable.
+     *
+     * If reading of the configuration file fails, it throws a FileNotFoundException.
+     *
+     * @throws Exception FileNotFoundException
+     */
     public Configuration() throws Exception {
         try {
             load();
@@ -31,7 +37,7 @@ public class Configuration {
      * default settings and writes a new configuration file with the hard-coded default
      * values. This is useful when running this application on a new computer for the first time.
      *
-     * @return a new instance of Properties with config.properties loaded into it.
+     * @throws Exception FileNotFoundException if the config file was not found.
      */
     public void load() throws Exception {
         Properties loadedProperties = new Properties();
@@ -96,8 +102,11 @@ public class Configuration {
         }
     }
 
+    /**
+     * Removes the configuration file and clears any current configuration.
+     */
     public void clear() {
-        File config = new File(DefaultSettings.CONFIG_FILE.toString());
+        File config = new File(this.getConfigFile());
         if (config.exists()) {
             try {
                 config.delete();
@@ -105,144 +114,320 @@ public class Configuration {
                 e.printStackTrace();
             }
         }
+        this.properties.clear();
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getProjectName() {
         return this.properties.getProperty("project-name", DefaultSettings.PROJECT_NAME.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param projectName String containing property value.
+     */
     public void setProjectName(String projectName) {
         this.properties.setProperty("project-name", projectName);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getProjectDescription() {
         return this.properties.getProperty("project-description", DefaultSettings.PROJECT_DESCRIPTION.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param projectDescription String containing property value.
+     */
     public void setProjectDescription(String projectDescription) {
         this.properties.setProperty("project-description", projectDescription);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getTaskName() {
         return this.properties.getProperty("task-name", DefaultSettings.TASK_NAME.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param taskName String containing property value.
+     */
     public void setTaskName(String taskName) {
         this.properties.setProperty("task-name", taskName);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getTaskDescription() {
         return this.properties.getProperty("task-description", DefaultSettings.TASK_DESCRIPTION.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param taskDescription String containing property value.
+     */
     public void setTaskDescription(String taskDescription) {
         this.properties.setProperty("task-description", taskDescription);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getJobName() {
         return this.properties.getProperty("job-name", DefaultSettings.JOB_NAME.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param jobName String containing property value.
+     */
     public void setJobName(String jobName) {
         this.properties.setProperty("job-name", jobName);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getJobDescription() {
         return this.properties.getProperty("job-description", DefaultSettings.JOB_DESCRIPTION.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param jobDescription String containing property value.
+     */
     public void setJobDescription(String jobDescription) {
         this.properties.setProperty("job-description", jobDescription);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getUserName() {
         return this.properties.getProperty("user-name", DefaultSettings.USER_NAME.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param userName String containing property value.
+     */
     public void setUserName(String userName) {
         this.properties.setProperty("user-name", userName);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getUserPassword() {
         return this.properties.getProperty("user-password", DefaultSettings.USER_PASSWORD.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param userPassword String containing property value.
+     */
     public void setUserPassword(String userPassword) {
         this.properties.setProperty("user-password", userPassword);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getRoleDescription() {
         return this.properties.getProperty("role-description", DefaultSettings.ROLE_DESCRIPTION.toString());
     }
 
-    public void setRoleDescription(String userDescription) {
-        this.properties.setProperty("role-description", userDescription);
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param roleDescription String containing property value.
+     */
+    public void setRoleDescription(String roleDescription) {
+        this.properties.setProperty("role-description", roleDescription);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getDBUser() {
         return this.properties.getProperty("db-user");
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param dbUser String containing property value.
+     */
     public void setDBUser(String dbUser) {
         this.properties.setProperty("db-user", dbUser);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getDBpassword() {
         return this.properties.getProperty("db-password");
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param dbPassword String containing property value.
+     */
     public void setDBPassword(String dbPassword) {
         this.properties.setProperty("db-password", dbPassword);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getDBName() {
         return this.properties.getProperty("db-name");
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param dbName String containing property value.
+     */
     public void setDBName(String dbName) {
         this.properties.setProperty("db-name", dbName);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getDBHostname() {
         return this.properties.getProperty("db-hostname");
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param dbHostname String containing property value.
+     */
     public void setDBHostname(String dbHostname) {
         this.properties.setProperty("db-hostname", dbHostname);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public int getDBPort() {
         return Integer.parseInt(this.properties.getProperty("db-port"));
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param dbPort String containing property value.
+     */
     public void setDBPort(int dbPort) {
         this.properties.setProperty("db-port", String.valueOf(dbPort));
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getConfigFile() {
         return this.properties.getProperty("config-file", DefaultSettings.CONFIG_FILE.toString());
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param title String containing property value.
+     */
     public void setUITitle(String title) {
         this.properties.setProperty("ui-title", title);
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public String getUITitle() {
         return this.properties.getProperty("ui-title", DefaultSettings.UI_TITLE.toString());
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public int getUIWidth() {
         return Integer.parseInt(this.properties.getProperty("ui-width", DefaultSettings.UI_WIDTH.toString()));
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param width String containing property value.
+     */
     public void setUIWidth(int width) {
         this.properties.setProperty("ui-width", String.valueOf(width));
     }
 
+    /**
+     * Returns the property value. If the property is not set, returns DefaultSettings.VALUE
+     *
+     * @return String containing property value.
+     */
     public int getUIHeight() {
         return Integer.parseInt(this.properties.getProperty("ui-height", DefaultSettings.UI_HEIGHT.toString()));
     }
 
+    /**
+     * Sets the property value to the param string.
+     *
+     * @param height String containing property value.
+     */
     public void setUIHeight(int height) {
         this.properties.setProperty("ui-height", String.valueOf(height));
     }
