@@ -4,18 +4,27 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * Class for loading and writing config.properties -file in the project folder.
+ * Class for loading and writing config.properties -file in the application root folder.
  * You can set and get properties after a new instance is created.
+ * If a property is not present in the configuration file, this should return
+ * a value from the DefaultSettings.
  */
 
 public class Configuration {
+
     private final Properties properties;
 
     public Configuration() {
-        this.properties = loadProperties();
+        this.properties = load();
     }
 
-    public Properties loadProperties() {
+    /**
+     * A method loads application settings file from the application root folder
+     * into a new Properties object.
+     *
+     * @return a new instance of Properties with config.properties loaded into it.
+     */
+    public Properties load() {
         Properties loadedProperties = new Properties();
         InputStream input = null;
         try {
@@ -27,11 +36,14 @@ public class Configuration {
         return loadedProperties;
     }
 
-    public void writeProperties() {
+    /**
+     * Saves the current set of Properties into a file on the application root folder,
+     * overwriting any existing file.
+     */
+    public void save() {
         OutputStream output = null;
         try {
             output = new FileOutputStream("config.properties");
-
             this.properties.store(output, null);
         } catch (IOException e) {
             e.printStackTrace();
@@ -47,39 +59,39 @@ public class Configuration {
     }
 
     public String getProjectName() {
-        return this.properties.getProperty("projectroles-name");
+        return this.properties.getProperty("project-name", DefaultSettings.PROJECT_NAME.toString());
     }
 
     public void setProjectName(String projectName) {
-        this.properties.setProperty("projectroles-name", projectName);
+        this.properties.setProperty("project-name", projectName);
     }
 
     public String getProjectDescription() {
-        return this.properties.getProperty("projectroles-description");
+        return this.properties.getProperty("project-description", DefaultSettings.PROJECT_DESCRIPTION.toString());
     }
 
     public void setProjectDescription(String projectDescription) {
-        this.properties.setProperty("projectroles-description", projectDescription);
+        this.properties.setProperty("project-description", projectDescription);
     }
 
     public String getTaskName() {
-        return this.properties.getProperty("taskroles-name");
+        return this.properties.getProperty("task-name", DefaultSettings.TASK_NAME.toString());
     }
 
     public void setTaskName(String taskName) {
-        this.properties.setProperty("taskroles-name", taskName);
+        this.properties.setProperty("task-name", taskName);
     }
 
     public String getTaskDescription() {
-        return this.properties.getProperty("taskroles-description");
+        return this.properties.getProperty("task-description", DefaultSettings.TASK_DESCRIPTION.toString());
     }
 
     public void setTaskDescription(String taskDescription) {
-        this.properties.setProperty("taskroles-description", taskDescription);
+        this.properties.setProperty("task-description", taskDescription);
     }
 
     public String getJobName() {
-        return this.properties.getProperty("job-name");
+        return this.properties.getProperty("job-name", DefaultSettings.JOB_NAME.toString());
     }
 
     public void setJobName(String jobName) {
@@ -87,7 +99,7 @@ public class Configuration {
     }
 
     public String getJobDescription() {
-        return this.properties.getProperty("job-description");
+        return this.properties.getProperty("job-description", DefaultSettings.JOB_DESCRIPTION.toString());
     }
 
     public void setJobDescription(String jobDescription) {
@@ -95,7 +107,7 @@ public class Configuration {
     }
 
     public String getUserName() {
-        return this.properties.getProperty("user-name");
+        return this.properties.getProperty("user-name", DefaultSettings.USER_NAME.toString());
     }
 
     public void setUserName(String userName) {
@@ -103,7 +115,7 @@ public class Configuration {
     }
 
     public String getUserPassword() {
-        return this.properties.getProperty("user-password");
+        return this.properties.getProperty("user-password", DefaultSettings.USER_PASSWORD.toString());
     }
 
     public void setUserPassword(String userPassword) {
@@ -111,11 +123,11 @@ public class Configuration {
     }
 
     public String getRoleDescription() {
-        return this.properties.getProperty("user-description");
+        return this.properties.getProperty("role-description", DefaultSettings.ROLE_DESCRIPTION.toString());
     }
 
     public void setRoleDescription(String userDescription) {
-        this.properties.setProperty("user-description", userDescription);
+        this.properties.setProperty("role-description", userDescription);
     }
 
     public String getDBUser() {
@@ -163,11 +175,11 @@ public class Configuration {
     }
 
     public String getUITitle() {
-        return this.properties.getProperty("ui-title");
+        return this.properties.getProperty("ui-title", DefaultSettings.UI_TITLE.toString());
     }
 
     public int getUIWidth() {
-        return Integer.parseInt(this.properties.getProperty("ui-width"));
+        return Integer.parseInt(this.properties.getProperty("ui-width", DefaultSettings.UI_WIDTH.toString()));
     }
 
     public void setUIWidth(int width) {
@@ -175,7 +187,7 @@ public class Configuration {
     }
 
     public int getUIHeight() {
-        return Integer.parseInt(this.properties.getProperty("ui-height"));
+        return Integer.parseInt(this.properties.getProperty("ui-height", DefaultSettings.UI_HEIGHT.toString()));
     }
 
     public void setUIHeight(int height) {

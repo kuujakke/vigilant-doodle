@@ -1,44 +1,37 @@
 import config.Configuration;
-import graphic.UI;
-import logic.schemes.task.Task;
-import logic.roles.taskroles.Supervisor;
-import logic.login.User;
+import graphic.GUI;
+import graphic.Login;
 
 import java.awt.*;
+import java.util.Properties;
 
 /**
- * Loads some default settings
+ * Loads settings and validates the user before it launches the GUI.
  */
 public class Main {
 
     private static Configuration conf;
 
-    public static void main(String[]args) {
-        writeAndLoadDefaultConfig();
-        EventQueue.invokeLater(() -> {
-            UI ui = new UI(conf);
-            ui.setVisible(true);
-        });
+    public static void main(String[] args) {
+        conf = new Configuration();
+        if (authenticateUser()) {
+            GUI gui = new GUI(conf);
+            gui.setVisible(true);
+        }
     }
 
-    public static void writeAndLoadDefaultConfig() {
-        conf = new Configuration();
-        conf.setProjectName("New Project");
-        conf.setProjectDescription("No description yet.");
-        conf.setTaskName("New Task");
-        conf.setTaskDescription("No description yet.");
-        conf.setJobName("New Job");
-        conf.setJobDescription("No description yet.");
-        conf.setUserName("DefaultUser");
-        conf.setUserPassword("password1");
-        conf.setDBUser("TestUser");
-        conf.setDBPassword("TestPassword");
-        conf.setDBName("vigilant-doodle");
-        conf.setUIHeight(600);
-        conf.setUIWidth(1200);
-        conf.setUITitle("Vigilant-doodle");
-        conf.writeProperties();
-        conf.loadProperties();
+    /**
+     * Authenticates the user by asking for login information using the Login class.
+     * @return Whether the user is authenticated and logged in succesfully.
+     */
+    private static boolean authenticateUser() {
+        Login login = new Login();
+        Properties props = login.getLoginInformation();
+        System.out.println(props);
+        if (login.validateProps(props)) {
+            return true;
+        }
+        return false;
     }
 }
 
