@@ -4,10 +4,13 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * Class for loading and writing config.properties -file in the application root folder.
+ * Class for managing application settings.
+ * Features include loading, writing and deleting
+ * config.properties -file in the application root folder.
+ *
  * You can set and get properties after a new instance is created.
- * If a property is not present in the configuration file, this should return
- * a value from the DefaultSettings.
+ * If a property is not present in the configuration file,
+ * this should return a value from the DefaultSettings.
  */
 
 public class Configuration {
@@ -55,7 +58,7 @@ public class Configuration {
      *
      * @return Properties object loaded with default properties.
      */
-    private Properties loadDefaults() {
+    public Properties loadDefaults() {
         Properties props = new Properties();
         props.setProperty("project-name", DefaultSettings.PROJECT_NAME.toString());
         props.setProperty("project-description", DefaultSettings.PROJECT_DESCRIPTION.toString());
@@ -64,6 +67,7 @@ public class Configuration {
         props.setProperty("job-name", DefaultSettings.JOB_NAME.toString());
         props.setProperty("job-description", DefaultSettings.JOB_DESCRIPTION.toString());
         props.setProperty("role-description", DefaultSettings.ROLE_DESCRIPTION.toString());
+        props.setProperty("config-file", DefaultSettings.CONFIG_FILE.toString());
         props.setProperty("ui-title", DefaultSettings.UI_TITLE.toString());
         props.setProperty("ui-width", DefaultSettings.UI_WIDTH.toString());
         props.setProperty("ui-height", DefaultSettings.UI_HEIGHT.toString());
@@ -88,6 +92,17 @@ public class Configuration {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    public void clear() {
+        File config = new File(DefaultSettings.CONFIG_FILE.toString());
+        if (config.exists()) {
+            try {
+                config.delete();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -202,6 +217,10 @@ public class Configuration {
 
     public void setDBPort(int dbPort) {
         this.properties.setProperty("db-port", String.valueOf(dbPort));
+    }
+
+    public String getConfigFile() {
+        return this.properties.getProperty("config-file", DefaultSettings.CONFIG_FILE.toString());
     }
 
     public void setUITitle(String title) {

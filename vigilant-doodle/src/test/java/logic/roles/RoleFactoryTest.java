@@ -19,7 +19,7 @@ public class RoleFactoryTest {
     private Project project;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         this.defaultFactory = new DefaultFactory();
         this.user = this.defaultFactory.createUser();
         this.project = this.defaultFactory.createProject();
