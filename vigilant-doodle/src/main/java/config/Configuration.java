@@ -12,28 +12,62 @@ import java.util.Properties;
 
 public class Configuration {
 
-    private final Properties properties;
+    private Properties properties;
 
-    public Configuration() {
-        this.properties = load();
+    public Configuration() throws Exception {
+        try {
+            load();
+        } catch (Exception e) {
+            throw new FileNotFoundException("config.properties file not found!");
+        }
     }
 
     /**
      * A method loads application settings file from the application root folder
-     * into a new Properties object.
+     * into a new Properties object. If settings file is not found the method loads
+     * default settings and writes a new configuration file with the hard-coded default
+     * values. This is useful when running this application on a new computer for the first time.
      *
      * @return a new instance of Properties with config.properties loaded into it.
      */
-    public Properties load() {
+    public void load() throws Exception {
         Properties loadedProperties = new Properties();
         InputStream input = null;
-        try {
-            input = new FileInputStream("config.properties");
-            loadedProperties.load(input);
-        } catch (IOException e) {
-            e.printStackTrace();
+        File config = new File(DefaultSettings.CONFIG_FILE.toString());
+        if (config.exists()) {
+            try {
+                input = new FileInputStream(DefaultSettings.CONFIG_FILE.toString());
+                loadedProperties.load(input);
+            } catch (IOException e) {
+                throw new FileNotFoundException(e.getLocalizedMessage());
+            }
+        } else {
+            loadedProperties = loadDefaults();
+            this.properties = loadedProperties;
+            save();
         }
-        return loadedProperties;
+        this.properties = loadedProperties;
+    }
+
+    /**
+     * A private method for the load() method to make a new Properties object from the
+     * DefaultSettings enumeration.
+     *
+     * @return Properties object loaded with default properties.
+     */
+    private Properties loadDefaults() {
+        Properties props = new Properties();
+        props.setProperty("project-name", DefaultSettings.PROJECT_NAME.toString());
+        props.setProperty("project-description", DefaultSettings.PROJECT_DESCRIPTION.toString());
+        props.setProperty("task-name", DefaultSettings.TASK_NAME.toString());
+        props.setProperty("task-description", DefaultSettings.TASK_DESCRIPTION.toString());
+        props.setProperty("job-name", DefaultSettings.JOB_NAME.toString());
+        props.setProperty("job-description", DefaultSettings.JOB_DESCRIPTION.toString());
+        props.setProperty("role-description", DefaultSettings.ROLE_DESCRIPTION.toString());
+        props.setProperty("ui-title", DefaultSettings.UI_TITLE.toString());
+        props.setProperty("ui-width", DefaultSettings.UI_WIDTH.toString());
+        props.setProperty("ui-height", DefaultSettings.UI_HEIGHT.toString());
+        return props;
     }
 
     /**

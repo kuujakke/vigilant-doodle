@@ -66,14 +66,9 @@ public enum DefaultSettings {
             return "600";
         }
     },
-    LOGIN_WIDTH {
+    CONFIG_FILE {
         public String toString() {
-            return "350";
-        }
-    },
-    LOGIN_HEIGHT {
-        public String toString() {
-            return "150";
+            return "config.properties";
         }
     }
 }

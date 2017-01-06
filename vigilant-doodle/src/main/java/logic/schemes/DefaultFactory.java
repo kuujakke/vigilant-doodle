@@ -21,7 +21,7 @@ public class DefaultFactory {
     private final Configuration configuration;
     private final RoleFactory roleFactory;
 
-    public DefaultFactory() {
+    public DefaultFactory() throws Exception {
         this.configuration = new Configuration();
         this.projectFactory = new ProjectFactory();
         this.taskFactory = new TaskFactory();

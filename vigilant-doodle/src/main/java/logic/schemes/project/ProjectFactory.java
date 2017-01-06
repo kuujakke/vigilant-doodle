@@ -8,7 +8,11 @@ import config.Configuration;
  */
 public class ProjectFactory {
 
-    private Configuration configuration = new Configuration();
+    private Configuration configuration;
+
+    public ProjectFactory() throws Exception {
+        this.configuration =new Configuration();
+    }
 
     public Project createProject(String projectName) {
         return new Project(projectName);

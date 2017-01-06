@@ -102,7 +102,7 @@ public class Login extends JPanel {
         gridx++;
 
         gridy++;
-        horisontalStrut(2, gridy, c);
+        horisontalStrut(width, gridy, c);
         gridy++;
 
         int result = JOptionPane.showConfirmDialog(null, this, "Please login to proceed", JOptionPane.OK_CANCEL_OPTION);

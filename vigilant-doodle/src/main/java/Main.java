@@ -1,6 +1,7 @@
 import config.Configuration;
 import graphic.GUI;
 import graphic.Login;
+import logic.database.Database;
 
 import java.awt.*;
 import java.util.Properties;
@@ -13,7 +14,11 @@ public class Main {
     private static Configuration conf;
 
     public static void main(String[] args) {
-        conf = new Configuration();
+        try {
+            conf = new Configuration();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         if (authenticateUser()) {
             GUI gui = new GUI(conf);
             gui.setVisible(true);
@@ -29,6 +34,7 @@ public class Main {
         Properties props = login.getLoginInformation();
         System.out.println(props);
         if (login.validateProps(props)) {
+            Database database = new Database(props);
             return true;
         }
         return false;
