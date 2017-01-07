@@ -1,6 +1,7 @@
 package logic.roles.projectroles;
 
 import config.Configuration;
+import logic.schemes.Scheme;
 import logic.schemes.project.Project;
 import logic.schemes.project.ProjectFactory;
 import logic.schemes.task.Task;
@@ -47,7 +48,7 @@ public class MemberTest {
     public void getTasks() throws Exception {
         Task task = generateTask();
         this.member.getTasks().add(task);
-        ArrayList<Task> tasks = this.member.getTasks();
+        ArrayList<Scheme> tasks = this.member.getTasks();
         assertEquals(1, tasks.size());
         assertTrue(tasks.contains(task));
     }

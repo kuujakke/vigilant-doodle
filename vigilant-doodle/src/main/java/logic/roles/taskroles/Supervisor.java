@@ -26,7 +26,7 @@ public class Supervisor extends Worker {
      * @param worker Worker to be added to supervised task
      */
     public void addWorker(Worker worker) {
-        super.task.addWorker(worker);
+        super.getTask().addWorker(worker);
     }
 
     /**
@@ -35,33 +35,36 @@ public class Supervisor extends Worker {
      * @param worker Worker to be removed.
      */
     public void removeWorker(Worker worker) {
-        if (super.task.hasWorker(worker)) {
-            super.task.removeWorker(worker);
+        if (super.getTask().hasWorker(worker)) {
+            super.getTask().removeWorker(worker);
         }
     }
 
     /**
-     * @param name
+     * Adds a new job to the supervised task with a given name.
+     *
+     * @param name String containing the jobs name.
      */
     public void addJob(String name) {
-        // TODO implement here
+        super.getTask().addJob(new Job(name));
     }
 
     /**
-     * @param job 
-     * @param descpription
+     * Sets the given jobs description to the value of the given string.
+     *
+     * @param job Job where the change will be made.
+     * @param description String containing the new description for the job.
      */
-    public void setJobDescription(Job job, String descpription) {
-        // TODO implement here
+    public void setJobDescription(Job job, String description) {
+        job.setDescription(description);
     }
 
     /**
-     * @param task 
-     * @return
+     * Returns a list containing all the jobs of the supervised task.
+     *
+     * @return ArrayList<Job> containing all the jobs of the supervised task.
      */
-    public ArrayList<Job> getJobs(Task task) {
-        // TODO implement here
-        return null;
+    public ArrayList<Job> getJobs() {
+        return super.getTask().getJobs();
     }
-
 }

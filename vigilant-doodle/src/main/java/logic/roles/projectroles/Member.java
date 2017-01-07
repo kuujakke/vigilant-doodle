@@ -2,8 +2,8 @@ package logic.roles.projectroles;
 
 import logic.roles.Role;
 import logic.login.User;
+import logic.schemes.Scheme;
 import logic.schemes.project.Project;
-import logic.schemes.task.Task;
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ import java.util.*;
 public class Member extends Role {
 
     private Project project;
-    private ArrayList<Task> tasks;
+    private ArrayList<Scheme> tasks;
 
     /**
      * Passes the user object to abstract superclass and initializes the project
@@ -34,7 +34,7 @@ public class Member extends Role {
      *
      * @return ArrayList<Task> Tasks assosiated with Member
      */
-    public ArrayList<Task> getTasks() {
+    public ArrayList<Scheme> getTasks() {
         return this.tasks;
     }
 
@@ -56,5 +56,17 @@ public class Member extends Role {
         project.removeMember(this);
         this.project = project;
         this.project.addMember(this);
+    }
+
+    @Override
+    public void addResponsibility(Scheme scheme) {
+        this.tasks.add(scheme);
+    }
+
+    @Override
+    public void removeResponsibility(Scheme scheme) {
+        if (this.getTasks().contains(scheme)) {
+            this.tasks.remove(scheme);
+        }
     }
 }

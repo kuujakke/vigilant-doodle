@@ -86,4 +86,10 @@ public class User {
     public void addRole(Role role) {
         this.roles.add(role);
     }
+
+    public void removeRole(Role role) {
+        if (this.roles.contains(role)) {
+            this.roles.remove(role);
+        }
+    }
 }

@@ -75,12 +75,14 @@ public class Task extends Scheme {
     }
 
     /**
-     * Removes the worker from the task.
+     * Removes the worker from the task and then relieves the worker
+     * of the responsibility.
      *
      * @param worker Worker to be removed from the task.
      */
     public void removeWorker(Role worker) {
         this.workers.remove(worker);
+        worker.getUser().removeRole(worker);
     }
 
     /**

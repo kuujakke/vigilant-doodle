@@ -2,6 +2,8 @@ package logic.roles;
 
 import logic.login.User;
 import logic.schemes.Scheme;
+import logic.schemes.job.Job;
+import logic.schemes.task.Task;
 
 /**
  * All roles have this in common.
@@ -47,4 +49,18 @@ public abstract class Role {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    /**
+     * Adds a scheme that the role is responsible of.
+     *
+     * @param scheme Scheme to be assigned to the role.
+     */
+    public abstract void addResponsibility(Scheme scheme);
+
+    /**
+     * Removes a scheme that the role is responsible of.
+     *
+     * @param scheme Scheme that is to be removed from the roles responsibilities.
+     */
+    public abstract void removeResponsibility(Scheme scheme);
 }
