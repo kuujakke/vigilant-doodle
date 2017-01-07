@@ -46,6 +46,7 @@ public class StatusTest {
     @Test
     public void getStartTimeWorkingAsIntended() throws Exception {
         assertNotNull(this.status.getStartTime());
+        this.testStartTime = LocalDateTime.now();
         assertEquals(this.testStartTime, this.status.getStartTime());
     }
 

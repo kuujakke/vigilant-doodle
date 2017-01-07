@@ -1,6 +1,6 @@
 package logic.schemes.project;
 
-import logic.schemes.DefaultFactory;
+import logic.DefaultFactory;
 import logic.schemes.task.Task;
 import org.junit.After;
 import org.junit.Before;
@@ -17,20 +17,17 @@ import static org.junit.Assert.*;
 public class ProjectTest {
 
     private Project project;
-    private User user;
-    private Leader leader;
     private DefaultFactory defaultFactory;
 
     @Before
     public void setUp() throws Exception {
         this.defaultFactory = new DefaultFactory();
-        this.user = this.defaultFactory.createUser();
-        this.leader = this.defaultFactory.createLeader(this.user, this.project);
         this.project = this.defaultFactory.createProject();
     }
 
     @After
     public void tearDown() throws Exception {
+        this.project = this.defaultFactory.createProject();
     }
 
     @Test
@@ -63,19 +60,14 @@ public class ProjectTest {
         Member member1 = this.defaultFactory.createMember(user1, this.project);
         Member member2 = this.defaultFactory.createMember(user2, this.project);
 
-        this.project.addMember(member1);
-        assertEquals(1, this.project.getMembers().size());
-        assertTrue(this.project.getMembers().contains(member1));
-
-        this.project.addMember(member2);
-        assertTrue(this.project.hasMember(member2));
-        assertTrue(this.project.hasMember(member1));
         assertEquals(2, this.project.getMembers().size());
+        assertTrue(this.project.hasMember(member1));
+        assertTrue(this.project.hasMember(member2));
 
         this.project.removeMember(member1);
         assertEquals(1, this.project.getMembers().size());
-        assertTrue(this.project.getMembers().contains(member2));
-        assertFalse(this.project.getMembers().contains(member1));
+        assertTrue(this.project.hasMember(member2));
+        assertFalse(this.project.hasMember(member1));
     }
 
     @Test
@@ -88,11 +80,8 @@ public class ProjectTest {
         Leader leader1 = this.defaultFactory.createLeader(user1, this.project);
         Leader leader2 = this.defaultFactory.createLeader(user2, this.project);
 
-        this.project.addLeader(leader1);
         assertTrue(this.project.hasLeader(leader1));
-        assertEquals(1, this.project.getLeaders().size());
-
-        this.project.addLeader(leader2);
+        assertTrue(this.project.hasLeader(leader2));
         assertEquals(2, this.project.getLeaders().size());
 
         this.project.removeLeader(leader1);

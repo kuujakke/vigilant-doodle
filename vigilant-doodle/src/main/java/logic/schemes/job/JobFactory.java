@@ -1,12 +1,13 @@
 package logic.schemes.job;
 
 import config.Configuration;
+import logic.schemes.SchemeFactory;
 
 /**
  * A factory to produce jobs with a configuration object to get default
  * values if needed.
  */
-public class JobFactory {
+public class JobFactory implements SchemeFactory {
 
     private Configuration configuration;
 
@@ -25,8 +26,8 @@ public class JobFactory {
      *
      * @return Job containing default name and description.
      */
-    public Job createJob() {
-        return createJob(
+    public Job createScheme() {
+        return createScheme(
                 this.configuration.getJobName(),
                 this.configuration.getJobDescription()
         );
@@ -40,7 +41,7 @@ public class JobFactory {
      *
      * @return Job containing the given name and default description.
      */
-    public Job createJob(String name) {
+    public Job createScheme(String name) {
         Job job = new Job(name);
         job.setDescription(this.configuration.getJobDescription());
         return job;
@@ -54,9 +55,10 @@ public class JobFactory {
      *
      * @return Job containing given name and description.
      */
-    public Job createJob(String name, String description) {
+    public Job createScheme(String name, String description) {
         Job job = new Job(name);
         job.setDescription(description);
         return job;
     }
+
 }

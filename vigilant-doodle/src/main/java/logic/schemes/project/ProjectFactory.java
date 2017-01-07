@@ -1,12 +1,13 @@
 package logic.schemes.project;
 
 import config.Configuration;
+import logic.schemes.SchemeFactory;
 
 /**
  * A factory for creating projects.
  * Has a Configuration object from where it retrieves the default settings from.
  */
-public class ProjectFactory {
+public class ProjectFactory implements SchemeFactory {
 
     private Configuration configuration;
 
@@ -15,10 +16,6 @@ public class ProjectFactory {
      *
      * @throws Exception if there was a problem loading the configuration file.
      */
-    public ProjectFactory() throws Exception {
-        this.configuration = new Configuration();
-    }
-
     public ProjectFactory(Configuration configuration) {
         this.configuration = configuration;
     }
@@ -29,7 +26,8 @@ public class ProjectFactory {
      * @param projectName String projects name to be passed to the constructor.
      * @return Project created with the given name.
      */
-    public Project createProject(String projectName) {
+    @Override
+    public Project createScheme(String projectName) {
         return new Project(projectName);
     }
 
@@ -38,9 +36,11 @@ public class ProjectFactory {
      *
      * @param name String containing the new projects name
      * @param description String containing the new projects description
+     *
      * @return Project the created project.
      */
-    public Project createProject(String name, String description) {
+    @Override
+    public Project createScheme(String name, String description) {
         Project project = new Project(this.configuration.getProjectName());
         project.setDescription(this.configuration.getProjectDescription());
         return project;
@@ -51,8 +51,9 @@ public class ProjectFactory {
      *
      * @return Project with default values as name and description.
      */
-    public Project createProject() {
-        return createProject(
+    @Override
+    public Project createScheme() {
+        return createScheme(
                 this.configuration.getProjectName(),
                 this.configuration.getProjectDescription());
     }

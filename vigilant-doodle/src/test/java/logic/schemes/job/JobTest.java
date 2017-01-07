@@ -1,6 +1,7 @@
 package logic.schemes.job;
 
 import config.Configuration;
+import logic.DefaultFactory;
 import logic.schemes.task.Task;
 import logic.schemes.task.TaskFactory;
 import org.junit.Before;
@@ -16,55 +17,54 @@ import static org.junit.Assert.*;
  */
 public class JobTest {
 
-    private Job job;
     private Task task;
-    private TaskFactory taskFactory;
-    private RoleFactory roleFactory;
     private User user;
     private Configuration configuration;
-    private JobFactory jobFactory;
+    private DefaultFactory defaultFactory;
 
     @Before
     public void setUp() throws Exception {
         this.configuration = new Configuration();
-        this.jobFactory = new JobFactory(this.configuration);
-        this.roleFactory = new RoleFactory(this.configuration);
-        this.taskFactory = new TaskFactory(this.configuration);
-        this.task = this.taskFactory.createTask("TestTask");
-        this.user = new User("Test", "password");
-        this.job = this.jobFactory.createJob();
+        this.defaultFactory = new DefaultFactory(this.configuration);
+        this.task = this.defaultFactory.createTask();
+        this.user = this.defaultFactory.createUser();
     }
 
     @Test
     public void isDoneAndSetDoneWorkingAsIntended() throws Exception {
-        assertFalse(this.job.isDone());
-        this.job.setDone();
+        Job job = this.defaultFactory.createJob();
+        assertFalse(job.isDone());
+        job.setDone();
         Thread.sleep(1);
-        assertTrue(this.job.isDone());
+        assertTrue(job.isDone());
     }
 
     @Test
     public void getAndSetNameWorkingAsIntended() throws Exception {
-        String name = this.job.getName();
-        this.job.setName("TestName");
-        assertNotEquals(name, this.job.getName());
+        Job job = this.defaultFactory.createJob();
+        assertTrue(job.getName().equals(this.defaultFactory.getConfig().getJobName()));
+        job.setName("TestName");
+        assertNotEquals(this.defaultFactory.getConfig().getJobName(), job.getName());
+        assertEquals("TestName", job.getName());
     }
 
     @Test
     public void getAndSetDescriptionWorkingAsIntended() throws Exception {
-        assertEquals(this.configuration.getJobDescription(), this.job.getDescription());
-        this.job.setDescription("TestDescription");
-        assertEquals("TestDescription",this.job.getDescription());
+        Job job = this.defaultFactory.createJob();
+        assertEquals(this.configuration.getJobDescription(), job.getDescription());
+        job.setDescription("TestDescription");
+        assertEquals("TestDescription", job.getDescription());
     }
 
     @Test
     public void getAndSetWorkerWorkingAsIntended() throws Exception {
-        assertNull(this.job.getWorker());
-        Worker worker = roleFactory.createWorker(this.user, this.task);
-        worker.setRealName("Test");
-        this.job.setWorker(worker);
-        assertNotNull(this.job.getWorker());
-        assertEquals("Test", this.job.getWorker().getName());
+        Job job = this.defaultFactory.createJob();
+        Task task = this.defaultFactory.createTask();
+        assertNull(job.getWorker());
+        Worker worker = defaultFactory.createWorker(task);
+        job.setWorker(worker);
+        assertNotNull(job.getWorker());
+        assertTrue(job.getWorker().equals(worker));
     }
 
 }

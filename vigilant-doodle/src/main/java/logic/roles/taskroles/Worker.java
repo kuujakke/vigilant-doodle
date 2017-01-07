@@ -96,7 +96,7 @@ public class Worker extends Role {
 
     @Override
     public boolean hasResponsibility(Scheme scheme) {
-        if (this.hasScheme(scheme) ||this.jobs.contains(scheme)) {
+        if (this.hasScheme(scheme) || this.jobs.contains(scheme)) {
             return true;
         }
         return false;

@@ -1,6 +1,7 @@
 package logic.schemes;
 
 import config.Configuration;
+import logic.DefaultFactory;
 import logic.schemes.project.Project;
 import org.junit.Before;
 import org.junit.Test;

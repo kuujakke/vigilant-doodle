@@ -2,8 +2,6 @@ package logic.roles;
 
 import logic.login.User;
 import logic.schemes.Scheme;
-import logic.schemes.job.Job;
-import logic.schemes.task.Task;
 
 /**
  * All roles have this in common.
@@ -15,37 +13,50 @@ public abstract class Role {
     private Scheme scheme;
     private String description;
 
+    /**
+     * Default constructor initializing the user class-variable with the value passed in.
+     *
+     * @param user User to be associated with role.
+     */
     public Role(User user) {
         this.user = user;
         this.scheme = scheme;
         user.addRole(this);
     }
 
+    /**
+     * Returns a string that has the users real name and roles description.
+     *
+     * @return String containing users real name and role description.
+     */
     public String toString() {
-        return "Name: " + this.getName() + "\n" +
+        return "Name: " + this.user.getRealName() + "\n" +
                 "Description: " + this.getDescription();
     }
 
+    /**
+     * Returns the user object of the role.
+     *
+     * @return User associated with the role.
+     */
     public User getUser() {
         return this.user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getName() {
-        return this.user.getRealName();
-    }
-
-    public void setRealName(String realName) {
-        this.user.setRealName(realName);
-    }
-
+    /**
+     * Gets the role description.
+     *
+     * @return String containing the role description.
+     */
     public String getDescription() {
         return this.description;
     }
 
+    /**
+     * Sets the role description.
+     *
+     * @param description String containing the new description.
+     */
     public void setDescription(String description) {
         this.description = description;
     }

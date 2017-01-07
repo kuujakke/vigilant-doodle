@@ -28,7 +28,7 @@ public class ProjectFactoryTest {
         this.configuration = new Configuration();
         this.roleFactory = new RoleFactory(this.configuration);
         this.projectFactory = new ProjectFactory(this.configuration);
-        this.project = projectFactory.createProject();
+        this.project = projectFactory.createScheme();
         this.user = new User(
                 this.configuration.getUserName(),
                 this.configuration.getUserPassword()

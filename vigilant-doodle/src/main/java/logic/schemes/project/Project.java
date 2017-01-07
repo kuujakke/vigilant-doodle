@@ -117,7 +117,9 @@ public class Project extends Scheme {
      * @param member Member to be added into project.
      */
     public void addMember(Member member) {
-        this.roles.put(member.getUser(), member);
+        if (!hasMember(member)) {
+            this.roles.put(member.getUser(), member);
+        }
     }
 
     /**
@@ -150,7 +152,9 @@ public class Project extends Scheme {
      * @param leader Leader to be added into project
      */
     public void addLeader(Leader leader) {
-        this.roles.put(leader.getUser(), leader);
+        if (!hasLeader(leader)) {
+            this.roles.put(leader.getUser(), leader);
+        }
     }
 
     /**

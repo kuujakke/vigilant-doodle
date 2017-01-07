@@ -25,7 +25,7 @@ public class LeaderTest {
         this.configuration = new Configuration();
         this.roleFactory = new RoleFactory(this.configuration);
         this.projectFactory = new ProjectFactory(this.configuration);
-        this.project = this.projectFactory.createProject();
+        this.project = this.projectFactory.createScheme();
         this.user = new User(
                 this.configuration.getUserName(),
                 this.configuration.getUserPassword());

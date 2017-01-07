@@ -71,7 +71,9 @@ public class Task extends Scheme {
      * @param worker Worker to be added into the task.
      */
     public void addWorker(Worker worker) {
-        this.workers.add(worker);
+        if (!this.workers.contains(worker)) {
+            this.workers.add(worker);
+        }
     }
 
     /**
@@ -81,9 +83,11 @@ public class Task extends Scheme {
      * @param worker Worker to be removed from the task.
      */
     public void removeWorker(Role worker) {
-        this.workers.remove(worker);
-        worker.getUser().removeRole(worker);
-        worker.getUser().removeTask(this);
+        if (this.workers.contains(worker)) {
+            worker.getUser().removeRole(worker);
+            worker.getUser().removeTask(this);
+            this.workers.remove(worker);
+        }
     }
 
     /**
@@ -152,6 +156,6 @@ public class Task extends Scheme {
      * @return boolean value signalling whether task has worker or not.
      */
     public boolean hasWorker(Worker worker) {
-        return this.getWorkers().contains(worker);
+        return this.workers.contains(worker);
     }
 }

@@ -1,6 +1,7 @@
 package logic.roles.taskroles;
 
 import config.Configuration;
+import logic.DefaultFactory;
 import logic.login.User;
 import logic.roles.RoleFactory;
 import logic.schemes.job.Job;
@@ -18,43 +19,34 @@ import static org.junit.Assert.*;
 public class WorkerTest {
 
     private Configuration configuration;
-    private TaskFactory taskFactory;
-    private RoleFactory roleFactory;
-    private JobFactory jobFactory;
-    private User user;
+    private DefaultFactory defaultFactory;
 
     @Before
     public void setUp() throws Exception {
         this.configuration = new Configuration();
-        this.taskFactory = new TaskFactory(this.configuration);
-        this.roleFactory = new RoleFactory(this.configuration);
-        this.jobFactory = new JobFactory(this.configuration);
-        this.user = new User(
-                this.configuration.getUserName(),
-                this.configuration.getUserPassword()
-        );
+        this.defaultFactory = new DefaultFactory(this.configuration);
     }
 
     @Test
     public void addHasRemoveWorkerWorkingAsIntended() {
-        Task task = this.taskFactory.createTask();
-        Worker worker = this.roleFactory.createWorker(this.user, task);
+        Task task = this.defaultFactory.createTask();
+        Worker worker = this.defaultFactory.createWorker(task);
 
-        task.addWorker(worker);
         assertTrue(task.hasWorker(worker));
         assertEquals(worker.getTask(), task);
 
         User user = worker.getUser();
         task.removeWorker(worker);
+
         assertFalse(task.hasWorker(worker));
         assertFalse(user.allTasks().contains(task));
     }
 
     @Test
     public void getNextJob() throws Exception {
-        Task task = this.taskFactory.createTask();
-        Worker worker = this.roleFactory.createWorker(this.user, task);
-        Job job = this.jobFactory.createJob();
+        Task task = this.defaultFactory.createTask();
+        Worker worker = this.defaultFactory.createWorker(task);
+        Job job = this.defaultFactory.createJob();
         task.addJob(job);
 
         job.setWorker(worker);
@@ -63,7 +55,12 @@ public class WorkerTest {
 
     @Test
     public void setJobCompleted() throws Exception {
-
+        Worker worker = this.defaultFactory.createWorker(this.defaultFactory.createTask());
+        Job job = this.defaultFactory.createJob();
+        worker.addJob(job);
+        worker.setJobCompleted(job);
+        Thread.sleep(1);
+        assertTrue(job.isDone());
     }
 
 }

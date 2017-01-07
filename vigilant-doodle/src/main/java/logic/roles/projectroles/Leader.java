@@ -9,7 +9,7 @@ import logic.schemes.project.Project;
 public class Leader extends Member {
 
     /**
-     * Passes the user and project to its superclass Member
+     * Passes the user and project to its superclass Member.
      *
      * @param user User account associated with Leader
      * @param project Project where the leader belongs to.

@@ -13,7 +13,6 @@ public class TaskFactoryTest {
 
     @Before
     public void TaskFactoryTest() throws Exception {
-        this.project = new ProjectFactory().createProject();
     }
 
 }

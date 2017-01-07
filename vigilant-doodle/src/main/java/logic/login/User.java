@@ -103,9 +103,9 @@ public class User {
     }
 
     /**
-     * Joins any available project as a member
+     * Joins any available project as a member.
      *
-     * @param project
+     * @param project Project where the user is joined.
      */
     public void joinProject(Project project) {
         if (!this.hasScheme(project)) {
@@ -132,31 +132,61 @@ public class User {
     }
 
     /**
+     * Sets the username.
      *
-     * @param userName
+     * @param userName String containing the new username.
      */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String getName() {
+    /**
+     * Gets the username.
+     *
+     * @return String containing the username.
+     */
+    public String getUserName() {
         return this.userName;
     }
 
+    /**
+     * Adds a new role users roles list.
+     *
+     * @param role Role to be added into roles collection.
+     */
     public void addRole(Role role) {
         this.roles.add(role);
     }
 
+    /**
+     * Removes the role from the roles collection.
+     *
+     * @param role Role to be removed.
+     */
     public void removeRole(Role role) {
         if (this.roles.contains(role)) {
             this.roles.remove(role);
         }
     }
 
+    /**
+     * Returns true if the users roles collection contains the passed in role.
+     *
+     * @param role Role to be checked if contained in roles.
+     * @return true if user has the given role in the roles collection.
+     */
     public boolean hasRole(Role role) {
         return this.roles.contains(role);
     }
 
+    /**
+     * Returns true if the users roles collection contains a role that has
+     * any responsibility in the scheme passed in.
+     *
+     * @param scheme Scheme to check responsibility from.
+     *
+     * @return true if user has any role associated with scheme.
+     */
     public boolean hasScheme(Scheme scheme) {
         for (Role role :this.allRoles()) {
             if (role.hasResponsibility(scheme)) {

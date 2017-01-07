@@ -1,6 +1,6 @@
 package logic.roles;
 
-import logic.schemes.DefaultFactory;
+import logic.DefaultFactory;
 import org.junit.Before;
 import org.junit.Test;
 

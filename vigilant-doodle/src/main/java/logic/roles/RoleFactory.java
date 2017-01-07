@@ -35,6 +35,7 @@ public class RoleFactory {
      */
     public Leader createLeader(User user, Project project) {
         Leader leader = new Leader(user, project);
+        project.addLeader(leader);
         return leader;
     }
 
@@ -47,7 +48,9 @@ public class RoleFactory {
      * @return Member containing associations to user and project.
      */
     public Member createMember(User user, Project project) {
-        return new Member(user, project);
+        Member member = new Member(user, project);
+        project.addMember(member);
+        return member;
     }
 
     /**
@@ -59,7 +62,9 @@ public class RoleFactory {
      * @return Worker containing associations to user and task.
      */
     public Worker createWorker(User user, Task task) {
-        return new Worker(user, task);
+        Worker worker = new Worker(user, task);
+        task.addWorker(worker);
+        return worker;
     }
 
     /**
@@ -71,7 +76,9 @@ public class RoleFactory {
      * @return Supervisor containing associations to user and task.
      */
     public Supervisor createSupervisor(User user, Task task) {
-        return new Supervisor(user, task);
+        Supervisor supervisor = new Supervisor(user, task);
+        task.setSupervisor(supervisor);
+        return supervisor;
     }
 
 }
