@@ -79,6 +79,11 @@ public class DefaultFactory {
         return this.taskFactory.createScheme();
     }
 
+    /**
+     * Creates a new job with default values.
+     *
+     * @return Job with default values.
+     */
     public Job createJob() {
         return this.jobFactory.createScheme();
     }
@@ -95,6 +100,9 @@ public class DefaultFactory {
     /**
      * Creates a new leader with default values loaded from configuration.
      *
+     * @param user User to be associated with the new Leader role.
+     * @param project Project to be associated with the new Leader role.
+     *
      * @return Leader with default values.
      */
     public Leader createLeader(User user, Project project) {
@@ -104,13 +112,19 @@ public class DefaultFactory {
     /**
      * Creates a member with new default user and associates it with the given project.
      *
+     * @param project Project to be associated with the new Member role.
+     *
      * @return Member with new default user.
      */
     public Member createMember(Project project) {
         return createMember(createUser(), project);
     }
+
     /**
      * Creates a new member with default values loaded from configuration.
+     *
+     * @param user User to be associated with the new Member role.
+     * @param project Project to be associated with the new Member role.
      *
      * @return Member with default values.
      */
