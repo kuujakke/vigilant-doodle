@@ -1,6 +1,7 @@
 package logic.login;
 
 import logic.roles.Role;
+import logic.roles.RoleFactory;
 import logic.roles.projectroles.Leader;
 import logic.roles.projectroles.Member;
 import logic.roles.taskroles.Supervisor;
@@ -84,29 +85,56 @@ public class User {
     }
 
     /**
-     * 
-     * @return
+     * Returns the list of all roles the user has.
+     *
+     * @return ArrayList<Role> containing oll of users active roles.
      */
     public ArrayList<Role> allRoles() {
         return this.roles;
     }
 
+    /**
+     * Creates a new project and adds a leader role to the user.
+     *
+     * @param name String contains the name of the new project.
+     */
     public void createProject(String name) {
-        // TODO implement here
+
     }
 
+    /**
+     * Joins any available project as a member
+     *
+     * @param project
+     */
     public void joinProject(Project project) {
-        // TODO implement here
+        if (!this.hasScheme(project)) {
+            project.addMember(new Member(this, project));
+        }
     }
 
+    /**
+     * Returns the users real name.
+     *
+     * @return String containing the users real name.
+     */
     public String getRealName() {
         return this.realName;
     }
 
+    /**
+     * Sets the users real name.
+     *
+     * @param realName String containing the users real name.
+     */
     public void setRealName(String realName) {
         this.realName = realName;
     }
 
+    /**
+     *
+     * @param userName
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -127,5 +155,14 @@ public class User {
 
     public boolean hasRole(Role role) {
         return this.roles.contains(role);
+    }
+
+    public boolean hasScheme(Scheme scheme) {
+        for (Role role :this.allRoles()) {
+            if (role.hasResponsibility(scheme)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

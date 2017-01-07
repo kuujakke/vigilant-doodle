@@ -74,5 +74,4 @@ public class RoleFactory {
         return new Supervisor(user, task);
     }
 
-
 }
