@@ -60,4 +60,6 @@ public abstract class Scheme {
         this.status.setDone();
     }
 
+    public abstract boolean hasScheme(Scheme scheme);
+
 }

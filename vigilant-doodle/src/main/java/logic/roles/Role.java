@@ -63,4 +63,13 @@ public abstract class Role {
      * @param scheme Scheme that is to be removed from the roles responsibilities.
      */
     public abstract void removeResponsibility(Scheme scheme);
+
+    /**
+     * Returns true is the role has responsibility in the scheme.
+     *
+     * @param scheme Scheme to be compared against roles responsibility.
+     *
+     * @return true if the role has responsibility in the scheme.
+     */
+    public abstract boolean hasResponsibility(Scheme scheme);
 }

@@ -69,4 +69,9 @@ public class Member extends Role {
             this.tasks.remove(scheme);
         }
     }
+
+    @Override
+    public boolean hasResponsibility(Scheme scheme) {
+        return this.project.hasScheme(scheme);
+    }
 }

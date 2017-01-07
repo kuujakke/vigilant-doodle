@@ -20,6 +20,11 @@ public class Job extends Scheme {
         super(name);
     }
 
+    @Override
+    public boolean hasScheme(Scheme scheme) {
+        return this.equals(scheme);
+    }
+
     /**
      * Returns the worker responsible on the completion of the job.
      *

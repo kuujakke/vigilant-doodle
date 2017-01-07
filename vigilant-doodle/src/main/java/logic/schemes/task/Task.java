@@ -83,6 +83,7 @@ public class Task extends Scheme {
     public void removeWorker(Role worker) {
         this.workers.remove(worker);
         worker.getUser().removeRole(worker);
+        worker.getUser().removeTask(this);
     }
 
     /**
@@ -137,6 +138,11 @@ public class Task extends Scheme {
         if (isDone()) {
             super.getStatus().setDone();
         }
+    }
+
+    @Override
+    public boolean hasScheme(Scheme scheme) {
+        return this.getJobs().contains(scheme);
     }
 
     /**

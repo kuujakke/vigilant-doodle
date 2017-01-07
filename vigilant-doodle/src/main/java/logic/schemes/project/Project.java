@@ -1,5 +1,6 @@
 package logic.schemes.project;
 
+import logic.schemes.Scheme;
 import logic.schemes.Status;
 import logic.schemes.task.Task;
 import logic.roles.projectroles.Leader;
@@ -12,9 +13,8 @@ import java.util.*;
 /**
  * Base object for managing tasks.
  */
-public class Project {
+public class Project extends Scheme {
 
-    private String projectName;
     private Status status;
     public ArrayList<Task> tasks;
     public HashMap<User, Role> roles;
@@ -26,7 +26,7 @@ public class Project {
      * @param name String the name to be set to the new instance
      */
     public Project(String name) {
-        this.projectName = name;
+        super(name);
         this.status = new Status();
         this.tasks = new ArrayList<>();
         this.roles = new HashMap<>();
@@ -38,7 +38,7 @@ public class Project {
      * @param name String new name for the project
      */
     public void setProjectName(String name) {
-        this.projectName = name;
+        super.setName(name);
     }
 
     /**
@@ -197,6 +197,11 @@ public class Project {
      * @return String containing the projects name
      */
     public String getName() {
-        return this.projectName;
+        return super.getName();
+    }
+
+    @Override
+    public boolean hasScheme(Scheme scheme) {
+        return this.tasks.contains(scheme);
     }
 }

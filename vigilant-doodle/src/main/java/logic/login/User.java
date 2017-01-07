@@ -3,6 +3,9 @@ package logic.login;
 import logic.roles.Role;
 import logic.roles.projectroles.Leader;
 import logic.roles.projectroles.Member;
+import logic.roles.taskroles.Supervisor;
+import logic.roles.taskroles.Worker;
+import logic.schemes.Scheme;
 import logic.schemes.project.Project;
 import logic.schemes.task.Task;
 
@@ -34,7 +37,7 @@ public class User {
     /**
      * Lists all current projects where user has a role in it.
      *
-     * @return ArrayList<Project> List of users projects.
+     * @return ArrayList<Project> containing all the projects user has a role in.
      */
     public ArrayList<Project> allProjects() {
         ArrayList<Project> projects = new ArrayList<>();
@@ -42,21 +45,46 @@ public class User {
             if (role instanceof Member) {
                 projects.add(((Member) role).getProject());
             } else if (role instanceof Leader) {
-
+                projects.add(((Member) role).getProject());
             }
         }
         return projects;
     }
 
-
+    /**
+     * Lists all current tasks where user has a role in it.
+     *
+     * @return ArrayList<Task> containing all the tasks user has a role in.
+     */
     public ArrayList<Task> allTasks() {
-        // TODO implement here
-        return null;
+        ArrayList<Task> tasks = new ArrayList<>();
+        for (Role role : this.roles) {
+            if (role instanceof Worker) {
+                tasks.add(((Worker) role).getTask());
+            } else if (role instanceof Supervisor) {
+                tasks.add(((Worker) role).getTask());
+            }
+        }
+        return tasks;
+    }
+
+    /**
+     * Removes the task role if user has that role listed.
+     *
+     * @param task Task where the user has a role in.
+     */
+    public void removeTask(Task task) {
+        if (this.allTasks().contains(task)) {
+            for (Role role : this.roles) {
+                if (role.hasResponsibility(task)) {
+                    this.roles.remove(role);
+                }
+            }
+        }
     }
 
     public ArrayList<Role> allRoles() {
-        // TODO implement here
-        return null;
+        return this.roles;
     }
 
     public void createProject(String name) {
@@ -91,5 +119,9 @@ public class User {
         if (this.roles.contains(role)) {
             this.roles.remove(role);
         }
+    }
+
+    public boolean hasRole(Role role) {
+        return this.roles.contains(role);
     }
 }

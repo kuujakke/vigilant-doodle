@@ -69,14 +69,14 @@ public class Worker extends Role {
     }
 
     /**
-     * Returns true if the given task is the same as the one set to the worker.
+     * Returns true if the given scheme is the same as the one set to the worker.
      *
-     * @param task Task to compare to workers assigned task.
+     * @param scheme Scheme to compare to workers assigned task against.
      *
-     * @return true if task is the same as the workers assigned task.
+     * @return true if scheme is the same as the workers assigned task.
      */
-    public boolean hasTask(Task task) {
-        if (this.task.equals(task)) {
+    public boolean hasScheme(Scheme scheme) {
+        if (this.task.equals(scheme)) {
             return true;
         }
         return false;
@@ -92,5 +92,13 @@ public class Worker extends Role {
         if (this.jobs.contains(scheme)) {
             this.jobs.remove(scheme);
         }
+    }
+
+    @Override
+    public boolean hasResponsibility(Scheme scheme) {
+        if (this.hasScheme(scheme) ||this.jobs.contains(scheme)) {
+            return true;
+        }
+        return false;
     }
 }
