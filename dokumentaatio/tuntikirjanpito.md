@@ -16,3 +16,5 @@ Päivä | Tunnit | Kuvaus
 2.1.2017 | 8h | Refaktoroitu ja koostettu uudet raportit. Meditoitu raporttien yllä ja sotkettu koodia.
 3.1.2017 | 5h | Opiskeltu ja implementoitu MongoDB:tä ja asetuksien talletusta.
 4.1.2017 | 8h | Refaktorointia. DefaultFactory saa asetukset configista. Paljon testien korjaamista.
+5.1.2017 | 8h | Kirjoitettu javadocia ja toteutettu login -ikkunalle sekä GUIlle luokat.
+6.1.2017 | 8h | Toteutettu kirjautumisikkuna ja refaktoroitu asetuksia. Lisätty javadocin generointi ja sen siirtäminen pom.xmlään sekä päivitetty deadline-push toiminto.
