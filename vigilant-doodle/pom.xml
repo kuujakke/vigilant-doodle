@@ -90,15 +90,16 @@
                 <version>1.5.0</version>
                 <executions>
                     <execution>
-                        <id>PIT-Testien siirtäminen dokumentaatioon</id>
+                        <id>PIT-Raportin ja Javadocin siirto dokumentaatioon.</id>
                         <phase>site-deploy</phase>
                         <goals>
-                            <goal>site</goal>
+                            <goal>exec</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <executable>${basedir}/scripts/cp-pit.sh</executable>
+                    <executable>${basedir}/scripts/mv-pit.sh</executable>
+                    <executable>${basedir}/scripts/mv-javadoc.sh</executable>
                 </configuration>
             </plugin>
         </plugins>
