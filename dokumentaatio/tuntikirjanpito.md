@@ -18,3 +18,4 @@ Päivä | Tunnit | Kuvaus
 4.1.2017 | 8h | Refaktorointia. DefaultFactory saa asetukset configista. Paljon testien korjaamista.
 5.1.2017 | 8h | Kirjoitettu javadocia ja toteutettu login -ikkunalle sekä GUIlle luokat.
 6.1.2017 | 8h | Toteutettu kirjautumisikkuna ja refaktoroitu asetuksia. Lisätty javadocin generointi ja sen siirtäminen pom.xmlään sekä päivitetty deadline-push toiminto.
+7.1.2017 | 8h | Javadokattu ja refaktoroitu.
