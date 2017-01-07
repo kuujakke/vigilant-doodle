@@ -11,30 +11,33 @@ import java.util.*;
 public class Supervisor extends Worker {
 
     /**
-     * Default constructor
+     * Default constructor which passes the user and task to its superclass.
+     *
+     * @param user User associated with the Supervisor
+     * @param task Task associated with the Supervisor
      */
     public Supervisor(User user, Task task) {
         super(user, task);
     }
 
     /**
-     * 
-     */
-    public Task task;
-
-
-    /**
-     * @param worker
+     * Adds worker to the supervised task.
+     *
+     * @param worker Worker to be added to supervised task
      */
     public void addWorker(Worker worker) {
-        // TODO implement here
+        super.task.addWorker(worker);
     }
 
     /**
-     * @param worker
+     * Removes worker from the supervised task, if worker exists in it.
+     *
+     * @param worker Worker to be removed.
      */
     public void removeWorker(Worker worker) {
-        // TODO implement here
+        if (super.task.hasWorker(worker)) {
+            super.task.removeWorker(worker);
+        }
     }
 
     /**

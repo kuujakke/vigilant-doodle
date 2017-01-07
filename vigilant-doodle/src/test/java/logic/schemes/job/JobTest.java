@@ -1,5 +1,6 @@
 package logic.schemes.job;
 
+import config.Configuration;
 import logic.schemes.task.Task;
 import logic.schemes.task.TaskFactory;
 import org.junit.Before;
@@ -20,14 +21,18 @@ public class JobTest {
     private TaskFactory taskFactory;
     private RoleFactory roleFactory;
     private User user;
+    private Configuration configuration;
+    private JobFactory jobFactory;
 
     @Before
     public void setUp() throws Exception {
-        this.job = new Job("TestJob");
-        this.roleFactory = new RoleFactory();
-        this.taskFactory = new TaskFactory();
+        this.configuration = new Configuration();
+        this.jobFactory = new JobFactory(this.configuration);
+        this.roleFactory = new RoleFactory(this.configuration);
+        this.taskFactory = new TaskFactory(this.configuration);
         this.task = this.taskFactory.createTask("TestTask");
         this.user = new User("Test", "password");
+        this.job = this.jobFactory.createJob();
     }
 
     @Test
@@ -47,7 +52,7 @@ public class JobTest {
 
     @Test
     public void getAndSetDescriptionWorkingAsIntended() throws Exception {
-        assertNull(this.job.getDescription());
+        assertEquals(this.configuration.getJobDescription(), this.job.getDescription());
         this.job.setDescription("TestDescription");
         assertEquals("TestDescription",this.job.getDescription());
     }

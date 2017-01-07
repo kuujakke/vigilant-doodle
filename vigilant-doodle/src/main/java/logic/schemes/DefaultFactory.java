@@ -23,9 +23,9 @@ public class DefaultFactory {
 
     public DefaultFactory() throws Exception {
         this.configuration = new Configuration();
-        this.projectFactory = new ProjectFactory();
-        this.taskFactory = new TaskFactory();
-        this.roleFactory = new RoleFactory();
+        this.projectFactory = new ProjectFactory(this.configuration);
+        this.taskFactory = new TaskFactory(this.configuration);
+        this.roleFactory = new RoleFactory(this.configuration);
     }
 
     public Project createProject() {

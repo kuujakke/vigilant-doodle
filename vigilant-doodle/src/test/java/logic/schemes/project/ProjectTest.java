@@ -36,7 +36,6 @@ public class ProjectTest {
     @Test
     public void toStringWorkingAsIntended() throws Exception {
         assertNotNull(this.project.toString());
-        assertEquals(this.defaultFactory.getConfig().getProjectName(), this.project.toString());
     }
 
     @Test

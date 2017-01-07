@@ -1,5 +1,6 @@
 package logic.roles.projectroles;
 
+import config.Configuration;
 import logic.schemes.project.Project;
 import logic.schemes.project.ProjectFactory;
 import logic.schemes.task.Task;
@@ -20,19 +21,24 @@ import static org.junit.Assert.*;
  */
 public class MemberTest {
 
-    Member member;
-    Project project;
-    User user;
-    Leader leader;
+    private Member member;
+    private Project project;
+    private User user;
+    private Leader leader;
     private ProjectFactory projectFactory;
     private RoleFactory roleFactory;
+    private Configuration configuration;
 
     @Before
     public void setUp() throws Exception {
-        this.user = new User("TestUser", "password");
-        this.projectFactory = new ProjectFactory();
-        this.roleFactory = new RoleFactory();
-        this.project = this.projectFactory.createProject("TestProject");
+        this.configuration = new Configuration();
+        this.user = new User(
+                this.configuration.getUserName(),
+                this.configuration.getUserPassword()
+        );
+        this.projectFactory = new ProjectFactory(this.configuration);
+        this.roleFactory = new RoleFactory(this.configuration);
+        this.project = this.projectFactory.createProject();
         this.leader = this.roleFactory.createLeader(this.user, this.project);
         this.member = this.roleFactory.createMember(this.user, this.project);
     }

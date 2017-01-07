@@ -1,5 +1,6 @@
 package logic.schemes.project;
 
+import config.Configuration;
 import logic.schemes.project.Project;
 import logic.schemes.project.ProjectFactory;
 import org.junit.Before;
@@ -20,13 +21,18 @@ public class ProjectFactoryTest {
     private ProjectFactory projectFactory;
     private Project project;
     private User user;
+    private Configuration configuration;
 
     @Before
     public void setUp() throws Exception {
-        this.roleFactory = new RoleFactory();
-        this.projectFactory = new ProjectFactory();
+        this.configuration = new Configuration();
+        this.roleFactory = new RoleFactory(this.configuration);
+        this.projectFactory = new ProjectFactory(this.configuration);
         this.project = projectFactory.createProject();
-        this.user = new User("TestUser", "password");
+        this.user = new User(
+                this.configuration.getUserName(),
+                this.configuration.getUserPassword()
+        );
     }
 
     @Test

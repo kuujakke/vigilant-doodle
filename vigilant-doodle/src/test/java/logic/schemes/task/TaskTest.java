@@ -1,5 +1,6 @@
 package logic.schemes.task;
 
+import config.Configuration;
 import logic.schemes.job.Job;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,18 +20,22 @@ public class TaskTest {
     private TaskFactory taskFactory;
     private User user;
     private RoleFactory roleFactory;
+    private Configuration configuration;
 
     @Before
     public void setUp() throws Exception {
-        this.taskFactory = new TaskFactory();
-        this.roleFactory = new RoleFactory();
-        this.user = new User("TestUser", "pw");
-        this.task = this.taskFactory.createTask("TestTask");
+        this.configuration = new Configuration();
+        this.taskFactory = new TaskFactory(this.configuration);
+        this.roleFactory = new RoleFactory(this.configuration);
+        this.user = new User(
+                this.configuration.getUserName(),
+                this.configuration.getUserPassword());
+        this.task = this.taskFactory.createTask();
     }
 
     @Test
     public void getSetDescriptionWorkingAsIntended() throws Exception {
-        assertNull(this.task.getDescription());
+        assertEquals(this.configuration.getTaskDescription(), this.task.getDescription());
         this.task.setDescription("TestDescription");
         assertEquals("TestDescription", this.task.getDescription());
     }
@@ -41,7 +46,7 @@ public class TaskTest {
         Supervisor supervisor = this.roleFactory.createSupervisor(this.user, this.task);
         this.task.setSupervisor(supervisor);
         assertEquals(supervisor.getName(), this.task.getSupervisor().getName());
-        assertEquals("TestUser", this.task.getSupervisor().getUser().getName());
+        assertEquals(this.configuration.getUserName(), this.task.getSupervisor().getUser().getName());
     }
 
     @Test
