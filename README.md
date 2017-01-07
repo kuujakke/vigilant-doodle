@@ -10,3 +10,4 @@ Projekti, tehtävä ja työvaihe ylläpitävät aikaleimoja alku ja loppu. Lisä
 * [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Checkstyle-raportti](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kuujakke/vigilant-doodle/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
 * [PIT-raportti](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kuujakke/vigilant-doodle/master/dokumentaatio/pit-raportti/index.html)
+* [Javadoc](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kuujakke/vigilant-doodle/master/dokumentaatio/javadoc/index.html)
