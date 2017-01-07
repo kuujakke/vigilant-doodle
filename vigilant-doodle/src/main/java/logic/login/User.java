@@ -83,6 +83,10 @@ public class User {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Role> allRoles() {
         return this.roles;
     }
