@@ -19,3 +19,4 @@ Päivä | Tunnit | Kuvaus
 5.1.2017 | 8h | Kirjoitettu javadocia ja toteutettu login -ikkunalle sekä GUIlle luokat.
 6.1.2017 | 8h | Toteutettu kirjautumisikkuna ja refaktoroitu asetuksia. Lisätty javadocin generointi ja sen siirtäminen pom.xmlään sekä päivitetty deadline-push toiminto.
 7.1.2017 | 8h | Javadokattu ja refaktoroitu.
+8.1.2017 | 4h | Korjattu javadoc virheitä ja tehty sekvenssikaaviota kunnes ohjelma kaatui. :( Suoritettu Deadline-push -operaatio.
