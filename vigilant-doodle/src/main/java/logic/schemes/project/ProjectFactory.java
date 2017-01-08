@@ -14,7 +14,7 @@ public class ProjectFactory implements SchemeFactory {
     /**
      * Initializes a new configuration from the configuration file or loads defaults.
      *
-     * @throws Exception if there was a problem loading the configuration file.
+     * @param configuration Configuration to be used with factory.
      */
     public ProjectFactory(Configuration configuration) {
         this.configuration = configuration;

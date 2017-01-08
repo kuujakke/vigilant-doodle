@@ -64,7 +64,7 @@ public class Project extends Scheme {
     /**
      * Gets all the tasks associated with the project.
      *
-     * @return ArrayList<Task> list containing all the tasks of the project.
+     * @return ArrayList list containing all the tasks of the project.
      */
     public ArrayList<Task> getTasks() {
         return this.tasks;
@@ -84,7 +84,7 @@ public class Project extends Scheme {
     /**
      * Gets a list of members associated with project.
      *
-     * @return ArrayList<Role> list containing all the members of the project.
+     * @return ArrayList list containing all the members of the project.
      */
     public ArrayList<Role> getMembers() {
         ArrayList<Role> members = new ArrayList<>();
@@ -99,7 +99,7 @@ public class Project extends Scheme {
     /**
      * Gets a list of leaders associated with project.
      *
-     * @return ArrayList<Role> list containing all the leaders of the project.
+     * @return ArrayList list containing all the leaders of the project.
      */
     public ArrayList<Role> getLeaders() {
         ArrayList<Role> leaders = new ArrayList<>();

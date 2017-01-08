@@ -38,7 +38,7 @@ public class User {
     /**
      * Lists all current projects where user has a role in it.
      *
-     * @return ArrayList<Project> containing all the projects user has a role in.
+     * @return ArrayList containing all the projects user has a role in.
      */
     public ArrayList<Project> allProjects() {
         ArrayList<Project> projects = new ArrayList<>();
@@ -55,7 +55,7 @@ public class User {
     /**
      * Lists all current tasks where user has a role in it.
      *
-     * @return ArrayList<Task> containing all the tasks user has a role in.
+     * @return ArrayList containing all the tasks user has a role in.
      */
     public ArrayList<Task> allTasks() {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -87,7 +87,7 @@ public class User {
     /**
      * Returns the list of all roles the user has.
      *
-     * @return ArrayList<Role> containing oll of users active roles.
+     * @return ArrayList containing oll of users active roles.
      */
     public ArrayList<Role> allRoles() {
         return this.roles;

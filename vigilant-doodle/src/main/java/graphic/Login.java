@@ -2,6 +2,7 @@ package graphic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Properties;
 
 /**
@@ -29,6 +30,31 @@ public class Login extends JPanel {
      * @return Properties object containing users login information.
      */
     public Properties getLoginInformation() {
+        HashMap<String, JComponent> components = makelayout();
+        int result = JOptionPane.showConfirmDialog(null, this, "Please login to proceed", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            this.loginInformation.setProperty("canceled", "0");
+            this.loginInformation.setProperty("user-name", ((JTextField) components.get("username")).getText());
+            char[] password = ((JPasswordField) components.get("password")).getPassword();
+            this.loginInformation.setProperty("password", String.valueOf(password));
+            this.loginInformation.setProperty("db-name", ((JTextField) components.get("db-name")).getText());
+            this.loginInformation.setProperty("db-hostname", ((JTextField) components.get("db-hostname")).getText());
+            this.loginInformation.setProperty("db-port", ((JTextField) components.get("db-port")).getText());
+            return this.loginInformation;
+        } else if (result == JOptionPane.CANCEL_OPTION) {
+            Properties props = new Properties();
+            props.setProperty("canceled", "1");
+            return props;
+        }
+        return null;
+    }
+
+    /**
+     * Sets the layout elements to the login window and returns a hash map of the components.
+     *
+     * @return HashMap<String, JComponent> containing login window components.
+     */
+    private HashMap<String, JComponent> makelayout() {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         int width = 10;
@@ -105,22 +131,14 @@ public class Login extends JPanel {
         horisontalStrut(width, gridy, c);
         gridy++;
 
-        int result = JOptionPane.showConfirmDialog(null, this, "Please login to proceed", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            this.loginInformation.setProperty("canceled", "0");
-            this.loginInformation.setProperty("user-name", userText.getText());
-            char[] password = passwordText.getPassword();
-            this.loginInformation.setProperty("password", String.valueOf(password));
-            this.loginInformation.setProperty("db-name", dbName.getText());
-            this.loginInformation.setProperty("db-hostname", dbHostname.getText());
-            this.loginInformation.setProperty("db-port", dbPort.getText());
-            return this.loginInformation;
-        } else if (result == JOptionPane.CANCEL_OPTION) {
-            Properties props = new Properties();
-            props.setProperty("canceled", "1");
-            return props;
-        }
-        return null;
+        HashMap<String, JComponent> components = new HashMap<>();
+        components.put("username", userText);
+        components.put("password", passwordText);
+        components.put("db-hostname", dbHostname);
+        components.put("db-name", dbName);
+        components.put("db-port", dbPort);
+
+        return components;
     }
 
     /**

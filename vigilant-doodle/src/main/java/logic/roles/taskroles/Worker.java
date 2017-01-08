@@ -18,7 +18,7 @@ public class Worker extends Role {
 
     /**
      * Passes the user to the superclass and initializes the task with given task.
-     * Initializes new ArrayList<Job> to hold workers future jobs.
+     * Initializes new ArrayList to hold workers future jobs.
      *
      * @param user User to be passed on to superclass.
      * @param task Task to be initialized as the workers task.

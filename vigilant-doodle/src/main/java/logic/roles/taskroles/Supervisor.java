@@ -62,7 +62,7 @@ public class Supervisor extends Worker {
     /**
      * Returns a list containing all the jobs of the supervised task.
      *
-     * @return ArrayList<Job> containing all the jobs of the supervised task.
+     * @return ArrayList containing all the jobs of the supervised task.
      */
     public ArrayList<Job> getJobs() {
         return super.getTask().getJobs();

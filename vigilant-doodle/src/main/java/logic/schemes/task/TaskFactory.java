@@ -12,10 +12,22 @@ public class TaskFactory implements SchemeFactory {
 
     Configuration configuration;
 
+    /**
+     * Initializes the configuration.
+     *
+     * @param configuration new configuration to be used.
+     */
     public TaskFactory(Configuration configuration) {
         this.configuration = configuration;
     }
 
+    /**
+     * Creates a task with name and default description.
+     *
+     * @param taskName String containing name for the new task.
+     *
+     * @return Task containing a name and default description.
+     */
     public Task createTask(String taskName) {
         return new Task(taskName);
     }

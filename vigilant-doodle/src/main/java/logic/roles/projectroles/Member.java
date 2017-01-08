@@ -32,7 +32,7 @@ public class Member extends Role {
     /**
      * Returns a list containing all the members tasks.
      *
-     * @return ArrayList<Task> Tasks assosiated with Member
+     * @return ArrayList Tasks assosiated with Member
      */
     public ArrayList<Scheme> getTasks() {
         return this.tasks;

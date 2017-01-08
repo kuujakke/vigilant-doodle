@@ -59,7 +59,7 @@ public class Task extends Scheme {
     /**
      * Gets a list of worker assigned to the task.
      *
-     * @return ArrayList<Worker> containing assigned to the task
+     * @return ArrayList containing assigned to the task
      */
     public ArrayList<Worker> getWorkers() {
         return this.workers;
@@ -93,7 +93,7 @@ public class Task extends Scheme {
     /**
      * Returns all the jobs associated with the task.
      *
-     * @return ArrayList<Job> containing jobs of the task.
+     * @return ArrayList containing jobs of the task.
      */
     public ArrayList<Job> getJobs() {
         return this.jobs;
