@@ -89,11 +89,9 @@
     </module>
 
     <!-- File Length -->
-<!--
 
     <module name='FileLength'>
         <property name='max' value='200' />
     </module>
--->
 
 </module>
