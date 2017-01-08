@@ -1,6 +1,7 @@
 
 config
 graphic
+logic
 logic.database
 logic.login
 logic.roles
