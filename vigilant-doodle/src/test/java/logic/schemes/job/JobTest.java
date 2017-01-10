@@ -10,7 +10,8 @@ import logic.roles.RoleFactory;
 import logic.login.User;
 import logic.roles.taskroles.Worker;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by kuujakke on 30.12.2016.
@@ -33,38 +34,38 @@ public class JobTest {
     @Test
     public void isDoneAndSetDoneWorkingAsIntended() throws Exception {
         Job job = this.defaultFactory.createJob();
-        assertFalse(job.isDone());
+        assertThat(job.isDone()).isFalse();
         job.setDone();
         Thread.sleep(1);
-        assertTrue(job.isDone());
+        assertThat(job.isDone()).isTrue();
     }
 
     @Test
     public void getAndSetNameWorkingAsIntended() throws Exception {
         Job job = this.defaultFactory.createJob();
-        assertTrue(job.getName().equals(this.defaultFactory.getConfig().getJobName()));
+        assertThat(job.getName().equals(this.defaultFactory.getConfig().getJobName())).isTrue();
         job.setName("TestName");
         assertNotEquals(this.defaultFactory.getConfig().getJobName(), job.getName());
-        assertEquals("TestName", job.getName());
+        assertThat(job.getName()).isEqualTo("TestName");
     }
 
     @Test
     public void getAndSetDescriptionWorkingAsIntended() throws Exception {
         Job job = this.defaultFactory.createJob();
-        assertEquals(this.configuration.getJobDescription(), job.getDescription());
+        assertThat(job.getDescription()).isEqualTo(this.configuration.getJobDescription());
         job.setDescription("TestDescription");
-        assertEquals("TestDescription", job.getDescription());
+        assertThat(job.getDescription()).isEqualTo("TestDescription");
     }
 
     @Test
     public void getAndSetWorkerWorkingAsIntended() throws Exception {
         Job job = this.defaultFactory.createJob();
         Task task = this.defaultFactory.createTask();
-        assertNull(job.getWorker());
+        assertThat(job.getWorker()).isNull();
         Worker worker = defaultFactory.createWorker(task);
         job.setWorker(worker);
-        assertNotNull(job.getWorker());
-        assertTrue(job.getWorker().equals(worker));
+        assertThat(job.getWorker()).isNotNull();
+        assertThat(job.getWorker().equals(worker)).isTrue();
     }
 
 }

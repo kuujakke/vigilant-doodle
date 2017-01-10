@@ -7,7 +7,7 @@ import org.junit.Test;
 import logic.roles.projectroles.Leader;
 import logic.login.User;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 4.1.2017.
@@ -28,7 +28,7 @@ public class RoleFactoryTest {
     @Test
     public void createLeader() throws Exception {
         Leader leader = defaultFactory.createLeader(this.user, this.project);
-        assertTrue(this.user == leader.getUser());
+        assertThat(this.user == leader.getUser()).isTrue();
     }
 
     @Test

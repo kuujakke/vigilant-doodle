@@ -11,7 +11,7 @@ import logic.schemes.task.TaskFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 7.1.2017.
@@ -32,14 +32,14 @@ public class WorkerTest {
         Task task = this.defaultFactory.createTask();
         Worker worker = this.defaultFactory.createWorker(task);
 
-        assertTrue(task.hasWorker(worker));
-        assertEquals(worker.getTask(), task);
+        assertThat(task.hasWorker(worker)).isTrue();
+        assertThat(task).isEqualTo(worker.getTask());
 
         User user = worker.getUser();
         task.removeWorker(worker);
 
-        assertFalse(task.hasWorker(worker));
-        assertFalse(user.allTasks().contains(task));
+        assertThat(task.hasWorker(worker)).isFalse();
+        assertThat(user.allTasks().contains(task)).isFalse();
     }
 
     @Test
@@ -50,7 +50,7 @@ public class WorkerTest {
         task.addJob(job);
 
         job.setWorker(worker);
-        assertTrue(worker.getTask().getJobs().contains(job));
+        assertThat(worker.getTask().getJobs().contains(job)).isTrue();
     }
 
     @Test
@@ -60,7 +60,7 @@ public class WorkerTest {
         worker.addJob(job);
         worker.setJobCompleted(job);
         Thread.sleep(1);
-        assertTrue(job.isDone());
+        assertThat(job.isDone()).isTrue();
     }
 
 }

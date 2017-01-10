@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 27.12.2016.
@@ -33,16 +33,16 @@ public class MemberTest {
     public void getTasks() throws Exception {
         Task task = this.defaultFactory.createTask();
         Member member = this.defaultFactory.createMember(this.project);
-        assertEquals(0, member.getTasks().size());
+        assertThat(member.getTasks()).isEmpty();
 
         member.addResponsibility(task);
-        assertTrue(member.getTasks().contains(task));
+        assertThat(member.getTasks().contains(task)).isTrue();
     }
 
     @Test
     public void getProjectWorkingAsIntended() throws Exception {
         Member member = this.defaultFactory.createMember(this.project);
-        assertEquals(this.project, member.getProject());
+        assertThat(member.getProject()).isEqualTo(this.project);
     }
 
 }

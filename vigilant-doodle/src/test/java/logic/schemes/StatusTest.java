@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 2.1.2017.
@@ -24,54 +24,54 @@ public class StatusTest {
 
     @Test
     public void setGetNameWorkingAsIntended() throws Exception {
-        assertNull(this.status.getName());
+        assertThat(this.status.getName()).isNull();
         this.status.setName("Test");
-        assertEquals("Test", this.status.getName());
+        assertThat(this.status.getName()).isEqualTo("Test");
     }
 
     @Test
     public void setGetDescriptionWorkingAsIntended() throws Exception {
-        assertNull(this.status.getDescription());
+        assertThat(this.status.getDescription()).isNull();
         this.status.setDescription("Test");
-        assertEquals("Test", this.status.getDescription());
+        assertThat(this.status.getDescription()).isEqualTo("Test");
     }
 
     @Test
     public void toStringWorkingAsIntended() throws Exception {
         this.status.setName("Test");
         this.status.setDescription("Test");
-        assertEquals("Nimi: Test\nKuvaus: Test", this.status.toString());
+        assertThat(this.status.toString()).isEqualTo("Nimi: Test\nKuvaus: Test");
     }
 
     @Test
     public void getStartTimeWorkingAsIntended() throws Exception {
-        assertNotNull(this.status.getStartTime());
+        assertThat(this.status.getStartTime()).isNotNull();
         this.testStartTime = LocalDateTime.now();
-        assertEquals(this.testStartTime, this.status.getStartTime());
+        assertThat(this.status.getStartTime()).isEqualTo(this.testStartTime);
     }
 
     @Test
     public void getSetDeadlineWorkingAsIntended() throws Exception {
-        assertNull(this.status.getDeadline());
+        assertThat(this.status.getDeadline()).isNull();
         LocalDateTime testDeadline = LocalDateTime.now().plusHours(1);
         this.status.setDeadline(testDeadline);
-        assertEquals(testDeadline, this.status.getDeadline());
+        assertThat(this.status.getDeadline()).isEqualTo(testDeadline);
     }
 
     @Test
     public void isSetDoneWorkingAsIntended() throws Exception {
-        assertFalse(this.status.isDone());
+        assertThat(this.status.isDone()).isFalse();
         LocalDateTime testTime = LocalDateTime.now();
         this.status.setDone();
-        assertEquals(testTime, this.status.getCompleted());
+        assertThat(this.status.getCompleted()).isEqualTo(testTime);
     }
 
     @Test
     public void getSetExpectedDoneWorkingAsIntended() throws Exception {
-        assertNull(this.status.getExpectedDone());
+        assertThat(this.status.getExpectedDone()).isNull();
         LocalDateTime testTime = LocalDateTime.now();
         this.status.setExpectedDone(testTime);
-        assertEquals(testTime, this.status.getExpectedDone());
+        assertThat(this.status.getExpectedDone()).isEqualTo(testTime);
     }
 
 }

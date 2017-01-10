@@ -7,7 +7,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.Properties;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 4.1.2017.
@@ -27,17 +27,17 @@ public class ConfigurationTest {
     @Test
     public void loadDefaults() {
         Properties defaults = this.config.loadDefaults();
-        assertEquals(DefaultSettings.PROJECT_NAME.toString(), defaults.getProperty("project-name"));
-        assertEquals(DefaultSettings.PROJECT_DESCRIPTION.toString(), defaults.getProperty("project-description"));
-        assertEquals(DefaultSettings.TASK_NAME.toString(), defaults.getProperty("task-name"));
-        assertEquals(DefaultSettings.TASK_DESCRIPTION.toString(), defaults.getProperty("task-description"));
-        assertEquals(DefaultSettings.JOB_NAME.toString(), defaults.getProperty("job-name"));
-        assertEquals(DefaultSettings.JOB_DESCRIPTION.toString(), defaults.getProperty("job-description"));
-        assertEquals(DefaultSettings.CONFIG_FILE.toString(), defaults.getProperty("config-file"));
-        assertEquals(DefaultSettings.ROLE_DESCRIPTION.toString(), defaults.getProperty("role-description"));
-        assertEquals(DefaultSettings.UI_TITLE.toString(), defaults.getProperty("ui-title"));
-        assertEquals(DefaultSettings.UI_HEIGHT.toString(), defaults.getProperty("ui-height"));
-        assertEquals(DefaultSettings.UI_WIDTH.toString(), defaults.getProperty("ui-width"));
+        assertThat(defaults.getProperty("project-name")).isEqualTo(DefaultSettings.PROJECT_NAME.toString());
+        assertThat(defaults.getProperty("project-description")).isEqualTo(DefaultSettings.PROJECT_DESCRIPTION.toString());
+        assertThat(defaults.getProperty("task-name")).isEqualTo(DefaultSettings.TASK_NAME.toString());
+        assertThat(defaults.getProperty("task-description")).isEqualTo(DefaultSettings.TASK_DESCRIPTION.toString());
+        assertThat(defaults.getProperty("job-name")).isEqualTo(DefaultSettings.JOB_NAME.toString());
+        assertThat(defaults.getProperty("job-description")).isEqualTo(DefaultSettings.JOB_DESCRIPTION.toString());
+        assertThat(defaults.getProperty("config-file")).isEqualTo(DefaultSettings.CONFIG_FILE.toString());
+        assertThat(defaults.getProperty("role-description")).isEqualTo(DefaultSettings.ROLE_DESCRIPTION.toString());
+        assertThat(defaults.getProperty("ui-title")).isEqualTo(DefaultSettings.UI_TITLE.toString());
+        assertThat(defaults.getProperty("ui-height")).isEqualTo(DefaultSettings.UI_HEIGHT.toString());
+        assertThat(defaults.getProperty("ui-width")).isEqualTo(DefaultSettings.UI_WIDTH.toString());
     }
 
     @Test
@@ -46,33 +46,33 @@ public class ConfigurationTest {
         this.config.setProjectName("Test");
         this.config.save();
         this.config.load();
-        assertEquals("Test", config.getProjectName());
+        assertThat(config.getProjectName()).isEqualTo("Test");
         this.config.setProjectDescription("A project for testing purposes.");
         this.config.save();
         this.config.load();
-        assertEquals("A project for testing purposes.", config.getProjectDescription());
+        assertThat(config.getProjectDescription()).isEqualTo("A project for testing purposes.");
         File f = new File(DefaultSettings.CONFIG_FILE.toString());
-        assertTrue(f.exists());
+        assertThat(f.exists()).isTrue();
     }
     @Test
     public void getPropertyTest() {
-        assertEquals(DefaultSettings.PROJECT_NAME.toString(), config.getProjectName());
-        assertEquals(DefaultSettings.PROJECT_DESCRIPTION.toString(), config.getProjectDescription());
-        assertEquals(DefaultSettings.TASK_NAME.toString(), config.getTaskName());
-        assertEquals(DefaultSettings.TASK_DESCRIPTION.toString(), config.getTaskDescription());
-        assertEquals(DefaultSettings.JOB_NAME.toString(), config.getJobName());
-        assertEquals(DefaultSettings.JOB_DESCRIPTION.toString(), config.getJobDescription());
-        assertEquals(DefaultSettings.CONFIG_FILE.toString(), config.getConfigFile());
-        assertEquals(DefaultSettings.ROLE_DESCRIPTION.toString(), config.getRoleDescription());
-        assertEquals(DefaultSettings.UI_TITLE.toString(), config.getUITitle());
-        assertEquals(Integer.parseInt(DefaultSettings.UI_HEIGHT.toString()), config.getUIHeight());
-        assertEquals(Integer.parseInt(DefaultSettings.UI_WIDTH.toString()), config.getUIWidth());
+        assertThat(config.getProjectName()).isEqualTo(DefaultSettings.PROJECT_NAME.toString());
+        assertThat(config.getProjectDescription()).isEqualTo(DefaultSettings.PROJECT_DESCRIPTION.toString());
+        assertThat(config.getTaskName()).isEqualTo(DefaultSettings.TASK_NAME.toString());
+        assertThat(config.getTaskDescription()).isEqualTo(DefaultSettings.TASK_DESCRIPTION.toString());
+        assertThat(config.getJobName()).isEqualTo(DefaultSettings.JOB_NAME.toString());
+        assertThat(config.getJobDescription()).isEqualTo(DefaultSettings.JOB_DESCRIPTION.toString());
+        assertThat(config.getConfigFile()).isEqualTo(DefaultSettings.CONFIG_FILE.toString());
+        assertThat(config.getRoleDescription()).isEqualTo(DefaultSettings.ROLE_DESCRIPTION.toString());
+        assertThat(config.getUITitle()).isEqualTo(DefaultSettings.UI_TITLE.toString());
+        assertThat(config.getUIHeight()).isEqualTo(Integer.parseInt(DefaultSettings.UI_HEIGHT.toString()));
+        assertThat(config.getUIWidth()).isEqualTo(Integer.parseInt(DefaultSettings.UI_WIDTH.toString()));
     }
      @Test
     public void clear() {
         this.config.clear();
         File config = new File(DefaultSettings.CONFIG_FILE.toString());
-        assertFalse(config.exists());
+        assertThat(config.exists()).isFalse();
      }
 
 }

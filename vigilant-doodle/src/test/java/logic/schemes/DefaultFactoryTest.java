@@ -6,7 +6,7 @@ import logic.schemes.project.Project;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 4.1.2017.
@@ -25,7 +25,7 @@ public class DefaultFactoryTest {
     @Test
     public void createProject() throws Exception {
         Project project = this.defaultFactory.createProject();
-        assertEquals(this.config.getProjectName(), project.getName());
+        assertThat(project.getName()).isEqualTo(this.config.getProjectName());
     }
 
     @Test

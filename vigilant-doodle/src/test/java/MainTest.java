@@ -17,7 +17,7 @@ import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
 import static org.assertj.swing.launcher.ApplicationLauncher.application;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 9.1.2017.
@@ -55,7 +55,7 @@ public class MainTest extends AssertJSwingJUnitTestCase {
 
     @Test
     public void validateProps() throws Exception {
-
+        window.table().requireRowCount(1);
     }
 
 }

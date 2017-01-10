@@ -10,7 +10,7 @@ import logic.roles.projectroles.Member;
 import logic.roles.RoleFactory;
 import logic.login.User;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 30.12.2016.
@@ -38,13 +38,13 @@ public class ProjectFactoryTest {
     @Test
     public void manufactureMember() throws Exception {
         Member member = this.roleFactory.createMember(this.user, this.project);
-        assertEquals(this.user, member.getUser());
+        assertThat(member.getUser()).isEqualTo(this.user);
     }
 
     @Test
     public void manufactureLeader() throws Exception {
         Leader leader = this.roleFactory.createLeader(this.user, this.project);
-        assertEquals(this.user, leader.getUser());
+        assertThat(leader.getUser()).isEqualTo(this.user);
     }
 
 }

@@ -9,7 +9,7 @@ import logic.roles.projectroles.Leader;
 import logic.roles.projectroles.Member;
 import logic.login.User;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 27.12.2016.
@@ -32,62 +32,62 @@ public class ProjectTest {
 
     @Test
     public void toStringWorkingAsIntended() throws Exception {
-        assertNotNull(this.project.toString());
+        assertThat(this.project.toString()).isNotNull();
     }
 
     @Test
     public void addGetRemoveTaskWorkingAsIntended() throws Exception {
         Task task = this.defaultFactory.createTask();
         this.project.addTask(task);
-        assertEquals(1, this.project.getTasks().size());
-        assertTrue(this.project.getTasks().contains(task));
+        assertThat(this.project.getTasks()).hasSize(1);
+        assertThat(this.project.getTasks().contains(task)).isTrue();
         this.project.addTask(this.defaultFactory.createTask());
         this.project.addTask(this.defaultFactory.createTask());
-        assertEquals(3, this.project.getTasks().size());
+        assertThat(this.project.getTasks()).hasSize(3);
         this.project.addTask(task);
-        assertEquals(3, this.project.getTasks().size());
+        assertThat(this.project.getTasks()).hasSize(3);
         this.project.deleteTask(task);
-        assertEquals(2, this.project.tasks.size());
-        assertFalse(this.project.tasks.contains(task));
+        assertThat(this.project.tasks).hasSize(2);
+        assertThat(this.project.tasks.contains(task)).isFalse();
     }
 
     @Test
     public void getAddRemoveMemberWorkingAsIntended() throws Exception {
-        assertEquals(0, this.project.getMembers().size());
-        assertNotNull(this.project.getMembers());
+        assertThat(this.project.getMembers()).isEmpty();
+        assertThat(this.project.getMembers()).isNotNull();
         User user1 = this.defaultFactory.createUser();
         User user2 = this.defaultFactory.createUser();
         Member member1 = this.defaultFactory.createMember(user1, this.project);
         Member member2 = this.defaultFactory.createMember(user2, this.project);
 
-        assertEquals(2, this.project.getMembers().size());
-        assertTrue(this.project.hasMember(member1));
-        assertTrue(this.project.hasMember(member2));
+        assertThat(this.project.getMembers()).hasSize(2);
+        assertThat(this.project.hasMember(member1)).isTrue();
+        assertThat(this.project.hasMember(member2)).isTrue();
 
         this.project.removeMember(member1);
-        assertEquals(1, this.project.getMembers().size());
-        assertTrue(this.project.hasMember(member2));
-        assertFalse(this.project.hasMember(member1));
+        assertThat(this.project.getMembers()).hasSize(1);
+        assertThat(this.project.hasMember(member2)).isTrue();
+        assertThat(this.project.hasMember(member1)).isFalse();
     }
 
     @Test
     public void getAddRemoveLeaderWorkingAsIntended() throws Exception {
-        assertNotNull(this.project.getLeaders());
-        assertEquals(0, this.project.getLeaders().size());
+        assertThat(this.project.getLeaders()).isNotNull();
+        assertThat(this.project.getLeaders()).isEmpty();
 
         User user1 = this.defaultFactory.createUser();
         User user2 = this.defaultFactory.createUser();
         Leader leader1 = this.defaultFactory.createLeader(user1, this.project);
         Leader leader2 = this.defaultFactory.createLeader(user2, this.project);
 
-        assertTrue(this.project.hasLeader(leader1));
-        assertTrue(this.project.hasLeader(leader2));
-        assertEquals(2, this.project.getLeaders().size());
+        assertThat(this.project.hasLeader(leader1)).isTrue();
+        assertThat(this.project.hasLeader(leader2)).isTrue();
+        assertThat(this.project.getLeaders()).hasSize(2);
 
         this.project.removeLeader(leader1);
-        assertFalse(this.project.hasLeader(leader1));
-        assertEquals(1, this.project.getLeaders().size());
-        assertTrue(this.project.hasLeader(leader2));
+        assertThat(this.project.hasLeader(leader1)).isFalse();
+        assertThat(this.project.getLeaders()).hasSize(1);
+        assertThat(this.project.hasLeader(leader2)).isTrue();
     }
 
 }

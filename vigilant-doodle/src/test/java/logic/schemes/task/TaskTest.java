@@ -10,7 +10,7 @@ import logic.roles.taskroles.Supervisor;
 import logic.login.User;
 import logic.roles.taskroles.Worker;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by kuujakke on 30.12.2016.
@@ -32,52 +32,52 @@ public class TaskTest {
 
     @Test
     public void getSetDescriptionWorkingAsIntended() throws Exception {
-        assertEquals(this.configuration.getTaskDescription(), this.task.getDescription());
+        assertThat(this.task.getDescription()).isEqualTo(this.configuration.getTaskDescription());
         this.task.setDescription("TestDescription");
-        assertEquals("TestDescription", this.task.getDescription());
+        assertThat(this.task.getDescription()).isEqualTo("TestDescription");
     }
 
     @Test
     public void getSetSupervisorWorkingAsIntended() throws Exception {
-        assertNull(this.task.getSupervisor());
+        assertThat(this.task.getSupervisor()).isNull();
         Supervisor supervisor = this.defaultFactory.createSupervisor(this.user, this.task);
         this.task.setSupervisor(supervisor);
-        assertTrue(this.task.getSupervisor().equals(supervisor));
+        assertThat(this.task.getSupervisor().equals(supervisor)).isTrue();
     }
 
     @Test
     public void getAddRemoveWorkersWorkingAsIntended() throws Exception {
-        assertNotNull(this.task.getWorkers());
-        assertEquals(0, this.task.getWorkers().size());
+        assertThat(this.task.getWorkers()).isNotNull();
+        assertThat(this.task.getWorkers()).isEmpty();
         Worker worker = this.defaultFactory.createWorker(this.task);
         this.task.addWorker(worker);
-        assertEquals(1, this.task.getWorkers().size());
-        assertTrue(this.task.getWorkers().contains(worker));
-        assertTrue(worker.hasScheme(this.task));
+        assertThat(this.task.getWorkers()).hasSize(1);
+        assertThat(this.task.getWorkers().contains(worker)).isTrue();
+        assertThat(worker.hasScheme(this.task)).isTrue();
         this.task.removeWorker(worker);
-        assertEquals(0, this.task.getWorkers().size());
-        assertFalse(this.task.getWorkers().contains(worker));
-        assertFalse(worker.getUser().hasRole(worker));
+        assertThat(this.task.getWorkers()).isEmpty();
+        assertThat(this.task.getWorkers().contains(worker)).isFalse();
+        assertThat(worker.getUser().hasRole(worker)).isFalse();
     }
 
     @Test
     public void getAddRemoveJobsWorkingAsIntended() throws Exception {
-        assertNotNull(this.task.getJobs());
-        assertEquals(0, this.task.getJobs().size());
+        assertThat(this.task.getJobs()).isNotNull();
+        assertThat(this.task.getJobs()).isEmpty();
         Job job = new Job("TestJob");
         this.task.addJob(job);
-        assertTrue(this.task.getJobs().contains(job));
-        assertEquals(1, this.task.getJobs().size());
+        assertThat(this.task.getJobs().contains(job)).isTrue();
+        assertThat(this.task.getJobs()).hasSize(1);
         this.task.removeJob(job);
-        assertFalse(this.task.getJobs().contains(job));
-        assertEquals(0, this.task.getJobs().size());
+        assertThat(this.task.getJobs().contains(job)).isFalse();
+        assertThat(this.task.getJobs()).isEmpty();
     }
 
     @Test
     public void isDoneWorkingAsIntended() throws Exception {
-        assertTrue(this.task.isDone());
+        assertThat(this.task.isDone()).isTrue();
         this.task.addJob(new Job("TestJob"));
-        assertFalse(this.task.isDone());
+        assertThat(this.task.isDone()).isFalse();
     }
 
 }
