@@ -74,7 +74,6 @@ public class Login extends JPanel {
         if (validStrings == props.size()) {
             try {
                 this.db = new Database(props).getDatabase();
-                System.out.println(db.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -86,6 +85,5 @@ public class Login extends JPanel {
     public Datastore getDatabase() {
         return this.db;
     }
-
 
 }

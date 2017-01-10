@@ -43,7 +43,11 @@ public class MainTest extends AssertJSwingJUnitTestCase {
     }
 
     @Test
-    public void getLoginInformation() throws Exception {
+    public void testProjectSaving() throws Exception {
+        login();
+    }
+
+    public void login() {
         window.textBox("username").requireEmpty();
         window.textBox("username").enterText(this.configuration.getDBUser());
         window.textBox("password").enterText(this.configuration.getDBpassword());
@@ -51,11 +55,6 @@ public class MainTest extends AssertJSwingJUnitTestCase {
         window.textBox("db-hostname").enterText(this.configuration.getDBHostname());
         window.textBox("db-port").enterText(this.configuration.getDBPort());
         window.button("OK").click();
-    }
-
-    @Test
-    public void validateProps() throws Exception {
-        window.table().requireRowCount(1);
     }
 
 }

@@ -8,6 +8,7 @@ import logic.schemes.task.Task;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -43,6 +44,26 @@ public class MemberTest {
     public void getProjectWorkingAsIntended() throws Exception {
         Member member = this.defaultFactory.createMember(this.project);
         assertThat(member.getProject()).isEqualTo(this.project);
+    }
+
+    @Test
+    public void setProjectWorkingAsIntended() {
+        Member member = this.defaultFactory.createMember(this.project);
+        Project project = this.defaultFactory.createProject();
+        member.setProject(project);
+        assertThat(member.getProject()).isSameAs(project);
+        assertThat(this.project.hasMember(member)).isFalse();
+        assertThat(project.hasMember(member)).isTrue();
+    }
+
+    @Test
+    public void removeResponsibilityWorkingAsIntended() {
+        Member member = this.defaultFactory.createMember(this.project);
+        Task task = this.defaultFactory.createTask();
+        member.addResponsibility(task);
+        assertThat(member.hasResponsibility(task)).isTrue();
+        member.removeResponsibility(task);
+        assertThat(member.hasResponsibility(task)).isFalse();
     }
 
 }

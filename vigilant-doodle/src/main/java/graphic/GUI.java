@@ -19,7 +19,6 @@ public class GUI implements Runnable, ComponentListener {
     private LoginPanel loginPanel;
     private UserPanel userPanel;
     private JFrame frame;
-
     /**
      * Initializes the configuration variable with the configuration passed in.
      */
@@ -35,6 +34,7 @@ public class GUI implements Runnable, ComponentListener {
 
         this.loginPanel = new LoginPanel();
         frame.add(this.loginPanel);
+        frame.setSize(600, 200);
         frame.setVisible(true);
 
         this.loginPanel.addComponentListener(this);
@@ -75,9 +75,11 @@ public class GUI implements Runnable, ComponentListener {
     @Override
     public void componentHidden(ComponentEvent e) {
         this.login = this.loginPanel.getLogin();
-        System.out.println(login);
+        this.frame.removeAll();
+        this.loginPanel.removeAll();
+        initUI(this.frame);
         this.userPanel = new UserPanel(this.login.getDatabase());
-        userPanel.makeLayout();
+        this.userPanel.makeLayout();
         this.frame.add(this.userPanel);
         this.frame.setVisible(true);
     }

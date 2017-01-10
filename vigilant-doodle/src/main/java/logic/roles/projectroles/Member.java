@@ -53,7 +53,7 @@ public class Member extends Role {
      * @param project Project to add the member to.
      */
     public void setProject(Project project) {
-        project.removeMember(this);
+        this.project.removeMember(this);
         this.project = project;
         this.project.addMember(this);
     }
@@ -65,13 +65,13 @@ public class Member extends Role {
 
     @Override
     public void removeResponsibility(Scheme scheme) {
-        if (this.getTasks().contains(scheme)) {
+        if (hasResponsibility(scheme)) {
             this.tasks.remove(scheme);
         }
     }
 
     @Override
     public boolean hasResponsibility(Scheme scheme) {
-        return this.project.hasScheme(scheme);
+        return this.tasks.contains(scheme);
     }
 }

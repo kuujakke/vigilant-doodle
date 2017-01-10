@@ -7,6 +7,9 @@ import org.junit.Before;
 import logic.roles.projectroles.Leader;
 import logic.roles.RoleFactory;
 import logic.login.User;
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by kuujakke on 27.12.2016.
@@ -30,6 +33,14 @@ public class LeaderTest {
                 this.configuration.getUserName(),
                 this.configuration.getUserPassword());
         this.leader = this.roleFactory.createLeader(this.user, this.project);
+    }
+
+    @Test
+    public void setProject() {
+        assertThat(this.leader.getProject()).isSameAs(this.project);
+        Project project = this.projectFactory.createScheme();
+        this.leader.setProject(project);
+        assertThat(this.leader.getProject()).isSameAs(project);
     }
 
 }
