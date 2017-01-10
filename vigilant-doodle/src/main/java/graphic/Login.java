@@ -67,9 +67,7 @@ public class Login extends JPanel {
     public boolean validateCredentials(Properties props) {
         int validStrings = 0;
         for (String prop : props.stringPropertyNames()) {
-            if (props.getProperty("canceled").equals("1")) {
-                return false;
-            } else if (props.getProperty(prop).length() > 2) {
+            if (props.getProperty(prop).length() > 2) {
                 validStrings++;
             }
         }
@@ -83,6 +81,10 @@ public class Login extends JPanel {
             return true;
         }
         return false;
+    }
+
+    public Datastore getDatabase() {
+        return this.db;
     }
 
 

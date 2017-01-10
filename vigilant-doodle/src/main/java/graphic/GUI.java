@@ -6,37 +6,38 @@ import config.DefaultSettings;
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Properties;
 
 /**
  * Graphical User Interface for the application.
  */
-public class GUI implements Runnable, ActionListener {
+public class GUI implements Runnable, ComponentListener {
 
     Configuration config;
     private Login login;
+    private LoginPanel loginPanel;
+    private UserPanel userPanel;
+    private JFrame frame;
 
     /**
      * Initializes the configuration variable with the configuration passed in.
      */
     @Override
     public void run() {
-        JFrame frame = new JFrame();
+        this.frame = new JFrame();
         try {
             this.config = new Configuration();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        initUI(frame);
+        initUI(this.frame);
 
-        LoginPanel loginPanel = new LoginPanel();
-        frame.add(loginPanel);
+        this.loginPanel = new LoginPanel();
+        frame.add(this.loginPanel);
         frame.setVisible(true);
 
-        this.login = loginPanel.getLogin();
-
+        this.loginPanel.addComponentListener(this);
         /*
         EventQueue.invokeLater(this.login = new Login());
         Properties credentials = login.getLoginInformation();
@@ -57,7 +58,27 @@ public class GUI implements Runnable, ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void componentResized(ComponentEvent e) {
 
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentShown(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent e) {
+        this.login = this.loginPanel.getLogin();
+        System.out.println(login);
+        this.userPanel = new UserPanel(this.login.getDatabase());
+        userPanel.makeLayout();
+        this.frame.add(this.userPanel);
+        this.frame.setVisible(true);
     }
 }

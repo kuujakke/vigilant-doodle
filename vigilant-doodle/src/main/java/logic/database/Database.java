@@ -36,7 +36,7 @@ public class Database {
      */
     public MongoClient connection() {
         MongoCredential credentials = MongoCredential.createCredential(
-                properties.getProperty("user-name"),
+                properties.getProperty("username"),
                 properties.getProperty("db-name"),
                 properties.getProperty("password").toCharArray());
         MongoClientOptions options = MongoClientOptions.builder().sslEnabled(true).build();

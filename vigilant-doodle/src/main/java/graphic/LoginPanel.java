@@ -156,6 +156,7 @@ public class LoginPanel extends JPanel implements ActionListener {
         properties.setProperty("db-hostname", this.dbHostname.getText());
         properties.setProperty("db-name", this.dbName.getText());
         properties.setProperty("db-port", this.dbPort.getText());
+        this.setVisible(false);
     }
 
     public Login getLogin() {
