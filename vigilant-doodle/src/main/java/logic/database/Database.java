@@ -1,13 +1,12 @@
 package logic.database;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientOptions;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
-import com.mongodb.client.MongoDatabase;
-import config.Configuration;
+import com.mongodb.*;
+
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
 
 import java.util.Arrays;
+
 import java.util.Properties;
 
 /**
@@ -17,6 +16,7 @@ import java.util.Properties;
 public class Database {
 
     private Properties properties;
+    final Morphia morphia = new Morphia();
 
     /**
      * Initializes the class variable with passed in Properties object.
@@ -25,6 +25,7 @@ public class Database {
      */
     public Database(Properties properties) {
         this.properties = properties;
+        this.morphia.mapPackage("fi.jk.vigilant-doodle");
     }
 
     /**
@@ -39,17 +40,24 @@ public class Database {
                 properties.getProperty("db-name"),
                 properties.getProperty("password").toCharArray());
         MongoClientOptions options = MongoClientOptions.builder().sslEnabled(true).build();
-        return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);
+        try {
+            return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
      * Gets the database by name set in the properties by using a database connection
      * passed from connection() method.
      *
-     * @return MongoDatabase object to be used in database transactions.
+     * @return Datastore object to be used in database transactions.
      */
-    public MongoDatabase getDatabase() {
-        return connection().getDatabase(this.properties.getProperty("db-name"));
+    public Datastore getDatabase() {
+        final Datastore datastore = morphia.createDatastore(connection(), properties.getProperty("db-name"));
+        datastore.ensureIndexes();
+        return datastore;
     }
 
 }

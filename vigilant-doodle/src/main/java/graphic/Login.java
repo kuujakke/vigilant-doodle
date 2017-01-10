@@ -1,23 +1,26 @@
 package graphic;
 
+import logic.database.Database;
+import org.mongodb.morphia.Datastore;
+
 import javax.swing.*;
-import java.awt.*;
-import java.util.HashMap;
 import java.util.Properties;
 
 /**
- * This class is used to popup a window to ask for user login information.
+ * This class is used to hold user login information.
  */
-
 public class Login extends JPanel {
 
     Properties loginInformation;
+    private Datastore db;
 
     /**
      * Initiates the Properties object to be used later on.
+     *
+     * @param properties object containing the login information.
      */
-    public Login() {
-        this.loginInformation = new Properties();
+    public Login(Properties properties) {
+        this.loginInformation = properties;
     }
 
     /**
@@ -29,8 +32,8 @@ public class Login extends JPanel {
      *
      * @return Properties object containing users login information.
      */
-    public Properties getLoginInformation() {
-        HashMap<String, JComponent> components = makelayout();
+/*    public Properties getLoginInformation() {
+        HashMap<String, JComponent> components = makeLayout();
         int result = JOptionPane.showConfirmDialog(null, this, "Please login to proceed", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             this.loginInformation.setProperty("canceled", "0");
@@ -47,112 +50,10 @@ public class Login extends JPanel {
             return props;
         }
         return null;
-    }
+    }*/
 
-    /**
-     * Sets the layout elements to the login window and returns a hash map of the components.
-     *
-     * @return HashMap<String, JComponent> containing login window components.
-     */
-    private HashMap<String, JComponent> makelayout() {
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        int width = 10;
-        int gridy = 0;
-        int gridx = 0;
 
-        JLabel userLabel = new JLabel("Username: ");
-        setConstraints(c, gridx % 2, gridy);
-        add(userLabel, c);
-        gridx++;
 
-        JTextField userText = new JTextField(20);
-        setConstraints(c, gridx % 2, gridy);
-        add(userText, c);
-        gridx++;
-
-        gridy++;
-        horisontalStrut(2, gridy, c);
-        gridy++;
-
-        JLabel passwordLabel = new JLabel("Password: ");
-        setConstraints(c, gridx % 2, gridy);
-        add(passwordLabel, c);
-        gridx++;
-
-        JPasswordField passwordText = new JPasswordField(20);
-        setConstraints(c, gridx % 2, gridy);
-        add(passwordText, c);
-        gridx++;
-
-        gridy++;
-        horisontalStrut(width, gridy, c);
-        gridy++;
-
-        JLabel dbNameLabel = new JLabel("Database name: ");
-        setConstraints(c, gridx % 2, gridy);
-        add(dbNameLabel, c);
-        gridx++;
-
-        JTextField dbName = new JTextField(20);
-        setConstraints(c, gridx % 2, gridy);
-        add(dbName, c);
-        gridx++;
-
-        gridy++;
-        horisontalStrut(2, gridy, c);
-        gridy++;
-
-        JLabel dbHostnameLabel = new JLabel("Database hostname: ");
-        setConstraints(c, gridx % 2, gridy);
-        add(dbHostnameLabel, c);
-        gridx++;
-
-        JTextField dbHostname = new JTextField(20);
-        setConstraints(c, gridx % 2, gridy);
-        add(dbHostname, c);
-        gridx++;
-
-        gridy++;
-        horisontalStrut(2, gridy, c);
-        gridy++;
-
-        JLabel dbPortLabel = new JLabel("Database port: ");
-        setConstraints(c, gridx % 2, gridy);
-        add(dbPortLabel, c);
-        gridx++;
-
-        JTextField dbPort = new JTextField(20);
-        setConstraints(c, gridx % 2, gridy);
-        add(dbPort, c);
-        gridx++;
-
-        gridy++;
-        horisontalStrut(width, gridy, c);
-        gridy++;
-
-        HashMap<String, JComponent> components = new HashMap<>();
-        components.put("username", userText);
-        components.put("password", passwordText);
-        components.put("db-hostname", dbHostname);
-        components.put("db-name", dbName);
-        components.put("db-port", dbPort);
-
-        return components;
-    }
-
-    /**
-     * Sets basic constraints for given position in the GridBagLayout.
-     * @param c GridBagConstraints
-     * @param gridx Grid X coordinate
-     * @param gridy Grid Y coordinate
-     */
-    private void setConstraints(GridBagConstraints c, int gridx, int gridy) {
-        c.fill = GridBagConstraints.CENTER;
-        c.weightx = 0.5;
-        c.gridx = gridx;
-        c.gridy = gridy;
-    }
 
     /**
      * Validates the information that user has given.
@@ -160,9 +61,10 @@ public class Login extends JPanel {
      * the validation by checking that each property has a minimum length of 3 characters.
      *
      * @param props The Properties object which has the users input stored.
+     *
      * @return a truth value whether the input is valid or not.
      */
-    public boolean validateProps(Properties props) {
+    public boolean validateCredentials(Properties props) {
         int validStrings = 0;
         for (String prop : props.stringPropertyNames()) {
             if (props.getProperty("canceled").equals("1")) {
@@ -171,24 +73,17 @@ public class Login extends JPanel {
                 validStrings++;
             }
         }
-        if (validStrings == 5) {
+        if (validStrings == props.size()) {
+            try {
+                this.db = new Database(props).getDatabase();
+                System.out.println(db.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return true;
         }
         return false;
     }
 
-    /**
-     * Creates horisontal strut to the grid at given gridy value.
-     *
-     * @param width Set width of the strut.
-     * @param gridy Set the grid position of the strut.
-     * @param c     GridBagConstraints
-     */
-    private void horisontalStrut(int width, int gridy, GridBagConstraints c) {
-        c.fill = GridBagConstraints.CENTER;
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = gridy;
-        add(Box.createVerticalStrut(width), c);
-    }
+
 }

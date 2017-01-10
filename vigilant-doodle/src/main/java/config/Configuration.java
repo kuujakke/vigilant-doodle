@@ -31,6 +31,14 @@ public class Configuration {
         }
     }
 
+    public Configuration(String filename) throws Exception {
+        try {
+            load(filename);
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException(filename + " not found!");
+        }
+    }
+
     /**
      * A method loads application settings file from the application root folder
      * into a new Properties object. If settings file is not found the method loads
@@ -46,6 +54,32 @@ public class Configuration {
         if (config.exists()) {
             try {
                 input = new FileInputStream(DefaultSettings.CONFIG_FILE.toString());
+                loadedProperties.load(input);
+            } catch (IOException e) {
+                throw new FileNotFoundException(e.getLocalizedMessage());
+            }
+        } else {
+            loadedProperties = loadDefaults();
+            this.properties = loadedProperties;
+            save();
+        }
+        this.properties = loadedProperties;
+    }
+    /**
+     * A method loads application settings file from the application root folder
+     * into a new Properties object. If settings file is not found the method loads
+     * default settings and writes a new configuration file with the hard-coded default
+     * values. This is useful when running this application on a new computer for the first time.
+     *
+     * @throws Exception FileNotFoundException if the config file was not found.
+     */
+    public void load(String filename) throws Exception {
+        Properties loadedProperties = new Properties();
+        InputStream input = null;
+        File config = new File(filename);
+        if (config.exists()) {
+            try {
+                input = new FileInputStream(filename);
                 loadedProperties.load(input);
             } catch (IOException e) {
                 throw new FileNotFoundException(e.getLocalizedMessage());
@@ -356,8 +390,8 @@ public class Configuration {
      *
      * @return String containing property value.
      */
-    public int getDBPort() {
-        return Integer.parseInt(this.properties.getProperty("db-port"));
+    public String getDBPort() {
+        return this.properties.getProperty("db-port");
     }
 
     /**
