@@ -95,7 +95,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.5.0</version>
@@ -111,7 +111,7 @@
                 <configuration>
                     <executable>${basedir}/scripts/mv-site.sh</executable>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -125,7 +125,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>fi.jk.vigilant-doodle.Main.class</mainClass>
+                                    <mainClass>fi.jk.vigilant-doodle.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
