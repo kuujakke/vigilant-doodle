@@ -1,3 +1,5 @@
+# Rakennekuvaus #
+
 ## Schemes ##
 
 Abstrakti luokka jonka jokainen projekti, tehtävä ja työtehtävä perii. Sisältää perustoiminnallisuuden ja ylläpitää tilaa.
