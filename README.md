@@ -7,6 +7,7 @@ Projekti, tehtävä ja työvaihe ylläpitävät aikaleimoja alku ja loppu. Lisä
 # Dokumentaatio
 
 * [Aiheen kuvaus ja rakenne](dokumentaatio/aiheenKuvausJaRakenne.md)
+* [Rakennekuvaus](dokumentaatio/rakennekuvaus.md)
 * [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Checkstyle-raportti](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kuujakke/vigilant-doodle/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
 * [PIT-raportti](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kuujakke/vigilant-doodle/master/dokumentaatio/pit-raportti/index.html)

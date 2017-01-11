@@ -1,5 +1,6 @@
 #Tehtävienhallintajärjestelmä
 Toteutetaan tehtävienhallintajärjestelmä, jonka avulla pystytään hallinnoimaan projekteihin liittyviä tehtäviä sekä määräämään tehtäville aikarajoja.
+Sovelluksella voidaan myös seurata esimerkiksi projekteihin kulunutta työaikaa.
 
 ##Käyttäjät
 
@@ -7,6 +8,8 @@ Toteutetaan tehtävienhallintajärjestelmä, jonka avulla pystytään hallinnoim
 
 * Pystyy kirjautumaan järjestelmään
   * Vain jos tunnus ja salasana ovat oikein.
+
+Käytetään MongoDB:hen tunnistautumiseen.
 
 ##Toiminnot
 
