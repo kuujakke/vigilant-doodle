@@ -30,18 +30,6 @@ public class Worker extends Role {
     }
 
     /**
-     * Returns the first job in workers list.
-     *
-     * @return Job that is on the first index of the job list.
-     */
-    public Scheme getNextJob() {
-        if (!this.jobs.isEmpty()) {
-            return this.jobs.get(0);
-        }
-        return null;
-    }
-
-    /**
      * Sets the given job to done.
      *
      * @param job Job to be marked as done.
@@ -68,20 +56,6 @@ public class Worker extends Role {
         return this.task;
     }
 
-    /**
-     * Returns true if the given scheme is the same as the one set to the worker.
-     *
-     * @param scheme Scheme to compare to workers assigned task against.
-     *
-     * @return true if scheme is the same as the workers assigned task.
-     */
-    public boolean hasScheme(Scheme scheme) {
-        if (this.task.equals(scheme)) {
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public void addResponsibility(Scheme scheme) {
         this.jobs.add(scheme);
@@ -89,16 +63,22 @@ public class Worker extends Role {
 
     @Override
     public void removeResponsibility(Scheme scheme) {
-        if (this.jobs.contains(scheme)) {
+        if (hasResponsibility(scheme)) {
             this.jobs.remove(scheme);
+            Job job = (Job) scheme;
+            job.clearWorker();
         }
     }
 
     @Override
     public boolean hasResponsibility(Scheme scheme) {
-        if (this.hasScheme(scheme) || this.jobs.contains(scheme)) {
-            return true;
-        }
-        return false;
+        return this.jobs.contains(scheme);
+    }
+
+    /**
+     * Sets task to null.
+     */
+    public void clearTask() {
+        this.task = null;
     }
 }

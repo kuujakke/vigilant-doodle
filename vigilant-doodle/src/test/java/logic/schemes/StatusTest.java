@@ -56,7 +56,8 @@ public class StatusTest {
         assertThat(this.status.isDone()).isFalse();
         LocalDateTime testTime = LocalDateTime.now();
         this.status.setDone();
-        assertThat(this.status.getCompleted()).isEqualTo(testTime);
+        assertThat(this.status.getCompleted()).isNotNull();
+        assertThat(this.status.getCompleted()).isGreaterThanOrEqualTo(testTime);
     }
 
     @Test

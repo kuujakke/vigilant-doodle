@@ -9,17 +9,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by kuujakke on 10.1.2017.
+ * Creates a user panel view.
  */
 public class UserPanel extends JPanel implements ActionListener {
 
     private final Datastore db;
 
+    /**
+     * Initializes the object with Datastore object.
+     * Calls makeLayout()
+     *
+     * @param db Datastore object.
+     */
     public UserPanel(Datastore db) {
         this.db = db;
         makeLayout();
     }
 
+    /**
+     * Places the layout components.
+     */
     public void makeLayout() {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

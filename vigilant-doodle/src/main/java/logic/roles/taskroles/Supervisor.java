@@ -23,10 +23,10 @@ public class Supervisor extends Worker {
     /**
      * Adds worker to the supervised task.
      *
-     * @param worker Worker to be added to supervised task
+     * @param user User to be added to supervised task as worker.
      */
-    public void addWorker(Worker worker) {
-        super.getTask().addWorker(worker);
+    public void addWorker(User user) {
+        super.getTask().addWorker(new Worker(user, getTask()));
     }
 
     /**

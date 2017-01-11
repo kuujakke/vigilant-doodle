@@ -49,8 +49,15 @@ public class WorkerTest {
         Job job = this.defaultFactory.createJob();
         task.addJob(job);
 
+        assertThat(worker.hasResponsibility(job)).isFalse();
         job.setWorker(worker);
+        assertThat(worker.hasResponsibility(job)).isTrue();
         assertThat(worker.getTask().getJobs().contains(job)).isTrue();
+
+        worker.removeResponsibility(job);
+        assertThat(worker.hasResponsibility(job)).isFalse();
+        assertThat(job.getWorker()).isNotSameAs(worker);
+        assertThat(job.getWorker()).isNull();
     }
 
     @Test

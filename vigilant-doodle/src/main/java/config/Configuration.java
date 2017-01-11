@@ -37,6 +37,7 @@ public class Configuration {
      * If reading of the configuration file fails, it throws a FileNotFoundException.
      *
      * @param filename String containing the filename.
+     *
      * @throws Exception FileNotFoundException
      */
     public Configuration(String filename) throws Exception {
@@ -78,6 +79,8 @@ public class Configuration {
      * into a new Properties object. If settings file is not found the method loads
      * default settings and writes a new configuration file with the hard-coded default
      * values. This is useful when running this application on a new computer for the first time.
+     *
+     * @param filename String containing the filename.
      *
      * @throws Exception FileNotFoundException if the config file was not found.
      */

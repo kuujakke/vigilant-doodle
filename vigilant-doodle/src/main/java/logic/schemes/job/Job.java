@@ -52,4 +52,11 @@ public class Job extends Scheme {
         this.worker = worker;
         this.worker.addResponsibility(this);
     }
+
+    /**
+     * Sets worker to null.
+     */
+    public void clearWorker() {
+        this.worker = null;
+    }
 }

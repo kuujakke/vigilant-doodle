@@ -20,6 +20,9 @@ public class LoginPanel extends JPanel implements ActionListener {
     private JButton button;
     private Properties properties;
 
+    /**
+     * Initializes the layout.
+     */
     public LoginPanel() {
         makeLayout();
     }

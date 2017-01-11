@@ -53,7 +53,7 @@ public class TaskTest {
         this.task.addWorker(worker);
         assertThat(this.task.getWorkers()).hasSize(1);
         assertThat(this.task.getWorkers().contains(worker)).isTrue();
-        assertThat(worker.hasScheme(this.task)).isTrue();
+        assertThat(worker.hasResponsibility(this.task)).isTrue();
         this.task.removeWorker(worker);
         assertThat(this.task.getWorkers()).isEmpty();
         assertThat(this.task.getWorkers().contains(worker)).isFalse();

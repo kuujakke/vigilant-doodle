@@ -73,6 +73,7 @@ public class Task extends Scheme {
     public void addWorker(Worker worker) {
         if (!this.workers.contains(worker)) {
             this.workers.add(worker);
+            worker.addResponsibility(this);
         }
     }
 
