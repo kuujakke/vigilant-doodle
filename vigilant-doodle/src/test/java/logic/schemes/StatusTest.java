@@ -23,13 +23,6 @@ public class StatusTest {
     }
 
     @Test
-    public void getStartTimeWorkingAsIntended() throws Exception {
-        assertThat(this.status.getStartTime()).isNotNull();
-        this.testStartTime = LocalDateTime.now();
-        assertThat(this.status.getStartTime()).isEqualTo(this.testStartTime);
-    }
-
-    @Test
     public void setGetNameWorkingAsIntended() throws Exception {
         assertThat(this.status.getName()).isNull();
         this.status.setName("Test");

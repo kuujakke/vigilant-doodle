@@ -6,62 +6,33 @@
 </head>
 <body>
 <div id="overview"><a href="../apidocs//Main.html">View Javadoc</a></div><pre>
-<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">import</strong> config.Configuration;
-<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <strong class="jxr_keyword">import</strong> graphic.GUI;
-<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> graphic.Login;
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> logic.database.Database;
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.awt.*;
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.util.Properties;
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">import</strong> graphic.GUI;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <strong class="jxr_keyword">import</strong> javax.swing.*;
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment"> * Loads settings and validates the user before it launches the GUI.</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="..//Main.html">Main</a> {
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> * Loads settings and validates the user before it launches the GUI.</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="..//Main.html">Main</a> {
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <a href="../config/Configuration.html">Configuration</a> conf;
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment">     * Main program that starts by loading application configurations.</em>
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     * It catches an Exception if the configuration file is not found and</em>
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_javadoccomment">     * prints the error message.</em>
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     * After loading it continues by popping up a login dialog window to</em>
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">     * authenticate the user and to make a new Database connection.</em>
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * When a database is available the program continues by loading</em>
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     * users view from the database.</em>
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment">     * @param args Nothing implemented here.</em>
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>          <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>              conf = <strong class="jxr_keyword">new</strong> <a href="../config/Configuration.html">Configuration</a>();
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>          } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>              System.out.println(e.getMessage());
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>          }
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>          <strong class="jxr_keyword">if</strong> (authenticateUser()) {
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>              <a href="../graphic/GUI.html">GUI</a> gui = <strong class="jxr_keyword">new</strong> <a href="../graphic/GUI.html">GUI</a>(conf);
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>              gui.setVisible(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>          }
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * Authenticates the user by asking for login information using the Login class.</em>
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * @return Whether the user is authenticated and logged in succesfully.</em>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> authenticateUser() {
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <a href="../graphic/Login.html">Login</a> login = <strong class="jxr_keyword">new</strong> <a href="../graphic/Login.html">Login</a>();
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>          Properties props = login.getLoginInformation();
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>          System.out.println(props);
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          <strong class="jxr_keyword">if</strong> (login.validateProps(props)) {
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>              <a href="../logic/database/Database.html">Database</a> database = <strong class="jxr_keyword">new</strong> <a href="../logic/database/Database.html">Database</a>(props);
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>              <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          }
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>          <strong class="jxr_keyword">return</strong> false;
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>      }
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  }
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>       <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment">     * Main program that starts by loading application configurations.</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">     * It catches an Exception if the configuration file is not found and</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment">     * prints the error message.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">     * After loading it continues by popping up a login dialog window to</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment">     * authenticate the user and to make a new Database connection.</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment">     * When a database is available the program continues by loading</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     * users view from the database.</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_javadoccomment">     * @param args Nothing implemented here.</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_comment">//        new Testi();</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          SwingUtilities.invokeLater(<strong class="jxr_keyword">new</strong> <a href="../graphic/GUI.html">GUI</a>());
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      }
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  }
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>
