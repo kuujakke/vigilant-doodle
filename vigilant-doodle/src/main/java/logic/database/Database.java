@@ -25,6 +25,8 @@ public class Database {
      * Initializes the class variable with passed in Properties object.
      *
      * @param properties Properties to be loaded in the class variable.
+     *
+     * @throws Exception if invalid properties.
      */
     public Database(Properties properties) throws Exception {
         if (properties != null) {

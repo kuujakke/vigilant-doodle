@@ -24,38 +24,6 @@ public class Login extends JPanel {
     }
 
     /**
-     * Used to popup a JOptionPane to ask user for login information.
-     * Sets up a jPanel layout and adds labels, text boxes and a login button.
-     * It asks for Username, password, database name and database address.
-     * Next it casts a JOptionPane to get user input and returns the Propeties
-     * object containing the login information.
-     *
-     * @return Properties object containing users login information.
-     */
-/*    public Properties getLoginInformation() {
-        HashMap<String, JComponent> components = makeLayout();
-        int result = JOptionPane.showConfirmDialog(null, this, "Please login to proceed", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            this.loginInformation.setProperty("canceled", "0");
-            this.loginInformation.setProperty("user-name", ((JTextField) components.get("username")).getText());
-            char[] password = ((JPasswordField) components.get("password")).getPassword();
-            this.loginInformation.setProperty("password", String.valueOf(password));
-            this.loginInformation.setProperty("db-name", ((JTextField) components.get("db-name")).getText());
-            this.loginInformation.setProperty("db-hostname", ((JTextField) components.get("db-hostname")).getText());
-            this.loginInformation.setProperty("db-port", ((JTextField) components.get("db-port")).getText());
-            return this.loginInformation;
-        } else if (result == JOptionPane.CANCEL_OPTION) {
-            Properties props = new Properties();
-            props.setProperty("canceled", "1");
-            return props;
-        }
-        return null;
-    }*/
-
-
-
-
-    /**
      * Validates the information that user has given.
      * Checks that properties doesn't have "canceled" set to true before continuing
      * the validation by checking that each property has a minimum length of 3 characters.
@@ -63,6 +31,8 @@ public class Login extends JPanel {
      * @param props The Properties object which has the users input stored.
      *
      * @return a truth value whether the input is valid or not.
+     *
+     * @throws Exception if bad credentials or connection.
      */
     public boolean validateCredentials(Properties props) throws Exception {
         int validStrings = 0;
@@ -81,6 +51,13 @@ public class Login extends JPanel {
         return false;
     }
 
+    /**
+     * Returns the Datastore object.
+     *
+     * @return Datastore object.
+     *
+     * @throws Exception if invalid login information or bad connection.
+     */
     public Datastore getDatabase() throws Exception {
         if (validateCredentials(this.loginInformation)) {
             return this.db;

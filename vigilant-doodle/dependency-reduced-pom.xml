@@ -86,7 +86,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>"fi.jk.vigilant-doodle.Main"</mainClass>
+                  <mainClass>fi.jk.vigilant-doodle.Main.class</mainClass>
                 </transformer>
               </transformers>
             </configuration>

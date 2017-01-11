@@ -19,7 +19,7 @@ public class Main {
      *
      * @param args Nothing implemented here.
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 //        new Testi();
         SwingUtilities.invokeLater(new GUI());
     }

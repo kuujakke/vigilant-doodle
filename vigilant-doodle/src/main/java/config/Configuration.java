@@ -29,11 +29,16 @@ public class Configuration {
         } catch (Exception e) {
             throw new FileNotFoundException(DefaultSettings.CONFIG_FILE + " file not found!");
         }
-        if (this.properties == null) {
-
-        }
     }
 
+    /**
+     * Constructor calls the load function with filename to initialize the properties variable.
+     *
+     * If reading of the configuration file fails, it throws a FileNotFoundException.
+     *
+     * @param filename String containing the filename.
+     * @throws Exception FileNotFoundException
+     */
     public Configuration(String filename) throws Exception {
         try {
             load(filename);

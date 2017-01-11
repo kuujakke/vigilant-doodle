@@ -17,10 +17,10 @@ public class Testi {
     private Datastore datastore;
 
     public Testi() throws Exception {
-            this.configuration = new Configuration("test.properties");
-            this.login = new Login(this.configuration.getProperties());
-            this.datastore = this.login.getDatabase();
-            this.defaultFactory = new DefaultFactory(new Configuration());
+        this.configuration = new Configuration("test.properties");
+        this.login = new Login(this.configuration.getProperties());
+        this.datastore = this.login.getDatabase();
+        this.defaultFactory = new DefaultFactory(new Configuration());
         saveMember();
     }
 

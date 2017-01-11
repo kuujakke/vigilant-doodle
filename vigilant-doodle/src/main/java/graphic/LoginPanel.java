@@ -159,6 +159,13 @@ public class LoginPanel extends JPanel implements ActionListener {
         this.setVisible(false);
     }
 
+    /**
+     * Returns a new Login object if properties and credentials are valid.
+     *
+     * @return Login object containing validated parameters for database connection.
+     *
+     * @throws Exception if bad database connection.
+     */
     public Login getLogin() throws Exception {
         if (!this.properties.isEmpty() && this.properties != null) {
             Login login = new Login(this.properties);
