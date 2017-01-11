@@ -1,36 +1,36 @@
 # Schemes #
 Abstrakti luokka jonka jokainen projekti, tehtävä ja työtehtävä perii. Sisältää perustoiminnallisuuden ja ylläpitää tilaa.
  
-## Project ##
-Projekti luokka, joka ylläpitää yhden projektin tehtäviä ja jäseniä.
+  ## Project ##
+  Projekti luokka, joka ylläpitää yhden projektin tehtäviä ja jäseniä.
 
-## Task ##
-Tehtävä luokka, jonka tarkoituksena on hallinnoida työntekijöitä ja jakaa työtehtäviä tekijöille.
-Tehtävällä on yksi valvoja, jolla on oikeus määrätä työtehtäviä.
+  ## Task ##
+  Tehtävä luokka, jonka tarkoituksena on hallinnoida työntekijöitä ja jakaa työtehtäviä tekijöille.
+  Tehtävällä on yksi valvoja, jolla on oikeus määrätä työtehtäviä.
 
-## Job ##
-Työtehtävä luokka, sisältää tilan ja työtehtävälle määrätyn työntekijän.
+  ## Job ##
+  Työtehtävä luokka, sisältää tilan ja työtehtävälle määrätyn työntekijän.
 
 # Roles #
 Abstrakti luokka, jonka jokainen jäsen ja työntekijä perii. Sisältää roolin perustoiminnallisuudet.
 
-## ProjectRoles ##
-Projekteihin liittyvät roolit:
+  ## ProjectRoles ##
+  Projekteihin liittyvät roolit:
 
-### Member ###
-Projektiin kuuluva jäsen, jolla perustoiminnallisuus projektissa.
+    ### Member ###
+    Projektiin kuuluva jäsen, jolla perustoiminnallisuus projektissa.
 
-### Leader ###
-Projektiin kuuluva johtaja, joka perii jäsenen perustoiminnallisuuden ja pystyy hallinnoimaan projektia ja sen käyttäjiä.
+    ### Leader ###
+    Projektiin kuuluva johtaja, joka perii jäsenen perustoiminnallisuuden ja pystyy hallinnoimaan projektia ja sen käyttäjiä.
 
-## TaskRoles ##
-Tehtäviin liittyvät roolit:
+  ## TaskRoles ##
+  Tehtäviin liittyvät roolit:
 
-### Worker ###
-Tehtävään kuuluva työntekijä, jolla on perustoiminnallisuus tehtävässä.
+    ### Worker ###
+    Tehtävään kuuluva työntekijä, jolla on perustoiminnallisuus tehtävässä.
 
-### Supervisor ###
-Tehtävän valvoja, joka perii työntekijän perustoiminnallisuuden ja pystyy hallinnoimaan tehtävään liittyviä työtehtäviä.
+    ### Supervisor ###
+    Tehtävän valvoja, joka perii työntekijän perustoiminnallisuuden ja pystyy hallinnoimaan tehtävään liittyviä työtehtäviä.
  
 # Status #
 Skeeman tila. Ylläpitää aikaleimoja, joilla voidaan laskea esim. jäljellä oleva aika ennen deadlinea.
