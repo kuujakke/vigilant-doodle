@@ -2,11 +2,18 @@ package logic.roles.projectroles;
 
 import logic.login.User;
 import logic.schemes.project.Project;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 /**
  *  A role with a privileged access to the project.
  */
+@Entity("leaders")
 public class Leader extends Member {
+
+    @Id
+    private ObjectId id = new ObjectId();
 
     /**
      * Passes the user and project to its superclass Member.

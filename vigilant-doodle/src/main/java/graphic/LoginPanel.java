@@ -159,10 +159,12 @@ public class LoginPanel extends JPanel implements ActionListener {
         this.setVisible(false);
     }
 
-    public Login getLogin() {
-        Login login = new Login(this.properties);
-        if (login.validateCredentials(this.properties)) {
-            return login;
+    public Login getLogin() throws Exception {
+        if (!this.properties.isEmpty() && this.properties != null) {
+            Login login = new Login(this.properties);
+            if (login.validateCredentials(this.properties)) {
+                return login;
+            }
         }
         return null;
     }

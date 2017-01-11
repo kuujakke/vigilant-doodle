@@ -64,7 +64,7 @@ public class Login extends JPanel {
      *
      * @return a truth value whether the input is valid or not.
      */
-    public boolean validateCredentials(Properties props) {
+    public boolean validateCredentials(Properties props) throws Exception {
         int validStrings = 0;
         for (String prop : props.stringPropertyNames()) {
             if (props.getProperty(prop).length() > 2) {
@@ -72,18 +72,20 @@ public class Login extends JPanel {
             }
         }
         if (validStrings == props.size()) {
-            try {
+            Database database = new Database(props);
+            if (database.connection() != null) {
                 this.db = new Database(props).getDatabase();
-            } catch (Exception e) {
-                e.printStackTrace();
+                return true;
             }
-            return true;
         }
         return false;
     }
 
-    public Datastore getDatabase() {
-        return this.db;
+    public Datastore getDatabase() throws Exception {
+        if (validateCredentials(this.loginInformation)) {
+            return this.db;
+        }
+        return null;
     }
 
 }

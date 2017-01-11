@@ -2,13 +2,22 @@ package logic.schemes.job;
 
 import logic.schemes.Scheme;
 import logic.roles.Role;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * Base object to keep track of a job being done in a task.
  * Holds one worker that is responsible for completing the job.
  */
+@Entity("jobs")
 public class Job extends Scheme {
 
+    @Id
+    ObjectId objectId = new ObjectId();
+
+    @Reference
     private Role worker;
 
     /**

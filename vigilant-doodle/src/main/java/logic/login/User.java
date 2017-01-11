@@ -9,6 +9,11 @@ import logic.roles.taskroles.Worker;
 import logic.schemes.Scheme;
 import logic.schemes.project.Project;
 import logic.schemes.task.Task;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
 
 import java.util.*;
 
@@ -16,11 +21,17 @@ import java.util.*;
  * Basic user for the application.
  * User has many roles in many projects, tasks and jobs.
  */
+@Entity("users")
 public class User {
+
+    @Id
+    private ObjectId id = new ObjectId();
+
 
     private String realName;
     private String userName;
     private String password;
+    @Reference
     private ArrayList<Role> roles;
 
     /**
@@ -75,10 +86,12 @@ public class User {
      * @param task Task where the user has a role in.
      */
     public void removeTask(Task task) {
-        if (this.allTasks().contains(task)) {
+        if (hasScheme(task)) {
             for (Role role : this.roles) {
                 if (role.hasResponsibility(task)) {
                     this.roles.remove(role);
+                    task.removeWorker(role);
+                    return;
                 }
             }
         }
@@ -99,7 +112,9 @@ public class User {
      * @param name String contains the name of the new project.
      */
     public void createProject(String name) {
-
+        Project project = new Project(name);
+        Leader leader = new Leader(this, project);
+        project.addLeader(leader);
     }
 
     /**

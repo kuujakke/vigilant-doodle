@@ -7,17 +7,28 @@ import logic.roles.projectroles.Leader;
 import logic.roles.projectroles.Member;
 import logic.roles.Role;
 import logic.login.User;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.*;
 
 import java.util.*;
 
 /**
  * Base object for managing tasks.
  */
+@Entity("projects")
 public class Project extends Scheme {
 
+    @Id
+    private ObjectId id = new ObjectId();
+
+    @Reference
     private Status status;
+
     public ArrayList<Task> tasks;
+
     public HashMap<User, Role> roles;
+
+    @Property
     private String description;
 
     /**

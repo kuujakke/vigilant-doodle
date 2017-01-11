@@ -2,6 +2,8 @@ package logic.database;
 
 import com.mongodb.*;
 
+import config.Configuration;
+import config.DefaultSettings;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -16,15 +18,20 @@ import java.util.Properties;
 public class Database {
 
     private Properties properties;
-    final Morphia morphia = new Morphia();
+    private Morphia morphia = new Morphia();
+    private Datastore datastore;
 
     /**
      * Initializes the class variable with passed in Properties object.
      *
      * @param properties Properties to be loaded in the class variable.
      */
-    public Database(Properties properties) {
-        this.properties = properties;
+    public Database(Properties properties) throws Exception {
+        if (properties != null) {
+            this.properties = properties;
+        } else {
+            this.properties = new Configuration().getProperties();
+        }
         this.morphia.mapPackage("fi.jk.vigilant-doodle");
     }
 
@@ -35,15 +42,17 @@ public class Database {
      * @return MongoClient database connection.
      */
     public MongoClient connection() {
-        MongoCredential credentials = MongoCredential.createCredential(
-                properties.getProperty("username"),
-                properties.getProperty("db-name"),
-                properties.getProperty("password").toCharArray());
-        MongoClientOptions options = MongoClientOptions.builder().sslEnabled(true).build();
-        try {
-            return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!this.properties.isEmpty() && this.properties != null) {
+            MongoCredential credentials = MongoCredential.createCredential(
+                    this.properties.getProperty("db-user"),
+                    this.properties.getProperty("db-name"),
+                    this.properties.getProperty("db-password").toCharArray());
+            MongoClientOptions options = MongoClientOptions.builder().sslEnabled(false).build();
+            try {
+                return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -55,8 +64,10 @@ public class Database {
      * @return Datastore object to be used in database transactions.
      */
     public Datastore getDatabase() {
-        final Datastore datastore = morphia.createDatastore(connection(), properties.getProperty("db-name"));
-        datastore.ensureIndexes();
+        if (this.datastore == null) {
+            this.datastore = this.morphia.createDatastore(connection(), this.properties.getProperty("db-name"));
+            this.datastore.ensureIndexes();
+        }
         return datastore;
     }
 

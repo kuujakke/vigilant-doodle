@@ -14,6 +14,8 @@ import logic.roles.projectroles.Leader;
 import logic.roles.RoleFactory;
 import logic.login.User;
 
+import javax.jws.soap.SOAPBinding;
+
 /**
  * A factory for creating default objects.
  * Has a Configuration object from where it retrieves the default settings from.
@@ -94,7 +96,8 @@ public class DefaultFactory {
      * @return User with default values.
      */
     public User createUser() {
-        return new User(configuration.getUserName(), configuration.getUserPassword());
+        User user = new User(configuration.getUserName(), configuration.getUserPassword());
+        return user;
     }
 
     /**
@@ -117,7 +120,8 @@ public class DefaultFactory {
      * @return Member with new default user.
      */
     public Member createMember(Project project) {
-        return createMember(createUser(), project);
+        User user = createUser();
+        return createMember(user, project);
     }
 
     /**
@@ -153,5 +157,17 @@ public class DefaultFactory {
      */
     public Worker createWorker(Task task) {
         return this.roleFactory.createWorker(createUser(), task);
+    }
+
+    /**
+     * Creates a worker with user associated with the given task.
+     *
+     * @param user User associated with the worker.
+     * @param task Task to be associated with worker.
+     *
+     * @return Worker loaded with default user and associated with given task.
+     */
+    public Worker createWorker(User user, Task task) {
+        return this.roleFactory.createWorker(user, task);
     }
 }

@@ -4,15 +4,27 @@ import logic.roles.Role;
 import logic.login.User;
 import logic.schemes.Scheme;
 import logic.schemes.project.Project;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
 import java.util.*;
 
 /**
  * Basic role for projects.
  */
+@Entity("members")
 public class Member extends Role {
 
+    @Id
+    private ObjectId id = new ObjectId();
+
+    @Reference
     private Project project;
+
+    @Reference
     private ArrayList<Scheme> tasks;
 
     /**

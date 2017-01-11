@@ -1,13 +1,19 @@
 package logic.schemes;
 
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
+
 import java.time.LocalDateTime;
 
 /**
  * Base functionality for Project, Task and Job.
  */
+@Entity("schemes")
 public abstract class Scheme {
+
     private String name;
     private String description;
+    @Reference
     private Status status;
 
     /**

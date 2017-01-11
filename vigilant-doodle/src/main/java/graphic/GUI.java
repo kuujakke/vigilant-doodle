@@ -74,13 +74,24 @@ public class GUI implements Runnable, ComponentListener {
 
     @Override
     public void componentHidden(ComponentEvent e) {
-        this.login = this.loginPanel.getLogin();
+        try {
+            this.login = this.loginPanel.getLogin();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
         this.frame.removeAll();
         this.loginPanel.removeAll();
         initUI(this.frame);
-        this.userPanel = new UserPanel(this.login.getDatabase());
-        this.userPanel.makeLayout();
-        this.frame.add(this.userPanel);
-        this.frame.setVisible(true);
+
+        if (this.login != null && !this.login.loginInformation.isEmpty()) {
+            try {
+                this.userPanel = new UserPanel(this.login.getDatabase());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            this.userPanel.makeLayout();
+            this.frame.add(this.userPanel);
+            this.frame.setVisible(true);
+        }
     }
 }

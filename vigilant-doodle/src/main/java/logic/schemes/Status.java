@@ -1,5 +1,10 @@
 package logic.schemes;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
+
 import java.time.LocalDateTime;
 
 /**
@@ -7,7 +12,11 @@ import java.time.LocalDateTime;
  * Has the ending and starting times. Keeps the deadline and the prediction for completion.
  * Marks a scheme completed.
  */
+@Entity
 public class Status {
+
+    @Id
+    private ObjectId objectId = new ObjectId();
 
     private String name;
     private String description;

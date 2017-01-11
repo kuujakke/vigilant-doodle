@@ -27,7 +27,10 @@ public class Configuration {
         try {
             load();
         } catch (Exception e) {
-            throw new FileNotFoundException("config.properties file not found!");
+            throw new FileNotFoundException(DefaultSettings.CONFIG_FILE + " file not found!");
+        }
+        if (this.properties == null) {
+
         }
     }
 
@@ -464,5 +467,14 @@ public class Configuration {
      */
     public void setUIHeight(int height) {
         this.properties.setProperty("ui-height", String.valueOf(height));
+    }
+
+    /**
+     * Gets the current Properties object.
+     *
+     * @return Currently loaded Properties object.
+     */
+    public Properties getProperties() {
+        return this.properties;
     }
 }

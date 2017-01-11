@@ -2,15 +2,26 @@ package logic.roles;
 
 import logic.login.User;
 import logic.schemes.Scheme;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * All roles have this in common.
  */
-
+@Entity("roles")
 public abstract class Role {
 
+    @Id
+    private ObjectId id = new ObjectId();
+
+    @Reference
     private User user;
+    @Reference
     private Scheme scheme;
+    @Property
     private String description;
 
     /**

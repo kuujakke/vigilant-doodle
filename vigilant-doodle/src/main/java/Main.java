@@ -1,7 +1,5 @@
 import graphic.GUI;
-
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Loads settings and validates the user before it launches the GUI.
@@ -21,9 +19,9 @@ public class Main {
      *
      * @param args Nothing implemented here.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+//        new Testi();
         SwingUtilities.invokeLater(new GUI());
     }
-
 }
 
