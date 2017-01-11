@@ -16,10 +16,10 @@ Abstrakti luokka, jonka jokainen jäsen ja työntekijä perii. Sisältää rooli
 
 ##ProjectRoles
 
-###Member
+* ###Member
 Projektiin kuuluva jäsen, jolla perustoiminnallisuus projektissa.
 
-###Leader
+* ###Leader
 Projektiin kuuluva johtaja, joka perii jäsenen perustoiminnallisuuden ja pystyy hallinnoimaan projektia ja sen käyttäjiä.
 
 ##TaskRoles
