@@ -4,7 +4,6 @@ import config.Configuration;
 import logic.schemes.project.Project;
 import logic.schemes.project.ProjectFactory;
 import org.junit.Before;
-import logic.roles.projectroles.Leader;
 import logic.roles.RoleFactory;
 import logic.login.User;
 import org.junit.Test;

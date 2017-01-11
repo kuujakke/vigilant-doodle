@@ -42,7 +42,9 @@ public class ConfigurationTest {
 
     @Test
     public void loadSaveWorkingAsIntended() throws Exception {
+        File f = new File(DefaultSettings.CONFIG_FILE.toString());
         this.config.clear();
+        assertThat(f.exists()).isFalse();
         this.config.setProjectName("Test");
         this.config.save();
         this.config.load();
@@ -50,8 +52,8 @@ public class ConfigurationTest {
         this.config.setProjectDescription("A project for testing purposes.");
         this.config.save();
         this.config.load();
+        assertThat(this.config.getProjectName()).isEqualTo("Test");
         assertThat(config.getProjectDescription()).isEqualTo("A project for testing purposes.");
-        File f = new File(DefaultSettings.CONFIG_FILE.toString());
         assertThat(f.exists()).isTrue();
     }
     @Test

@@ -45,6 +45,7 @@ public class MainTest extends AssertJSwingJUnitTestCase {
     @Test
     public void testProjectSaving() throws Exception {
         login();
+        Thread.sleep(1000);
     }
 
     public void login() {
