@@ -12,6 +12,6 @@ Tässä dokumentissa kuvataan hyvin lyhyesti ohjelman käyttöä.
  * Tietokannan isäntäosoite.
  * Tietokannan porttinumero.
 
-Tiedot ovat välttämättömät sovelluksen toiminnalle. Jos et omaa vielä omaa MongoDB tietokantaa, asenna sellainen vaikka paikallisesti.
+ Tiedot ovat välttämättömät sovelluksen toiminnalle. Jos et omaa vielä omaa MongoDB tietokantaa, asenna sellainen vaikka paikallisesti.
 
 3. Katsele projekteja.
