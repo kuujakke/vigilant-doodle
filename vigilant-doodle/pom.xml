@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.mongodb.morphia</groupId>
             <artifactId>morphia</artifactId>
-            <version>1.2.1</version>
+            <version>1.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -95,6 +95,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
             </plugin>
+            <!-- Tämä plugari voi aiheuttaa hämmennystä jossain laitteistoissa. Kommentoi piiloon tarvittaessa. -->
 <!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -134,9 +135,6 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <outputDirectory>${project.basedir}/../dokumentaatio/checkstyle-raportti</outputDirectory>
-    </reporting>
     <developers>
         <developer>
             <id>kuujakke</id>

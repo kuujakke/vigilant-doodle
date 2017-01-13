@@ -1,6 +1,9 @@
 package logic.schemes;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
 import java.time.LocalDateTime;
@@ -11,10 +14,21 @@ import java.time.LocalDateTime;
 @Entity("schemes")
 public abstract class Scheme {
 
+    @Id
+    private ObjectId id;
+
+    @Embedded
+    private Status status;
+
     private String name;
     private String description;
-    @Reference
-    private Status status;
+
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public Scheme() {
+
+    }
 
     /**
      * Initializes the scheme with a name.
@@ -23,7 +37,8 @@ public abstract class Scheme {
      */
     public Scheme(String name) {
         this.name = name;
-        this.status = new Status();
+        this.status = new Status(LocalDateTime.now());
+        this.id = new ObjectId();
     }
 
     /**
@@ -132,4 +147,14 @@ public abstract class Scheme {
      */
     public abstract boolean hasScheme(Scheme scheme);
 
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return String containing object information.
+     */
+    @Override
+    public String toString() {
+        return "Name: " + this.name + "\n" +
+                "Description: " + this.description;
+    }
 }

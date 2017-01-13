@@ -45,10 +45,11 @@ public class Database {
      */
     public MongoClient connection() {
         if (!this.properties.isEmpty() && this.properties != null) {
+            char[] pwd = this.properties.getProperty("db-password").toCharArray();
             MongoCredential credentials = MongoCredential.createCredential(
                     this.properties.getProperty("db-user"),
                     this.properties.getProperty("db-name"),
-                    this.properties.getProperty("db-password").toCharArray());
+                    pwd);
             MongoClientOptions options = MongoClientOptions.builder().sslEnabled(false).build();
             try {
                 return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);

@@ -18,14 +18,18 @@ import java.util.*;
 @Entity("members")
 public class Member extends Role {
 
-    @Id
-    private ObjectId id = new ObjectId();
-
-    @Reference
+    @Reference("projects")
     private Project project;
 
-    @Reference
+    @Reference("tasks")
     private ArrayList<Scheme> tasks;
+
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public Member() {
+
+    }
 
     /**
      * Passes the user object to abstract superclass and initializes the project
@@ -38,6 +42,7 @@ public class Member extends Role {
     public Member(User user, Project project) {
         super(user);
         this.project = project;
+        this.project.addMember(this);
         this.tasks = new ArrayList<>();
     }
 

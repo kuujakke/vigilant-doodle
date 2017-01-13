@@ -25,14 +25,21 @@ import java.util.*;
 public class User {
 
     @Id
-    private ObjectId id = new ObjectId();
-
+    private ObjectId id;
 
     private String realName;
     private String userName;
     private String password;
-    @Reference
+
+    @Reference("roles")
     private ArrayList<Role> roles;
+
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public User() {
+
+    }
 
     /**
      * User needs a name and a password to authenticate.
@@ -44,6 +51,7 @@ public class User {
         this.userName = name;
         this.password = password;
         this.roles = new ArrayList<>();
+        this.id = new ObjectId();
     }
 
     /**

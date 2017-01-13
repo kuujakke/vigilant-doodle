@@ -12,8 +12,12 @@ import org.mongodb.morphia.annotations.Id;
 @Entity("leaders")
 public class Leader extends Member {
 
-    @Id
-    private ObjectId id = new ObjectId();
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public Leader() {
+
+    }
 
     /**
      * Passes the user and project to its superclass Member.

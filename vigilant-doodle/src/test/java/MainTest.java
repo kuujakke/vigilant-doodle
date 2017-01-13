@@ -45,17 +45,24 @@ public class MainTest extends AssertJSwingJUnitTestCase {
     @Test
     public void testProjectSaving() throws Exception {
         login();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
+        assertThat(window.table()).isNotNull();
+        Thread.sleep(30000);
     }
 
-    public void login() {
-        window.textBox("username").requireEmpty();
-        window.textBox("username").enterText(this.configuration.getDBUser());
-        window.textBox("password").enterText(this.configuration.getDBpassword());
+    public void login() throws Exception {
+        window.textBox("db-user").enterText(this.configuration.getDBUser());
+        Thread.sleep(1000);
+        window.textBox("db-password").enterText(this.configuration.getDBpassword());
+        Thread.sleep(1000);
         window.textBox("db-name").enterText(this.configuration.getDBName());
+        Thread.sleep(1000);
         window.textBox("db-hostname").enterText(this.configuration.getDBHostname());
+        Thread.sleep(1000);
         window.textBox("db-port").enterText(this.configuration.getDBPort());
+        Thread.sleep(1000);
         window.button("OK").click();
+        Thread.sleep(1000);
     }
 
 }

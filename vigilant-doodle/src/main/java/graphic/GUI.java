@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class GUI implements Runnable, ComponentListener {
 
-    Configuration config;
+    private Configuration config;
     private Login login;
     private LoginPanel loginPanel;
     private UserPanel userPanel;
@@ -31,20 +31,7 @@ public class GUI implements Runnable, ComponentListener {
             e.printStackTrace();
         }
         initUI(this.frame);
-
-        this.loginPanel = new LoginPanel();
-        frame.add(this.loginPanel);
-        frame.setSize(600, 200);
-        frame.setVisible(true);
-
-        this.loginPanel.addComponentListener(this);
-        /*
-        EventQueue.invokeLater(this.login = new Login());
-        Properties credentials = login.getLoginInformation();
-        if (login.validateCredentials(credentials)) {
-            setVisible(true);
-            initUI();
-        }*/
+        initLogin();
     }
 
     /**
@@ -55,6 +42,33 @@ public class GUI implements Runnable, ComponentListener {
         frame.setSize(this.config.getUIWidth(), this.config.getUIHeight());
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+    }
+
+    private void initLogin() {
+        System.out.println("Initializing login...");
+        SwingUtilities.invokeLater(() -> {
+            loginPanel = new LoginPanel();
+            frame.add(loginPanel);
+            frame.setSize(600, 200);
+            frame.setVisible(true);
+            frame.getContentPane().add(loginPanel);
+            frame.invalidate();
+            frame.validate();
+            this.loginPanel.addComponentListener(this);
+        });
+    }
+
+    private void initUser() {
+        System.out.println("Initializing user view...");
+        SwingUtilities.invokeLater(() -> {
+            this.frame.getContentPane().remove(this.loginPanel);
+            this.frame.getContentPane().add(this.userPanel);
+            frame.setSize(this.config.getUIWidth(), this.config.getUIHeight());
+            this.frame.invalidate();
+            this.frame.validate();
+            this.frame.revalidate();
+            this.frame.repaint();
+        });
     }
 
     @Override
@@ -79,19 +93,13 @@ public class GUI implements Runnable, ComponentListener {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-        this.frame.removeAll();
-        this.loginPanel.removeAll();
-        initUI(this.frame);
-
         if (this.login != null && !this.login.loginInformation.isEmpty()) {
             try {
                 this.userPanel = new UserPanel(this.login.getDatabase());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            this.userPanel.makeLayout();
-            this.frame.add(this.userPanel);
-            this.frame.setVisible(true);
         }
+        initUser();
     }
 }

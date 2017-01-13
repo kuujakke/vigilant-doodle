@@ -15,14 +15,19 @@ import org.mongodb.morphia.annotations.Reference;
 public abstract class Role {
 
     @Id
-    private ObjectId id = new ObjectId();
+    private ObjectId id;
 
-    @Reference
+    @Reference("users")
     private User user;
-    @Reference
-    private Scheme scheme;
-    @Property
+
     private String description;
+
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public Role() {
+
+    }
 
     /**
      * Default constructor initializing the user class-variable with the value passed in.
@@ -31,7 +36,7 @@ public abstract class Role {
      */
     public Role(User user) {
         this.user = user;
-        this.scheme = scheme;
+        this.id = new ObjectId();
         user.addRole(this);
     }
 

@@ -186,7 +186,10 @@ public class Configuration {
      * @return String containing property value.
      */
     public String getProjectDescription() {
-        return this.properties.getProperty("project-description", DefaultSettings.PROJECT_DESCRIPTION.toString());
+        if (this.properties.getProperty("project-description") == null) {
+            return DefaultSettings.PROJECT_DESCRIPTION.toString();
+        }
+        return this.properties.getProperty("project-description");
     }
 
     /**

@@ -4,6 +4,8 @@ import logic.schemes.Scheme;
 import logic.roles.taskroles.Supervisor;
 import logic.roles.Role;
 import logic.roles.taskroles.Worker;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 import java.util.*;
 /**
@@ -11,10 +13,14 @@ import java.util.*;
  * Needs a name to be set when creating the object.
  * Holds and maintains the supervisor, workers and jobs variables.
  */
+@Entity
 public class Task extends Scheme {
 
+    @Reference
     private Supervisor supervisor;
+    @Reference
     private ArrayList<Worker> workers;
+    @Reference
     private ArrayList<Job> jobs;
 
     /**

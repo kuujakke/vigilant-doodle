@@ -1,6 +1,7 @@
 package logic.schemes;
 
 import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
@@ -12,24 +13,34 @@ import java.time.LocalDateTime;
  * Has the ending and starting times. Keeps the deadline and the prediction for completion.
  * Marks a scheme completed.
  */
-@Entity
 public class Status {
 
-    @Id
-    private ObjectId objectId = new ObjectId();
+    private ObjectId objectId;
 
     private String name;
     private String description;
+    @Embedded
     private LocalDateTime timeCreated;
+    @Embedded
     private LocalDateTime timeCompleted;
+    @Embedded
     private LocalDateTime deadline;
+    @Embedded
     private LocalDateTime expectedDone;
+
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public Status() {
+
+    }
 
     /**
      * Initializes class variables with null and sets time created.
      */
-    public Status() {
-        this.timeCreated = LocalDateTime.now();
+    public Status(LocalDateTime timeCreated) {
+        this.objectId = new ObjectId();
+        this.timeCreated = timeCreated;
         this.timeCompleted = null;
         this.deadline = null;
         this.expectedDone = null;
@@ -76,6 +87,7 @@ public class Status {
      *
      * @return String containing general information about status.
      */
+    @Override
     public String toString() {
         return "Nimi: " + this.name + "\n" +
                 "Kuvaus: " + this.description;

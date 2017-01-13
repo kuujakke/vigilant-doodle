@@ -14,9 +14,6 @@ import org.mongodb.morphia.annotations.Reference;
 @Entity("jobs")
 public class Job extends Scheme {
 
-    @Id
-    ObjectId objectId = new ObjectId();
-
     @Reference
     private Role worker;
 

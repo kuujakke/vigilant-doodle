@@ -114,8 +114,8 @@ public class LoginPanel extends JPanel implements ActionListener {
         this.button.addActionListener(this);
 
 
-        this.username.setName("username");
-        this.password.setName("password");
+        this.username.setName("db-user");
+        this.password.setName("db-password");
         this.dbName.setName("db-name");
         this.dbHostname.setName("db-hostname");
         this.dbPort.setName("db-port");
@@ -154,8 +154,9 @@ public class LoginPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.properties = new Properties();
-        properties.setProperty("username", this.username.getText());
-        properties.setProperty("password", this.password.getPassword().toString());
+        properties.setProperty("db-user", this.username.getText());
+        String password = String.valueOf(this.password.getPassword());
+        properties.setProperty("db-password", password);
         properties.setProperty("db-hostname", this.dbHostname.getText());
         properties.setProperty("db-name", this.dbName.getText());
         properties.setProperty("db-port", this.dbPort.getText());

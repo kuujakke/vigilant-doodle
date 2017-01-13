@@ -18,18 +18,18 @@ import java.util.*;
 @Entity("projects")
 public class Project extends Scheme {
 
-    @Id
-    private ObjectId id = new ObjectId();
-
-    @Reference
-    private Status status;
-
+    @Reference("tasks")
     public ArrayList<Task> tasks;
 
-    public HashMap<User, Role> roles;
+    @Reference("roles")
+    public ArrayList<Role> roles;
 
-    @Property
-    private String description;
+    /**
+     * Zero-arg constructor for morphia.
+     */
+    public Project() {
+
+     }
 
     /**
      * Needs a name to be set when creating new instance.
@@ -38,9 +38,8 @@ public class Project extends Scheme {
      */
     public Project(String name) {
         super(name);
-        this.status = new Status();
         this.tasks = new ArrayList<>();
-        this.roles = new HashMap<>();
+        this.roles = new ArrayList<>();
     }
 
     /**
@@ -99,7 +98,7 @@ public class Project extends Scheme {
      */
     public ArrayList<Role> getMembers() {
         ArrayList<Role> members = new ArrayList<>();
-        for (Role role : this.roles.values()) {
+        for (Role role : this.roles) {
             if (role instanceof Member) {
                 members.add(role);
             }
@@ -114,7 +113,7 @@ public class Project extends Scheme {
      */
     public ArrayList<Role> getLeaders() {
         ArrayList<Role> leaders = new ArrayList<>();
-        for (Role role : this.roles.values()) {
+        for (Role role : this.roles) {
             if (role instanceof Leader) {
                 leaders.add(role);
             }
@@ -129,7 +128,7 @@ public class Project extends Scheme {
      */
     public void addMember(Member member) {
         if (!hasMember(member)) {
-            this.roles.put(member.getUser(), member);
+            this.roles.add(member);
         }
     }
 
@@ -140,7 +139,7 @@ public class Project extends Scheme {
      */
     public void removeMember(Member member) {
         if (this.hasMember(member)) {
-            this.roles.remove(member.getUser(), member);
+            this.roles.remove(member);
         }
     }
 
@@ -164,7 +163,7 @@ public class Project extends Scheme {
      */
     public void addLeader(Leader leader) {
         if (!hasLeader(leader)) {
-            this.roles.put(leader.getUser(), leader);
+            this.roles.add(leader);
         }
     }
 
@@ -194,7 +193,7 @@ public class Project extends Scheme {
      * @param leader Leader to be removed from the project
      */
     public void removeLeader(Leader leader) {
-        this.roles.remove(leader.getUser(), leader);
+        this.roles.remove(leader);
     }
 
     /**
@@ -203,7 +202,7 @@ public class Project extends Scheme {
      * @param description String to be set as new description of the project
      */
     public void setDescription(String description) {
-        this.description = description;
+        super.setDescription(description);
     }
 
     /**
