@@ -20,3 +20,10 @@ Päivä | Tunnit | Kuvaus
 6.1.2017 | 8h | Toteutettu kirjautumisikkuna ja refaktoroitu asetuksia. Lisätty javadocin generointi ja sen siirtäminen pom.xmlään sekä päivitetty deadline-push toiminto.
 7.1.2017 | 8h | Javadokattu ja refaktoroitu.
 8.1.2017 | 4h | Korjattu javadoc virheitä ja tehty sekvenssikaaviota kunnes ohjelma kaatui. :( Suoritettu Deadline-push -operaatio.
+9.1.2017 | 6h | Hiottu automaatiota.
+10.1.2017 | 8h | Rakennettu UI:ta ja muunnettu testit AssertJ muotoon.
+11.1.2017 | 8h | Korjattu tyylivirheitä ja generoitu uudet raportit sekä .jar. Päivitetty automatisointia.
+12.1.2017 | 8h | Kirjoitettu javadocia ja korjattu UI:ta.
+13.1.2017 | 8h | Luovutettu UI:n suhteen ja luotu UI IntelliJ GUI builderin avulla uusi ProjectManager paneeli.
+
+
