@@ -12,6 +12,11 @@ Tässä dokumentissa kuvataan hyvin lyhyesti ohjelman käyttöä.
  * Tietokannan isäntäosoite.
  * Tietokannan porttinumero.
 
- Tiedot ovat välttämättömät sovelluksen toiminnalle. Jos et omaa vielä omaa MongoDB tietokantaa, asenna sellainen vaikka paikallisesti.
+ Tiedot ovat välttämättömät sovelluksen toiminnalle. Jos et omista vielä omaa MongoDB tietokantaa, asenna sellainen vaikka paikallisesti tai pyydä demotunnukset.
+
 
 3. Katsele projekteja.
+
+ * Valitsemalla noodin puunäkymästä päivittyy kyseisen noodin tiedot vasemman puoleiseen ruutuun.
+   * Valitse funktiolistasta joko lisää tai poista vaihtoehto ja klikkaa 'OK' painiketta suorittaaksesi toiminnon valitulle noodille.
+   * Muokkaa noodin nimeä tai kuvausta ja klikkaa "Update" painiketta päivittääksesi noodin tilan.
