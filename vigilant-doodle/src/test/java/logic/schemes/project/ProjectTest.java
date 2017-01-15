@@ -90,4 +90,24 @@ public class ProjectTest {
         assertThat(this.project.hasLeader(leader2)).isTrue();
     }
 
+    @Test
+    public void getSetProjectName() {
+        assertThat(this.project.getName()).isNotNull();
+        this.project.setProjectName("TestName");
+        assertThat(this.project.getName()).isEqualTo("TestName");
+    }
+
+    @Test
+    public void promoteToLeaderWorking() {
+        User user = this.defaultFactory.createUser();
+        Member member = this.defaultFactory.createMember(user, this.project);
+        assertThat(this.project.hasMember(member)).isTrue();
+        assertThat(this.project.getMembers().contains(member)).isTrue();
+        assertThat(this.project.getMembers().size()).isEqualTo(1).isNotNull();
+        assertThat(this.project.getLeaders().size()).isEqualTo(0).isNotNull();
+        this.project.promoteToLeader(member);
+        assertThat(this.project.hasMember(member)).isFalse();
+        assertThat(this.project.getMembers().contains(member)).isFalse();
+        assertThat(this.project.getLeaders().size()).isEqualTo(1).isNotNull();
+    }
 }

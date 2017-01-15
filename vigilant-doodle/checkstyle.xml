@@ -86,6 +86,10 @@
             <property name="checkEmptyJavadoc" value="true"/>
         </module>
 
+        <module name="JavadocType">
+            <property name="allowUnknownTags" value="true" />
+        </module>
+
     </module>
 
     <!-- File Length -->

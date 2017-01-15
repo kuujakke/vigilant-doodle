@@ -185,6 +185,7 @@ public class Project extends Scheme {
 
     /**
      * Gets the project name.
+     *
      * @return String containing the projects name
      */
     public String getName() {

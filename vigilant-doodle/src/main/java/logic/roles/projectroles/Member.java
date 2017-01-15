@@ -18,7 +18,7 @@ import java.util.*;
 @Entity("members")
 public class Member extends Role {
 
-    @Reference("projects")
+    @Embedded("projects")
     private Project project;
 
     @Reference("tasks")

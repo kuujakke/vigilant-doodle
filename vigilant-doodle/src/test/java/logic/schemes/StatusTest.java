@@ -1,6 +1,5 @@
 package logic.schemes;
 
-import logic.schemes.Status;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +18,7 @@ public class StatusTest {
     @Before
     public void setUp() throws Exception {
         this.testStartTime = LocalDateTime.now();
-        this.status = new Status();
+        this.status = new Status(this.testStartTime);
     }
 
     @Test
@@ -68,4 +67,29 @@ public class StatusTest {
         assertThat(this.status.getExpectedDone()).isEqualTo(testTime);
     }
 
+    @Test
+    public void getStartTimeTest() {
+        assertThat(this.status.getStartTime()).isEqualTo(this.testStartTime);
+    }
+
+    @Test
+    public void isSetCompleted() throws Exception {
+        assertThat(this.status.getCompleted()).isNull();
+        Thread.sleep(1);
+        assertThat(this.status.isCompleted()).isFalse();
+        LocalDateTime now = LocalDateTime.now();
+        this.status.setCompleted();
+        Thread.sleep(1);
+        assertThat(this.status.isCompleted()).isTrue();
+        assertThat(this.status.getCompleted()).isNotNull();
+        assertThat(this.status.getCompleted()).isEqualTo(now);
+    }
+
+    @Test
+    public void emptyStatus() throws Exception {
+        Status status = new Status();
+        assertThat(status).isNotNull();
+        assertThat(status.getStartTime()).isNull();
+        assertThat(status.getCompleted()).isNull();
+    }
 }

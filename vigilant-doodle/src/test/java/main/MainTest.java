@@ -45,6 +45,7 @@ public class MainTest extends AssertJSwingJUnitTestCase {
         assertThat(window.tree().requireVisible());
         assertThat(window.tree().clickRow(0)).isNotNull();
         assertThat(window.splitPane().requireVisible());
+        // For manual testing.
         //Thread.sleep(100000);
     }
 

@@ -2,10 +2,10 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="graphic.management.ProjectManagement">
   <grid id="27dc6" binding="jPanel" custom-create="true" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="-2" y="2" width="788" height="621"/>
+      <xy x="-2" y="2" width="788" height="1362"/>
     </constraints>
     <properties/>
-    <border type="none" title="Projects" title-justification="2">
+    <border type="none" title="Project Management" title-justification="2">
       <font/>
     </border>
     <children>
@@ -48,27 +48,19 @@
             <children>
               <grid id="82cc6" binding="functionPanel" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="1" ipady="1"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="0.0"/>
                 </constraints>
                 <properties/>
-                <border type="none" title="Edit">
-                  <title-color color="-4473925"/>
+                <border type="none" title="Node Function">
+                  <font/>
+                  <title-color color="-16777216"/>
                 </border>
                 <children>
-                  <component id="9fefc" class="javax.swing.JButton" binding="oKButton">
-                    <constraints>
-                      <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="1.0" weighty="1.0" ipadx="1"/>
-                    </constraints>
-                    <properties>
-                      <text value="OK"/>
-                    </properties>
-                  </component>
                   <component id="52a12" class="javax.swing.JComboBox" binding="cellFunction">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.1" weighty="0.0"/>
                     </constraints>
                     <properties>
                       <model>
@@ -77,43 +69,27 @@
                       </model>
                     </properties>
                   </component>
+                  <component id="9fefc" class="javax.swing.JButton" binding="oKButton">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.1" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="OK"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
               <grid id="26f9c" binding="updatePanel" custom-create="true" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="1.0" weighty="1.0"/>
                 </constraints>
                 <properties/>
-                <border type="none" title="Update"/>
+                <border type="none" title="Update Node">
+                  <title-color color="-16777216"/>
+                </border>
                 <children>
-                  <component id="ba156" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.5" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="Deadline"/>
-                    </properties>
-                  </component>
-                  <component id="8d910" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.5" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="Time Completed"/>
-                    </properties>
-                  </component>
-                  <component id="3d717" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.5" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="Time Created"/>
-                    </properties>
-                  </component>
                   <component id="d53b0" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -150,41 +126,86 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="54e46" class="javax.swing.JTextArea" binding="deadlineText">
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="50"/>
-                      </grid>
-                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.5" weighty="0.0"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="5b40" class="javax.swing.JTextArea" binding="completedText">
-                    <constraints>
-                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="50"/>
-                      </grid>
-                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.5" weighty="0.0"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="f74b5" class="javax.swing.JTextArea" binding="createdText">
-                    <constraints>
-                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="50"/>
-                      </grid>
-                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.5" weighty="0.0"/>
-                    </constraints>
-                    <properties/>
-                  </component>
                   <component id="e985c" class="javax.swing.JButton" binding="updateButton" default-binding="true">
                     <constraints>
-                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
                       <text value="Update"/>
                     </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="4a064" binding="statusPanel" layout-manager="GridBagLayout">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+                <border type="none" title="Status">
+                  <title-color color="-16777216"/>
+                </border>
+                <children>
+                  <vspacer id="eb025">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="ba156" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Deadline"/>
+                    </properties>
+                  </component>
+                  <component id="8d910" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.0" weighty="0.2"/>
+                    </constraints>
+                    <properties>
+                      <text value="Time Completed"/>
+                    </properties>
+                  </component>
+                  <component id="3d717" class="javax.swing.JLabel" binding="timeCreated">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Time Created"/>
+                    </properties>
+                  </component>
+                  <component id="f74b5" class="javax.swing.JTextArea" binding="createdText">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <gridbag top="1" left="1" bottom="1" right="1" weightx="1.0" weighty="1.0" ipady="1"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="5b40" class="javax.swing.JTextArea" binding="completedText">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.0" weighty="0.0" ipadx="1" ipady="2"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="54e46" class="javax.swing.JTextArea" binding="deadlineText">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <gridbag top="1" left="1" bottom="1" right="1" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
                   </component>
                 </children>
               </grid>

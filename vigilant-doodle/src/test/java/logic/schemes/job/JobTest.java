@@ -1,6 +1,7 @@
 package logic.schemes.job;
 
 import config.Configuration;
+import jdk.nashorn.internal.runtime.JSONListAdapter;
 import logic.DefaultFactory;
 import logic.schemes.task.Task;
 import logic.schemes.task.TaskFactory;
@@ -11,7 +12,6 @@ import logic.login.User;
 import logic.roles.taskroles.Worker;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by kuujakke on 30.12.2016.
@@ -45,7 +45,7 @@ public class JobTest {
         Job job = this.defaultFactory.createJob();
         assertThat(job.getName().equals(this.defaultFactory.getConfig().getJobName())).isTrue();
         job.setName("TestName");
-        assertNotEquals(this.defaultFactory.getConfig().getJobName(), job.getName());
+        assertThat(this.defaultFactory.getConfig().getJobName()).isNotEqualTo(job.getName());
         assertThat(job.getName()).isEqualTo("TestName");
     }
 
@@ -66,6 +66,18 @@ public class JobTest {
         job.setWorker(worker);
         assertThat(job.getWorker()).isNotNull();
         assertThat(job.getWorker().equals(worker)).isTrue();
+    }
+
+    @Test
+    public void emptyJob() throws Exception {
+        assertThat(new Job()).isNotNull();
+    }
+
+    @Test
+    public void hasScheme() throws Exception {
+        Job job = new Job();
+        assertThat(job.hasScheme(job)).isTrue();
+        assertThat(job.hasScheme(new Job()));
     }
 
 }

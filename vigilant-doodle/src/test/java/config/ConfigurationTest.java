@@ -47,10 +47,12 @@ public class ConfigurationTest {
         assertThat(f.exists()).isFalse();
         this.config.setProjectName("Test");
         this.config.save();
+        assertThat(f.exists()).isTrue();
         this.config.load();
         assertThat(config.getProjectName()).isEqualTo("Test");
         this.config.setProjectDescription("A project for testing purposes.");
         this.config.save();
+        assertThat(f.exists()).isTrue();
         this.config.load();
         assertThat(this.config.getProjectName()).isEqualTo("Test");
         assertThat(config.getProjectDescription()).isEqualTo("A project for testing purposes.");
@@ -70,11 +72,61 @@ public class ConfigurationTest {
         assertThat(config.getUIHeight()).isEqualTo(Integer.parseInt(DefaultSettings.UI_HEIGHT.toString()));
         assertThat(config.getUIWidth()).isEqualTo(Integer.parseInt(DefaultSettings.UI_WIDTH.toString()));
     }
+
+    @Test
+    public void setPropertyTest() {
+        config.setProjectName("Test");
+        assertThat(config.getProjectName()).isEqualTo("Test");
+        config.setProjectDescription("Test");
+        assertThat(config.getProjectDescription()).isEqualTo("Test");
+        config.setTaskName("Test");
+        assertThat(config.getTaskName()).isEqualTo("Test");
+        config.setTaskDescription("Test");
+        assertThat(config.getTaskDescription()).isEqualTo("Test");
+        config.setJobName("Test");
+        assertThat(config.getJobName()).isEqualTo("Test");
+        config.setJobDescription("Test");
+        assertThat(config.getJobDescription()).isEqualTo("Test");
+        config.setUserName("Test");
+        assertThat(config.getUserName()).isEqualTo("Test");
+        config.setUserPassword("Test");
+        assertThat(config.getUserPassword()).isEqualTo("Test");
+        config.setRoleDescription("Test");
+        assertThat(config.getRoleDescription()).isEqualTo("Test");
+        config.setDBUser("Test");
+        assertThat(config.getDBUser()).isEqualTo("Test");
+        config.setDBName("Test");
+        assertThat(config.getDBName()).isEqualTo("Test");
+        config.setDBHostname("Test");
+        assertThat(config.getDBHostname()).isEqualTo("Test");
+        config.setDBPassword("Test");
+        assertThat(config.getDBpassword()).isEqualTo("Test");
+        config.setDBPort(123);
+        assertThat(config.getDBPort()).isEqualTo("123");
+        config.setUITitle("Test");
+        assertThat(config.getUITitle()).isEqualTo("Test");
+        config.setUIHeight(123);
+        assertThat(config.getUIHeight()).isEqualTo(123);
+        config.setUIWidth(123);
+        assertThat(config.getUIWidth()).isEqualTo(123);
+        config.clear();
+        assertThat(config.getProjectName()).isEqualTo(DefaultSettings.PROJECT_NAME.toString());
+    }
      @Test
     public void clear() {
         this.config.clear();
         File config = new File(DefaultSettings.CONFIG_FILE.toString());
         assertThat(config.exists()).isFalse();
+        assertThat(this.config.getProperties()).isEmpty();
+     }
+
+     @Test
+    public void wrongFilename() throws Exception {
+        try {
+            assertThat(new Configuration("not-a-filename")).isNotNull();
+        } catch (Exception e) {
+            assertThat(e).isNull();
+        }
      }
 
 }

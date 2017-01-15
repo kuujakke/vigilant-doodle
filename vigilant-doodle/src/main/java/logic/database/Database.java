@@ -1,14 +1,14 @@
 package logic.database;
 
-import com.mongodb.*;
-
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import config.Configuration;
-import config.DefaultSettings;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
 import java.util.Arrays;
-
 import java.util.Properties;
 
 /**
@@ -25,16 +25,15 @@ public class Database {
      * Initializes the class variable with passed in Properties object.
      *
      * @param properties Properties to be loaded in the class variable.
-     *
      * @throws Exception if invalid properties.
      */
     public Database(Properties properties) throws Exception {
-        if (properties != null) {
+        if (properties != null && !properties.isEmpty()) {
             this.properties = properties;
         } else {
             this.properties = new Configuration().getProperties();
         }
-        this.morphia.mapPackage("fi.jk.vigilant-doodle");
+        this.morphia.mapPackage("fi.kuujakke.vigilant-doodle");
     }
 
     /**
@@ -44,20 +43,13 @@ public class Database {
      * @return MongoClient database connection.
      */
     public MongoClient connection() {
-        if (!this.properties.isEmpty() && this.properties != null) {
-            char[] pwd = this.properties.getProperty("db-password").toCharArray();
-            MongoCredential credentials = MongoCredential.createCredential(
-                    this.properties.getProperty("db-user"),
-                    this.properties.getProperty("db-name"),
-                    pwd);
-            MongoClientOptions options = MongoClientOptions.builder().sslEnabled(false).build();
-            try {
-                return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
+        char[] pwd = this.properties.getProperty("db-password").toCharArray();
+        MongoCredential credentials = MongoCredential.createCredential(
+                this.properties.getProperty("db-user"),
+                this.properties.getProperty("db-name"),
+                pwd);
+        MongoClientOptions options = MongoClientOptions.builder().sslEnabled(false).build();
+        return new MongoClient(new ServerAddress(properties.getProperty("db-hostname"), Integer.parseInt(properties.getProperty("db-port"))), Arrays.asList(credentials), options);
     }
 
     /**

@@ -34,6 +34,11 @@ public class Job extends Scheme {
     }
 
     @Override
+    public String toString() {
+        return getName() + "\n" + getDescription();
+    }
+
+    @Override
     public boolean hasScheme(Scheme scheme) {
         return this.equals(scheme);
     }
