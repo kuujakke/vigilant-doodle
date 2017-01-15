@@ -25,6 +25,7 @@ import java.awt.event.MouseEvent;
  * Created by kuujakke on 14.1.2017.
  */
 public class ProjectManagement extends JPanel {
+    private final Login login;
     private Configuration config;
     private Scheme scheme;
     private JTree tree;
@@ -50,6 +51,7 @@ public class ProjectManagement extends JPanel {
     private DefaultMutableTreeNode top;
 
     public ProjectManagement(Login login) {
+        this.login = login;
         try {
             this.config = login.getConfig();
             this.db = login.getDatabase();
@@ -79,6 +81,7 @@ public class ProjectManagement extends JPanel {
         this.setVisible(true);
         tree.addTreeSelectionListener(e -> {
             if (tree.getLastSelectedPathComponent() != null && tree.getLastSelectedPathComponent() instanceof DefaultMutableTreeNode) {
+                clickedPath = tree.getSelectionPath();
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
                 if (node != null && node.getUserObject() instanceof Scheme) {
                     if (node.getUserObject() instanceof Scheme) {
@@ -113,7 +116,7 @@ public class ProjectManagement extends JPanel {
             }
         });
         updateButton.addActionListener(e -> {
-            if (tree.getLastSelectedPathComponent() != null && tree.getLastSelectedPathComponent() instanceof  DefaultMutableTreeNode) {
+            if (tree.getLastSelectedPathComponent() != null && tree.getLastSelectedPathComponent() instanceof DefaultMutableTreeNode) {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
                 if (node != null && node.getUserObject() instanceof Scheme) {
                     scheme = (Scheme) node.getUserObject();
@@ -162,50 +165,61 @@ public class ProjectManagement extends JPanel {
         });
         OKButton.addActionListener(e -> {
             if (tree.getLastSelectedPathComponent() != null && tree.getLastSelectedPathComponent() instanceof DefaultMutableTreeNode) {
-                System.out.println("Selected: " + tree.getLastSelectedPathComponent().toString());
                 DefaultMutableTreeNode node = ((DefaultMutableTreeNode) tree.getLastSelectedPathComponent());
                 if (node != null) {
                     System.out.println("Node: " + node.toString());
                     if (node.getUserObject() instanceof Scheme) {
                         System.out.println("Scheme: " + scheme.toString());
                         scheme = (Scheme) node.getUserObject();
-                        if (cellFunction.getSelectedItem().equals("Delete")) {
-                            db.delete(scheme);
-                        } else {
-                            if (scheme instanceof Project) {
-                                if (cellFunction.getSelectedItem().equals("Add")) {
-                                    Task task = defaultFactory.createTask();
-                                    ((Project) scheme).addTask(task);
-                                    db.save(task);
-                                } else if (cellFunction.getSelectedItem().equals("Delete")) {
-                                    db.delete(scheme);
-                                }
-                            } else if (scheme instanceof Task) {
-                                if (cellFunction.getSelectedItem().equals("Add")) {
-                                    Job job = defaultFactory.createJob();
-                                    ((Task) scheme).addJob(job);
-                                    db.save(job);
-                                } else if (cellFunction.getSelectedItem().equals("Delete")) {
-                                    db.delete(scheme);
-                                }
-                            } else if (scheme instanceof Job) {
-                                if (cellFunction.getSelectedItem().equals("Delete")) {
-                                    db.delete(scheme);
+                        DefaultMutableTreeNode parent = (DefaultMutableTreeNode) node.getParent();
+                        if (scheme instanceof Project) {
+                            if (cellFunction.getSelectedItem().equals("Add")) {
+                                Task task = defaultFactory.createTask();
+                                ((Project) scheme).addTask(task);
+                                db.save(task);
+                                db.save(scheme);
+                            } else if (cellFunction.getSelectedItem().equals("Delete")) {
+                                db.delete(scheme);
+                            }
+                        } else if (scheme instanceof Task) {
+                            if (cellFunction.getSelectedItem().equals("Add")) {
+                                Job job = defaultFactory.createJob();
+                                ((Task) scheme).addJob(job);
+                                db.save(job);
+                                db.save(scheme);
+                            } else if (cellFunction.getSelectedItem().equals("Delete")) {
+                                Project project = (Project) parent.getUserObject();
+                                project.deleteTask((Task) scheme);
+                                db.delete(scheme);
+                                db.save(project);
+                            }
+                        } else if (scheme instanceof Job) {
+                            if (cellFunction.getSelectedItem().equals("Delete")) {
+                                Task task = (Task) parent.getUserObject();
+                                task.removeJob((Job) scheme);
+                                db.delete(scheme);
+                                db.save(task);
+                            }
+                        }
+                    } else if (node.getUserObject().equals(login.loginInformation.getProperty("db-name"))) {
+                        if (cellFunction.getSelectedItem().equals("Add")) {
+                            scheme = defaultFactory.createProject();
+                            db.save(scheme);
+                        } else if (cellFunction.getSelectedItem().equals("Delete")) {
+                            int answer = JOptionPane.showConfirmDialog(this.getParent(), "Are you sure you want to delete everything in the database?");
+                            if (answer == JOptionPane.YES_OPTION) {
+                                while (node.children().hasMoreElements()) {
+                                    DefaultMutableTreeNode child = (DefaultMutableTreeNode) node.children().nextElement();
+                                    Scheme childObj = (Scheme) child.getUserObject();
+                                    db.delete(childObj);
                                 }
                             }
-                            System.out.println("Saving: " + scheme.toString());
-                            db.save(scheme);
                         }
-                        top.removeAllChildren();
-                        createNodes(top);
-                        tree.updateUI();
-                    } else if (node.toString().equals("Projects")) {
-                        scheme = (defaultFactory.createProject());
-                        db.save(scheme);
-                        top.removeAllChildren();
-                        createNodes(top);
-                        tree.updateUI();
                     }
+                    top.removeAllChildren();
+                    createNodes(top);
+                    tree.expandPath(clickedPath);
+                    tree.updateUI();
                     tree.revalidate();
                 }
             }
@@ -213,7 +227,7 @@ public class ProjectManagement extends JPanel {
     }
 
     private void createUIComponents() {
-        top = new DefaultMutableTreeNode("Projects");
+        top = new DefaultMutableTreeNode(login.loginInformation.getProperty("db-name"));
         createNodes(top);
         tree = new JTree(top);
         DefaultTreeModel model = new DefaultTreeModel(top);

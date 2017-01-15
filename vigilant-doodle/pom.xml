@@ -102,7 +102,7 @@
                 <version>1.5.0</version>
                 <executions>
                     <execution>
-                        <id>mv-pit</id>
+                        <id>mv-site</id>
                         <phase>site-deploy</phase>
                         <goals>
                             <goal>exec</goal>

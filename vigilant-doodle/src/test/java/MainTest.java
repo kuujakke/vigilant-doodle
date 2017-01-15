@@ -49,12 +49,12 @@ public class MainTest extends AssertJSwingJUnitTestCase {
     @Test
     public void testProjectSaving() throws Exception {
         login();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         //assertThat(window.table()).isNotNull();
         assertThat(window.tree().requireVisible());
         assertThat(window.tree().clickRow(0)).isNotNull();
         assertThat(window.splitPane().requireVisible());
-        Thread.sleep(100000);
+        //Thread.sleep(100000);
     }
 
     public void login() throws Exception {
