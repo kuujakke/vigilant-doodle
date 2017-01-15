@@ -154,7 +154,6 @@ public abstract class Scheme {
      */
     @Override
     public String toString() {
-        return "Name: " + this.name + "\n" +
-                "Description: " + this.description;
+        return this.name;
     }
 }

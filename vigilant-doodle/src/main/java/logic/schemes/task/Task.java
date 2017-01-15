@@ -24,6 +24,13 @@ public class Task extends Scheme {
     private ArrayList<Job> jobs;
 
     /**
+     * Zero-arg constructor for Morphia.
+     */
+    public Task() {
+
+    }
+
+    /**
      * Passes the name param to the superclass constructor.
      * Initializes worker list and job list with empty ArrayLists.
      *

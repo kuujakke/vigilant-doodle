@@ -1,6 +1,8 @@
 package graphic;
 
+import config.Configuration;
 import config.DefaultSettings;
+import logic.DefaultFactory;
 import logic.roles.projectroles.Member;
 import logic.schemes.Scheme;
 import logic.schemes.project.Project;
@@ -20,20 +22,26 @@ import java.util.*;
  */
 public class UserPanel extends JPanel implements ActionListener {
 
-    private final Datastore db;
+    private Login login;
+    private Datastore db;
     private JTable jTable;
     private JTextField newProjectName;
 
     /**
-     * Initializes the object with Datastore object.
-     * Calls makeLayout()
+     * Initializes the object with Login.
+     * Afterwards calls makeLayout()
      *
-     * @param db Datastore object.
+     * @param login Login object.
      */
-    public UserPanel(Datastore db) {
-        this.db = db;
-        this.jTable = createJTable();
-        makeLayout();
+    public UserPanel(Login login) {
+        this.login = login;
+        try {
+            this.db = this.login.getDatabase();
+            this.jTable = createJTable();
+            makeLayout();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this.getParent(), e.toString());
+        }
     }
 
     /**
@@ -41,12 +49,7 @@ public class UserPanel extends JPanel implements ActionListener {
      */
     public void makeLayout() {
 
-        Query<Project> projects = this.db.createQuery(Project.class);
-
-        for (Project project : projects) {
-            String timeCreated = project.getStatus().getStartTime().toString();
-            addRow(project.getName(), project.getDescription(), timeCreated);
-        }
+        updateView();
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -59,28 +62,35 @@ public class UserPanel extends JPanel implements ActionListener {
         add(jScrollPane, c);
         setVisible(true);
 
-        int width = 10;
-        int gridy = 0;
-        int gridx = 0;
-
         JLabel newProjectNameLabel = new JLabel("Project name: ");
-        setConstraints(c, gridx % 2, gridy);
+        setConstraints(c, 1, 0);
+        c.fill = GridBagConstraints.EAST;
         add(newProjectNameLabel, c);
-        gridx++;
 
         this.newProjectName = new JTextField(20);
-        setConstraints(c, gridx % 2, gridy);
+        setConstraints(c, 2, 0);
         add(this.newProjectName, c);
-        gridx++;
 
-        gridy++;
-        horisontalStrut(2, gridy, c);
-        gridy++;
+        JButton addProject = new JButton("Add Project");
+        setConstraints(c, 3, 0);
+        c.fill = GridBagConstraints.WEST;
+        add(addProject, c);
+        addProject.addActionListener(this);
+
+        horisontalStrut(2, 1, c);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String projectName = this.newProjectName.getText();
+        Project project = null;
+        try {
+            project = new DefaultFactory(new Configuration()).createProject(projectName);
+        } catch (Exception e1) {
+            JOptionPane.showMessageDialog(this.getParent(), e1.toString());
+        }
+        db.save(project);
+        addRow(project.getName(), project.getDescription(), project.getStatus().getStartTime().toString());
     }
 
     private JTable createJTable() {
@@ -92,9 +102,20 @@ public class UserPanel extends JPanel implements ActionListener {
         return jTable;
     }
 
+    private void updateView() {
+        Query<Project> projects = this.db.createQuery(Project.class);
+
+        for (Project project : projects) {
+            String timeCreated = project.getStatus().getStartTime().toString();
+            addRow(project.getName(), project.getDescription(), timeCreated);
+        }
+
+    }
+
     private void addRow(String name, String description, String timeCreated) {
         DefaultTableModel model = (DefaultTableModel) this.jTable.getModel();
         model.addRow(new Object[]{name, description, timeCreated});
+        model.fireTableDataChanged();
     }
 
     private Object[] getArray(Scheme scheme) {

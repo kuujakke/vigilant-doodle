@@ -1,13 +1,11 @@
 package graphic;
 
 import config.Configuration;
-import config.DefaultSettings;
 
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Properties;
 
 /**
  * Graphical User Interface for the application.
@@ -17,20 +15,24 @@ public class GUI implements Runnable, ComponentListener {
     private Configuration config;
     private Login login;
     private LoginPanel loginPanel;
-    private UserPanel userPanel;
     private JFrame frame;
+    private ProjectManagement projectManagement;
+    private JPanel mainPanel;
+
     /**
      * Initializes the configuration variable with the configuration passed in.
      */
     @Override
     public void run() {
         this.frame = new JFrame();
+        this.frame.setName("MainFrame");
         try {
             this.config = new Configuration();
         } catch (Exception e) {
             e.printStackTrace();
         }
         initUI(this.frame);
+        this.mainPanel = new JPanel();
         initLogin();
     }
 
@@ -58,16 +60,23 @@ public class GUI implements Runnable, ComponentListener {
         });
     }
 
-    private void initUser() {
-        System.out.println("Initializing user view...");
+    private void initProjectManagement() {
+        System.out.println("Initializing Project Management...");
         SwingUtilities.invokeLater(() -> {
             this.frame.getContentPane().remove(this.loginPanel);
-            this.frame.getContentPane().add(this.userPanel);
+            GridBagConstraints c = new GridBagConstraints();
+            c.weighty = 1;
+            c.weightx = 1;
+            c.fill = GridBagConstraints.CENTER;
             frame.setSize(this.config.getUIWidth(), this.config.getUIHeight());
+            projectManagement = new ProjectManagement(this.login);
+            projectManagement.setSize(this.config.getUIWidth(), this.config.getUIHeight());
+            this.frame.getContentPane().add(projectManagement);
             this.frame.invalidate();
             this.frame.validate();
             this.frame.revalidate();
             this.frame.repaint();
+            this.frame.setVisible(true);
         });
     }
 
@@ -90,16 +99,11 @@ public class GUI implements Runnable, ComponentListener {
     public void componentHidden(ComponentEvent e) {
         try {
             this.login = this.loginPanel.getLogin();
+            if (this.login != null && !this.login.loginInformation.isEmpty()) {
+                initProjectManagement();
+            }
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-        if (this.login != null && !this.login.loginInformation.isEmpty()) {
-            try {
-                this.userPanel = new UserPanel(this.login.getDatabase());
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
-        initUser();
     }
 }

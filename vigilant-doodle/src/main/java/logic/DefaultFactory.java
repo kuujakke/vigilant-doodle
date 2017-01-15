@@ -73,6 +73,15 @@ public class DefaultFactory {
     }
 
     /**
+     * Creates a new project with given name and default values.
+     *
+     * @return Project with name.
+     */
+    public Project createProject(String name) {
+        return this.projectFactory.createScheme(name);
+    }
+
+    /**
      * Creates a new task with default values.
      *
      * @return Task with default values.

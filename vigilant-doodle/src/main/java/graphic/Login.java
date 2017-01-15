@@ -1,5 +1,6 @@
 package graphic;
 
+import config.Configuration;
 import logic.database.Database;
 import org.mongodb.morphia.Datastore;
 
@@ -13,6 +14,7 @@ public class Login extends JPanel {
 
     Properties loginInformation;
     private Datastore db;
+    private Configuration config;
 
     /**
      * Initiates the Properties object to be used later on.
@@ -65,4 +67,24 @@ public class Login extends JPanel {
         return null;
     }
 
+    /**
+     * Sets configuration object.
+     *
+     * @param config Configuration object.
+     */
+    public void setConfig(Configuration config) {
+        this.config = config;
+    }
+
+    /**
+     * Gets configuration object or tries to load and return a new configuration.
+     *
+     * @return Configuration object.
+     */
+    public Configuration getConfig() throws Exception {
+        if (this.config == null) {
+            this.config = new Configuration();
+        }
+        return this.config;
+    }
 }

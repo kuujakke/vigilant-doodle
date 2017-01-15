@@ -18,6 +18,13 @@ public class Job extends Scheme {
     private Role worker;
 
     /**
+     * Zero-arg constructor for morphia.
+     */
+    public Job() {
+
+    }
+
+    /**
      * Passes the name to the superclass.
      *
      * @param name String containing the name of the job.
