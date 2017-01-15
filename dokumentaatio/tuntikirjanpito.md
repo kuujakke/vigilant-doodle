@@ -25,5 +25,6 @@ Päivä | Tunnit | Kuvaus
 11.1.2017 | 8h | Korjattu tyylivirheitä ja generoitu uudet raportit sekä .jar. Päivitetty automatisointia.
 12.1.2017 | 8h | Kirjoitettu javadocia ja korjattu UI:ta.
 13.1.2017 | 8h | Luovutettu UI:n suhteen ja luotu UI IntelliJ GUI builderin avulla uusi ProjectManager paneeli.
-
+14.1.2017 | 8h | Raivokasta refaktorointia.
+15.1.2017 | 8h | Raporttien generointi ja ongelmien ratkontaa
 
