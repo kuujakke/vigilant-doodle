@@ -1,6 +1,6 @@
 #Tehtävienhallintajärjestelmä
 Toteutetaan tehtävienhallintajärjestelmä, jonka avulla pystytään hallinnoimaan projekteihin liittyviä tehtäviä sekä määräämään tehtäville aikarajoja.
-Sovelluksella voidaan myös seurata esimerkiksi projekteihin kulunutta työaikaa.
+Sovelluksella voitaisiin tulevaisuudessa myös seurata esimerkiksi projekteihin kulunutta työaikaa.
 
 ##Käyttäjät
 
@@ -48,3 +48,7 @@ Kun Käyttäjä on saanut vastuulleen tehtävän saa käyttäjä Tehtävänjohta
 # Luokkakaavio
 
 ![Luokkakaavio](luokkakaavio.png)
+
+# Sekvenssikaavio kirjautumisesta
+
+![Sekvenssikaavio](sekvenssikaavio-login.png)
