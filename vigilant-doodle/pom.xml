@@ -96,7 +96,7 @@
                 <version>2.10.3</version>
             </plugin>
             <!-- Tämä plugari voi aiheuttaa hämmennystä jossain laitteistoissa. Kommentoi piiloon tarvittaessa. -->
-<!--            <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.5.0</version>
@@ -112,7 +112,7 @@
                 <configuration>
                     <executable>${basedir}/scripts/mv-site.sh</executable>
                 </configuration>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -126,7 +126,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>fi.jk.vigilant-doodle.Main</mainClass>
+                                    <mainClass>main.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

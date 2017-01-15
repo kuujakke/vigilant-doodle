@@ -1,3 +1,5 @@
+package main;
+
 import graphic.GUI;
 import javax.swing.*;
 
@@ -7,7 +9,7 @@ import javax.swing.*;
 public class Main {
 
     /**
-     * Main program that starts by loading application configurations.
+     * main.Main program that starts by loading application configurations.
      * It catches an Exception if the configuration file is not found and
      * prints the error message.
      *

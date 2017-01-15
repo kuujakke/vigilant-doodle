@@ -28,7 +28,7 @@ public class MainTest extends AssertJSwingJUnitTestCase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        application(Main.class).start();
+        application(main.Main.class).start();
         window = findFrame(new GenericTypeMatcher<Frame>(Frame.class) {
             protected boolean isMatching(Frame frame) {
                 return frame.isShowing();
@@ -43,7 +43,7 @@ public class MainTest extends AssertJSwingJUnitTestCase {
         assertThat(window.tree().requireVisible());
         assertThat(window.tree().clickRow(0)).isNotNull();
         assertThat(window.splitPane().requireVisible());
-        Thread.sleep(100000);
+        //Thread.sleep(100000);
     }
 
     public void login() throws Exception {

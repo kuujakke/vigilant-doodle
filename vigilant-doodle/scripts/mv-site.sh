@@ -3,6 +3,9 @@
 echo "Moving PIT -report"
 rsync -a target/pit-reports/*/ ../dokumentaatio/pit-raportti/
 
+echo "Moving site"
+rsync -a target/site/ ../dokumentaatio/checkstyle-raportti/
+
 echo "Moving javadoc..."
 rsync -a ../dokumentaatio/checkstyle-raportti/apidocs/ ../dokumentaatio/javadoc/
 rm -r ../dokumentaatio/checkstyle-raportti/apidocs

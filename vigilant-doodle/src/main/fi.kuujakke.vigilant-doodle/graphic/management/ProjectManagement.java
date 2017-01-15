@@ -7,7 +7,6 @@ import graphic.management.listeners.SelectionListener;
 import graphic.management.listeners.UpdateButtonListener;
 import graphic.management.nodes.NodeFactory;
 import logic.DefaultFactory;
-import logic.schemes.Scheme;
 import org.mongodb.morphia.Datastore;
 
 import javax.swing.*;
@@ -21,7 +20,6 @@ import java.awt.*;
 public class ProjectManagement extends JPanel {
     private final Login login;
     private Configuration config;
-    private Scheme scheme;
     private JTree tree;
     private JScrollPane treePanel;
     private JPanel jPanel;
@@ -34,17 +32,19 @@ public class ProjectManagement extends JPanel {
     private JPanel updatePanel;
     private JSplitPane splitPane;
     private JComboBox cellFunction;
-    private JButton OKButton;
+    private JButton oKButton;
     private JPanel editPanel;
     private JPanel functionPanel;
     private Datastore db;
-    private DefaultMutableTreeNode clickedNode;
-    private TreePath clickedPath;
-    private TreeCellEditor cellEditor;
     private DefaultFactory defaultFactory;
     private DefaultMutableTreeNode top;
     private NodeFactory nodeFactory;
 
+    /**
+     * Creates a new project management panel from login object.
+     *
+     * @param login Login
+     */
     public ProjectManagement(Login login) {
         this.login = login;
         try {
@@ -77,7 +77,7 @@ public class ProjectManagement extends JPanel {
         this.setVisible(true);
         tree.addTreeSelectionListener(new SelectionListener(tree, nameText, descriptionText, createdText, deadlineText, completedText));
         updateButton.addActionListener(new UpdateButtonListener(tree, db, nameText, descriptionText, createdText, deadlineText, completedText));
-        OKButton.addActionListener(new OKButtonListener(nodeFactory, tree, db, this.login, cellFunction, defaultFactory, top));
+        oKButton.addActionListener(new OKButtonListener(nodeFactory, tree, db, this.login, cellFunction, defaultFactory, top));
     }
 
     private void createUIComponents() {
@@ -86,7 +86,6 @@ public class ProjectManagement extends JPanel {
         DefaultTreeModel model = new DefaultTreeModel(top);
         tree.setModel(model);
         tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-        tree.setCellEditor(cellEditor);
         treePanel = new JScrollPane(tree);
         updatePanel = new JPanel();
         tree.repaint();
@@ -131,8 +130,8 @@ public class ProjectManagement extends JPanel {
         gbc.ipady = 1;
         editPanel.add(functionPanel, gbc);
         functionPanel.setBorder(BorderFactory.createTitledBorder(null, "Edit", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, new Color(-4473925)));
-        OKButton = new JButton();
-        OKButton.setText("OK");
+        oKButton = new JButton();
+        oKButton.setText("OK");
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 0;
@@ -141,7 +140,7 @@ public class ProjectManagement extends JPanel {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.ipadx = 1;
-        functionPanel.add(OKButton, gbc);
+        functionPanel.add(oKButton, gbc);
         cellFunction = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("Add");

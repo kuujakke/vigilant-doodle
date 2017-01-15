@@ -63,7 +63,7 @@
         <version>1.5.0</version>
         <executions>
           <execution>
-            <id>mv-pit</id>
+            <id>mv-site</id>
             <phase>site-deploy</phase>
             <goals>
               <goal>exec</goal>
@@ -86,7 +86,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>fi.jk.vigilant-doodle.Main</mainClass>
+                  <mainClass>main.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -121,9 +121,6 @@
       </exclusions>
     </dependency>
   </dependencies>
-  <reporting>
-    <outputDirectory>${project.basedir}/../dokumentaatio/checkstyle-raportti</outputDirectory>
-  </reporting>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
