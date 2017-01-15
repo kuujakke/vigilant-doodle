@@ -1,6 +1,7 @@
 package graphic;
 
 import config.Configuration;
+import graphic.login.Login;
 import org.junit.Before;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;

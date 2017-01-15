@@ -1,4 +1,4 @@
-package graphic;
+package graphic.login;
 
 import config.Configuration;
 import logic.database.Database;
@@ -80,11 +80,22 @@ public class Login extends JPanel {
      * Gets configuration object or tries to load and return a new configuration.
      *
      * @return Configuration object.
+     *
+     * @throws Exception if something went wrong while loading new configuration.
      */
     public Configuration getConfig() throws Exception {
         if (this.config == null) {
             this.config = new Configuration();
         }
         return this.config;
+    }
+
+    /**
+     * Gets the login information.
+     *
+     * @return Properties object containing login information.
+     */
+    public Properties getLoginInformation() {
+        return loginInformation;
     }
 }

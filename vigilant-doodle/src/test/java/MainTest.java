@@ -2,24 +2,14 @@ import static org.assertj.swing.launcher.ApplicationLauncher.application;
 import static org.assertj.swing.finder.WindowFinder.findFrame;
 
 import config.Configuration;
-import graphic.Login;
-import org.assertj.swing.core.MouseButton;
 import org.assertj.swing.fixture.FrameFixture;
-import org.assertj.swing.fixture.JMenuItemFixture;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
-import org.junit.Before;
 import org.junit.Test;
 import java.awt.Frame;
-import java.util.LongSummaryStatistics;
 
 import org.assertj.swing.core.GenericTypeMatcher;
 import static org.assertj.swing.finder.WindowFinder.findFrame;
-import org.assertj.swing.fixture.FrameFixture;
-import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
 import static org.assertj.swing.launcher.ApplicationLauncher.application;
-import org.junit.Test;
-
-import javax.swing.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -50,11 +40,10 @@ public class MainTest extends AssertJSwingJUnitTestCase {
     public void testProjectSaving() throws Exception {
         login();
         Thread.sleep(3000);
-        //assertThat(window.table()).isNotNull();
         assertThat(window.tree().requireVisible());
         assertThat(window.tree().clickRow(0)).isNotNull();
         assertThat(window.splitPane().requireVisible());
-        //Thread.sleep(100000);
+        Thread.sleep(100000);
     }
 
     public void login() throws Exception {

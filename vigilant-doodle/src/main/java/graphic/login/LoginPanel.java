@@ -1,4 +1,4 @@
-package graphic;
+package graphic.login;
 
 import javax.swing.*;
 import java.awt.*;

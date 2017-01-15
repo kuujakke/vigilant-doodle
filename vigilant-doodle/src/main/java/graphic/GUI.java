@@ -1,6 +1,9 @@
 package graphic;
 
 import config.Configuration;
+import graphic.login.Login;
+import graphic.login.LoginPanel;
+import graphic.management.ProjectManagement;
 
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -99,7 +102,7 @@ public class GUI implements Runnable, ComponentListener {
     public void componentHidden(ComponentEvent e) {
         try {
             this.login = this.loginPanel.getLogin();
-            if (this.login != null && !this.login.loginInformation.isEmpty()) {
+            if (this.login != null && !this.login.getLoginInformation().isEmpty()) {
                 initProjectManagement();
             }
         } catch (Exception e1) {
