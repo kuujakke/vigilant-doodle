@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>fi.jk</groupId>
+  <groupId>fi.kuujakke</groupId>
   <artifactId>vigilant-doodle</artifactId>
   <version>0.1</version>
   <developers>
@@ -27,10 +27,12 @@
         <version>1.1.11</version>
         <configuration>
           <targetClasses>
-            <param>logic.*</param>
+            <param>logic*</param>
+            <param>config*</param>
           </targetClasses>
           <targetTests>
-            <param>logic.*</param>
+            <param>logic*</param>
+            <param>config*</param>
           </targetTests>
         </configuration>
       </plugin>

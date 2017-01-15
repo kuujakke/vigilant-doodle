@@ -1,6 +1,9 @@
-
 config
 graphic
+graphic.login
+graphic.management
+graphic.management.listeners
+graphic.management.nodes
 logic
 logic.database
 logic.login
@@ -11,3 +14,4 @@ logic.schemes
 logic.schemes.job
 logic.schemes.project
 logic.schemes.task
+main

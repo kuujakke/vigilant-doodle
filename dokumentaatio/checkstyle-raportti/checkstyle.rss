@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 27,
+      <title>File: 30,
              Errors: 4,
              Warnings: 0,
              Infos: 0
@@ -44,20 +44,6 @@ under the License.
             </tr>
           </thead>
           <tbody>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#Testi.java">Testi.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#config.Configuration.java">config/Configuration.java</a>
@@ -88,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#graphic.UserPanel.java">graphic/UserPanel.java</a>
+                  <a href="${project.url}/checkstyle.html#graphic.management.listeners.UpdateButtonListener.java">graphic/management/listeners/UpdateButtonListener.java</a>
                 </td>
                 <td>
                   0
@@ -144,20 +130,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#Main.java">Main.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#logic.schemes.job.JobFactory.java">logic/schemes/job/JobFactory.java</a>
                 </td>
                 <td>
@@ -173,6 +145,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#logic.login.Admin.java">logic/login/Admin.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#graphic.management.listeners.SelectionListener.java">graphic/management/listeners/SelectionListener.java</a>
                 </td>
                 <td>
                   0
@@ -228,7 +214,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#graphic.LoginPanel.java">graphic/LoginPanel.java</a>
+                  <a href="${project.url}/checkstyle.html#logic.DefaultFactory.java">logic/DefaultFactory.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logic.DefaultFactory.java">logic/DefaultFactory.java</a>
+                  <a href="${project.url}/checkstyle.html#graphic.login.Login.java">graphic/login/Login.java</a>
                 </td>
                 <td>
                   0
@@ -284,7 +270,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#graphic.management.nodes.NodeFactory.java">graphic/management/nodes/NodeFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#graphic.management.ProjectManagement.java">graphic/management/ProjectManagement.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#logic.schemes.task.TaskFactory.java">logic/schemes/task/TaskFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#graphic.login.LoginPanel.java">graphic/login/LoginPanel.java</a>
                 </td>
                 <td>
                   0
@@ -349,12 +377,26 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#logic.schemes.Scheme.java">logic/schemes/Scheme.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#main.Main.java">main/Main.java</a>
                 </td>
                 <td>
                   0
@@ -377,7 +419,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#graphic.management.listeners.OKButtonListener.java">graphic/management/listeners/OKButtonListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -397,20 +453,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#graphic.GUI.java">graphic/GUI.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#graphic.Login.java">graphic/Login.java</a>
                 </td>
                 <td>
                   0
