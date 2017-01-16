@@ -10,8 +10,6 @@ import org.junit.Test;
 import java.awt.Frame;
 
 import org.assertj.swing.core.GenericTypeMatcher;
-import static org.assertj.swing.finder.WindowFinder.findFrame;
-import static org.assertj.swing.launcher.ApplicationLauncher.application;
 
 import static org.assertj.core.api.Assertions.*;
 
